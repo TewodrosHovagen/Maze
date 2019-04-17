@@ -10,6 +10,5 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        GameManager.readMazeFile("maze file.txt");
     }
 }
