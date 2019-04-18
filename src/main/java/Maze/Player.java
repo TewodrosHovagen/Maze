@@ -21,7 +21,7 @@ public class Player implements PlayerInterface {
 
     @Override
     public DirectionsEnum move() {
-        hitBookmark();
+        hitBookmark(bookMarksCounter);
         return DirectionsEnum.UP;
     }
 
