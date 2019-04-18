@@ -1,10 +1,37 @@
 package Maze;
 
-public interface Player {
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Directions move(Directions direction);
+public class Player implements PlayerInterface {
 
-    public void hitWall();
+    private List<Integer> bookMarks;
+    private int bookMarksCounter;
+    private int steps;
+    private boolean isHitWall;
+    private Point playerPoint;
 
-    public void hitBookmark(int seq);
+    public Player(Point playerPoint) {
+        this.steps = 0;
+        this.bookMarks = new ArrayList<>();
+        this.playerPoint=playerPoint;
+    }
+
+
+    @Override
+    public DirectionsEnum move() {
+        hitBookmark(bookMarksCounter);
+        return DirectionsEnum.UP;
+    }
+
+    @Override
+    public void hitWall() {
+        System.out.println("you hit wall !!");
+    }
+
+    @Override
+    public void hitBookmark(int seq) {
+        bookMarks.add(seq);
+    }
 }
