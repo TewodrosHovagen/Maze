@@ -10,24 +10,31 @@ public class Player implements PlayerInterface {
     private int bookMarksCounter;
     private int steps;
     private boolean isHitWall;
-    private Point playerPoint;
+//    private Point playerPoint;
 
     public Player(Point playerPoint) {
         this.steps = 0;
         this.bookMarks = new ArrayList<>();
-        this.playerPoint=playerPoint;
+//        this.playerPoint=playerPoint;
     }
+
+
 
 
     @Override
     public DirectionsEnum move() {
-        hitBookmark(bookMarksCounter);
-        return DirectionsEnum.UP;
+        if (isHitWall) {
+            isHitWall=false;
+            return DirectionsEnum.LEFT;
+        }else {
+            return  DirectionsEnum.UP;
+        }
     }
 
     @Override
     public void hitWall() {
-        System.out.println("you hit wall !!");
+        System.out.println("You hit the wall");
+        isHitWall=true;
     }
 
     @Override
