@@ -1,4 +1,6 @@
-package Maze;
+package maze.player;
+
+import maze.DirectionsEnum;
 
 import java.awt.*;
 import java.util.ArrayList;
