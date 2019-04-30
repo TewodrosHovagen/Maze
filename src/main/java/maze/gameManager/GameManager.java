@@ -3,6 +3,7 @@ package maze.gameManager;
 import maze.FileDataParse.FileData;
 import maze.DirectionsEnum;
 import maze.player.Player;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
