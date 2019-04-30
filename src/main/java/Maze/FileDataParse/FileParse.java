@@ -1,6 +1,6 @@
-package Maze.FileDataParse;
+package maze.FileDataParse;
 
-import Exceptions.WrongFileFormatException;
+import exceptions.WrongFileFormatException;
 import java.io.*;
 
 public class FileParse {
@@ -31,25 +31,34 @@ public class FileParse {
             fileData = parseFirstLines(br,new FileData());
 
             // read the first line from the text file
-            String fileReader = br.readLine();
-            boolean mazeInitializeDataExist = false;
-
+            String fileReader;
             String[][] mazeWorld = new String[fileData.getRows()][fileData.getColumns()];
 
             // loop until all lines are read
-            int rows =0;
-            while(fileReader != null){
-                if (fileReader.length() > fileData.getColumns())
-                    throw new WrongFileFormatException("Maze world is too big in columns");
-                for(int i=0; i<fileReader.length() ; i++){
-                    if (!isValidChar(fileReader.charAt(i)))
-                        throw  new  WrongFileFormatException("Wrong value in the maze world");
-                    else{
-                        mazeWorld[rows][i] = fileReader.charAt(i)+"";
+            for (int row =0; row < fileData.getRows(); row++){
+                fileReader = br.readLine();
+                if (fileReader != null){
+                    if (fileReader.length() >= fileData.getColumns()){
+                        for(int column=0; column < fileData.getColumns(); column++){
+                            mazeWorld[row][column] = fileReader.charAt(column)+"";
+                        }
+                    }else{
+                        int column=0;
+                        while (column < fileReader.length()){
+                            mazeWorld[row][column] = fileReader.charAt(column)+"";
+                            column++;
+                        }
+                        while (column < fileData.getColumns()){
+                            mazeWorld[row][column] = " ";
+                            column++;
+                        }
+                    }
+
+                }else{
+                    for(int column=0; column < fileData.getColumns(); column++){
+                        mazeWorld[row][column] = " ";
                     }
                 }
-                rows++;
-                fileReader = br.readLine();
             }
 
             fileData.setMazeWorld(mazeWorld);
@@ -82,7 +91,7 @@ public class FileParse {
     private FileData parseFirstLines (BufferedReader br, FileData fileData) throws WrongFileFormatException, IOException {
         try {
             String[] pairValues;
-            //Get the Maze Name
+            //Get the maze Name
             String fileReader = br.readLine();
             fileData.setMazeName(fileReader);
 

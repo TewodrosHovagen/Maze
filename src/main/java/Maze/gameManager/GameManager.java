@@ -1,9 +1,8 @@
 package maze.gameManager;
 
+import maze.FileDataParse.FileData;
 import maze.DirectionsEnum;
-import maze.parseFile.DataFile;
 import maze.player.Player;
-
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,7 @@ public class GameManager {
     private int bookmarksCounter = 0;
     private Point playerLocation;
     private Point treasureLocation;
-    private DataFile data;
+    private FileData data;
     private Player player;
 
     public GameManager(String[][] mazeWorld){
@@ -23,7 +22,7 @@ public class GameManager {
         playerLocation = findPlayerLocation();
         treasureLocation = findTreasureLocation();
         bookMarksMaps = new HashMap<>();
-        data = new DataFile();
+        data = new FileData();
         player  = new Player(playerLocation);
         startGame();
     }
@@ -123,13 +122,13 @@ public class GameManager {
             case LEFT:
                 temp = playerLocation.x - 1;
                 if (temp < 0)
-                    newLocation = new Point(data.getCols() - 1, playerLocation.y);
+                    newLocation = new Point(data.getColumns() - 1, playerLocation.y);
                 else
                     newLocation = new Point(temp, playerLocation.y);
                 break;
             case RIGHT:
                 temp = playerLocation.x + 1;
-                if(temp >= data.getCols())
+                if(temp >= data.getColumns())
                     newLocation = new Point(0, playerLocation.y);
                 else
                     newLocation = new Point(temp, playerLocation.y);

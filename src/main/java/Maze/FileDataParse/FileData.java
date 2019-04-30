@@ -1,6 +1,7 @@
-package Maze.FileDataParse;
+package maze.FileDataParse;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Set;
 
 public class FileData {
@@ -83,7 +84,10 @@ public class FileData {
         return mazeWorld;
     }
 
-    public void setMazeWorld(String[][] mazeWorld) {
-        this.mazeWorld = mazeWorld;
+    public void setMazeWorld(String[][] mazeWorld) {  this.mazeWorld = mazeWorld;  }
+
+    public void printMazeWorld(){
+        for (String[] row : mazeWorld)
+            System.out.println(Arrays.toString(row));
     }
 }

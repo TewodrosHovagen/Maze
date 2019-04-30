@@ -1,4 +1,4 @@
-package Maze;
+package maze;
 
 import java.awt.*;
 import java.util.ArrayList;
