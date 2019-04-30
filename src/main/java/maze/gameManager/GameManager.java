@@ -1,6 +1,7 @@
 package maze.gameManager;
 
 import maze.DirectionsEnum;
+import maze.parseFile.DataFile;
 import maze.player.Player;
 
 import java.awt.*;
@@ -22,6 +23,7 @@ public class GameManager {
         playerLocation = findPlayerLocation();
         treasureLocation = findTreasureLocation();
         bookMarksMaps = new HashMap<>();
+        data = new DataFile();
         player  = new Player(playerLocation);
         startGame();
     }
@@ -32,7 +34,9 @@ public class GameManager {
         Point currentLocation;
         int i;
         for (i = 0; i < data.getMaxSteps(); i++) {
+            System.out.println("Step No: " + i);
             direction = player.move();
+            System.out.println("Go Direction: " + direction);
             currentLocation = move(direction);
             if(isTreasure(currentLocation)){
                 System.out.println(String.format("Succeeded in %s steps", i+1));
@@ -40,9 +44,13 @@ public class GameManager {
             }
             if(isWall(currentLocation)){
                 player.hitWall();
+                playerLocation = currentLocation;
                 currentLocation = getBackMove(direction);
                 // add location to bookmark map ??? if wantet
             }
+
+            playerLocation = currentLocation;
+            System.out.println("Current location:" + (int)playerLocation.getX() + "," +  (int)playerLocation.getY());
 
         }
         if (i == data.getMaxSteps()){
@@ -159,7 +167,7 @@ public class GameManager {
         for (int i = 0; i < mazeWorld.length; i++) {
             for (int j = 0; j < mazeWorld[i].length; j++) {
                 if (mazeWorld[i][j].equals(str) )
-                    point = new Point(i,j);
+                    point = new Point(j,i);
             }
         }
         return point;
