@@ -12,15 +12,12 @@ public class Player implements PlayerInterface {
     private int bookMarksCounter;
     private int steps;
     private boolean isHitWall;
-    private int tryiesCounter;
-    private DirectionsEnum lastDirection;
 //    private Point playerPoint;
 
     public Player(Point playerPoint) {
         this.steps = 0;
         this.bookMarks = new ArrayList<>();
 //        this.playerPoint=playerPoint;
-        tryiesCounter = 0;
     }
 
 
@@ -28,33 +25,12 @@ public class Player implements PlayerInterface {
 
     @Override
     public DirectionsEnum move() {
-        if(isHitWall) {
-
-//            tryiesCounter = 0;
-            tryiesCounter++;
-            if (tryiesCounter == 1) {
-                lastDirection = DirectionsEnum.UP;
-                return  lastDirection;
-//            isHitWall=false;
-            }else if(tryiesCounter == 2) {
-                lastDirection =  DirectionsEnum.LEFT;
-                return  lastDirection;
-            }else if(tryiesCounter == 3) {
-                lastDirection =  DirectionsEnum.DOWN;
-                return  lastDirection;
-            }else  if(tryiesCounter == 4){
-                lastDirection =  DirectionsEnum.RIGHT;
-                return  lastDirection;
-            }else{
-                return  lastDirection;
-            }
-
+        if (isHitWall) {
+            isHitWall=false;
+            return DirectionsEnum.LEFT;
+        }else {
+            return  DirectionsEnum.UP;
         }
-        else{
-            isHitWall = false;
-            tryiesCounter = 0;
-        }
-        return  DirectionsEnum.UP;
     }
 
     @Override
