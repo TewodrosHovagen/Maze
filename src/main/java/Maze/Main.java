@@ -1,19 +1,20 @@
-package Maze;
+package maze;
 
-import Maze.FileDataParse.FileData;
-import Maze.FileDataParse.FileParse;
+import maze.gameManager.GameManager;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        FileParse fileParse = new FileParse();
-        FileData fileData = fileParse.parseFileData(args);
-        System.out.println(fileData);
+        String[][] mazeWorld = new String[][] {
+                {"#","#","#","#","#"," "," "," "," "," "},
+                {"#"," ","@"," ","#"," "," "," "," ","#"},
+                {"#"," "," "," ","#"," "," ","$"," ","#"},
+                {" "," "," "," ","#","#","#","#","#"," "}
+        };
+        GameManager game = new GameManager(mazeWorld);
+        game.startGame();
     }
 }
