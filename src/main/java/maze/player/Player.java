@@ -1,4 +1,6 @@
-package Maze;
+package maze.player;
+
+import maze.DirectionsEnum;
 
 import java.util.HashSet;
 import java.util.Set;

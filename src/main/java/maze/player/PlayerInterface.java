@@ -1,4 +1,6 @@
-package Maze;
+package maze.player;
+
+import maze.DirectionsEnum;
 
 public interface PlayerInterface {
 
