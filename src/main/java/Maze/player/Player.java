@@ -2,24 +2,18 @@ package maze.player;
 
 import maze.DirectionsEnum;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Player implements PlayerInterface {
 
-    private List<Integer> bookMarks;
+    private Set<Integer> bookMarks;
     private int bookMarksCounter;
-    private int steps;
     private boolean isHitWall;
-//    private Point playerPoint;
 
-    public Player(Point playerPoint) {
-        this.steps = 0;
-        this.bookMarks = new ArrayList<>();
-//        this.playerPoint=playerPoint;
+    public Player() {
+        this.bookMarks = new HashSet<>();
     }
-
 
 
 
@@ -29,7 +23,7 @@ public class Player implements PlayerInterface {
             isHitWall=false;
             return DirectionsEnum.LEFT;
         }else {
-            return  DirectionsEnum.UP;
+            return DirectionsEnum.UP;
         }
     }
 
