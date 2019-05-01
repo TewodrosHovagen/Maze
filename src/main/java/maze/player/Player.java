@@ -8,41 +8,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class Player implements PlayerInterface {
+public class Player extends PlayerAbstract {
 
     private List<Integer> bookMarks;
     private int bookMarksCounter;
-    private int steps;
-    private boolean isHitWall;
-//    private Point playerPoint;
+    private int isHitWall;
+    private Point startLocation;
 
-    public Player(Point playerPoint) {
-        this.steps = 0;
-        this.bookMarks = new ArrayList<>();
-//        this.playerPoint=playerPoint;
+
+    public Player() {
+        bookMarks = new ArrayList<>();
     }
-
-
 
 
     @Override
     public DirectionsEnum move() {
-        if (isHitWall) {
-            isHitWall=false;
-            return DirectionsEnum.LEFT;
-        }else {
-            return  DirectionsEnum.UP;
+        switch (isHitWall) {
+            case 0:
+                return DirectionsEnum.UP;
+            case 1:
+                return DirectionsEnum.LEFT;
+            case 2:
+                return DirectionsEnum.RIGHT;
+            case 3:
+                return DirectionsEnum.DOWN;
+
+            default:
+                return DirectionsEnum.UP;
         }
+
     }
 
-    @Override
-    public void hitWall() {
-        System.out.println("You hit the wall");
-        isHitWall=true;
-    }
 
-    @Override
-    public void hitBookmark(int seq) {
-        bookMarks.add(seq);
-    }
 }

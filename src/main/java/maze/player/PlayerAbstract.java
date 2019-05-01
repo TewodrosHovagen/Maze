@@ -10,7 +10,7 @@ public abstract class PlayerAbstract implements PlayerInterface {
     @Override
     public void hitWall() {
         System.out.println("You hit the wall");
-        isHitWall+1;
+        isHitWall = isHitWall + 1;
     }
 
     @Override
