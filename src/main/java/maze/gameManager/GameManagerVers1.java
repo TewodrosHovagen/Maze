@@ -2,8 +2,8 @@ package maze.gameManager;
 
 import maze.FileDataParse.FileData;
 import maze.DirectionsEnum;
-import maze.player.BasicPlayer;
 import maze.player.Player;
+import maze.player.PlayerInterface;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class GameManagerVers1 implements GameManager{
     private Point playerLocation;
     private Point treasureLocation;
     private FileData data;
-    private Player player;
+    private PlayerInterface player;
 
     public GameManagerVers1(FileData data) {
         this.mazeWorld = data.getMazeWorld();
@@ -25,7 +25,7 @@ public class GameManagerVers1 implements GameManager{
         treasureLocation = findTreasureLocation();
         bookMarksMaps = new HashMap<>();
         this.data = data;
-        player = new BasicPlayer();
+        player = new Player();
         startGame();
     }
 
