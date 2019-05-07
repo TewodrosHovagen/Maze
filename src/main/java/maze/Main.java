@@ -3,8 +3,7 @@ package maze;
 import maze.FileDataParse.FileData;
 import maze.FileDataParse.FileParse;
 import maze.gameManager.GameManager;
-
-import java.io.IOException;
+import maze.gameManager.GameManagerVers1;
 
 public class Main {
 
@@ -16,12 +15,14 @@ public class Main {
                 {"#", " ", " ", " ", "#", " ", " ", "$", " ", "#"},
                 {" ", " ", " ", " ", "#", "#", "#", "#", "#", " "}
         };
-//        GameManager game = new GameManager(mazeWorld);
 //        game.startGame();
 
         FileParse fileParse = new FileParse();
         FileData dataFile = fileParse.parseFileData(args);
         System.out.println(dataFile);
         dataFile.printMazeWorld();
+
+        GameManager game = new GameManagerVers1(dataFile);
+//        game.startGame();
     }
 }
