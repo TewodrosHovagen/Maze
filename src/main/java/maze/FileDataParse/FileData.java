@@ -3,9 +3,11 @@ package maze.FileDataParse;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class FileData {
 
+    private static final Logger log = Logger.getLogger(FileData.class.getName());
     private String mazeName;
     private int maxSteps;
     private int columns;
@@ -87,7 +89,9 @@ public class FileData {
     public void setMazeWorld(String[][] mazeWorld) {  this.mazeWorld = mazeWorld;  }
 
     public void printMazeWorld(){
-        for (String[] row : mazeWorld)
+        for (String[] row : mazeWorld) {
             System.out.println(Arrays.toString(row));
+            log.info(Arrays.toString(row));
+        }
     }
 }
