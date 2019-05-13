@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import maze.DirectionsEnum;
+import Utils.DirectionsEnum;
 
 import java.awt.*;
 

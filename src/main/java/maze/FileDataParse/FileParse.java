@@ -1,6 +1,6 @@
 package maze.FileDataParse;
 
-import exceptions.WrongFileFormatException;
+import Utils.WrongFileFormatException;
 
 import java.awt.*;
 import java.io.*;
