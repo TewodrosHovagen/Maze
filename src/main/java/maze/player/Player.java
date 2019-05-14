@@ -1,12 +1,10 @@
 package maze.player;
 
-import maze.DirectionsEnum;
-import maze.player.PlayerInterface;
+import Utils.DirectionsEnum;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Player extends PlayerAbstract {
 

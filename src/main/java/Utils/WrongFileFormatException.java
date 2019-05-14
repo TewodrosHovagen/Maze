@@ -1,4 +1,4 @@
-package exceptions;
+package Utils;
 
 public class WrongFileFormatException extends Exception {
     public WrongFileFormatException() {
