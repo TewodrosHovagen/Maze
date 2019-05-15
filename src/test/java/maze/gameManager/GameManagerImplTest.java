@@ -2,7 +2,7 @@ package maze.gameManager;
 
 import org.junit.jupiter.api.Test;
 
-class GameManagerVers1Test {
+class GameManagerImplTest {
 
     @Test
     void startGame() {

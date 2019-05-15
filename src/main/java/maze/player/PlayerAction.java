@@ -2,7 +2,7 @@ package maze.player;
 
 import Utils.DirectionsEnum;
 
-public interface PlayerInterface {
+public interface PlayerAction {
 
 
     public DirectionsEnum move();

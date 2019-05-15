@@ -3,7 +3,7 @@ package maze;
 import maze.FileDataParse.FileData;
 import maze.FileDataParse.FileParse;
 import maze.gameManager.GameManager;
-import maze.gameManager.GameManagerVers1;
+import maze.gameManager.GameManagerImpl;
 import maze.logging.Logger;
 
 import java.nio.file.Files;
@@ -52,7 +52,7 @@ public class Main {
 
         if(runThePlayer) {
             //            System.out.println("START THE GAME!!!");
-            GameManager game = new GameManagerVers1(dataFile);
+            GameManager game = new GameManagerImpl(dataFile);
         }
         else
             System.out.println("GAME WILL NOT START!!!");
