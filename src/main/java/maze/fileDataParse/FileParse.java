@@ -87,9 +87,6 @@ public class FileParse {
                 }else{
                     fileData.setMazeWorld(mazeWorld);
                 }
-            } catch (FileNotFoundException e) {
-                Logger.info("The file format was not as expected" + e);
-                return null;
             } catch (IOException e) {
                 Logger.info("There was a problem with the file " + e);
                 return null;

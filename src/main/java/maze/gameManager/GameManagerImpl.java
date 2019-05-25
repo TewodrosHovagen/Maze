@@ -4,7 +4,6 @@ import maze.fileDataParse.FileData;
 import Utils.DirectionsEnum;
 import maze.player.PlayerDummy;
 import maze.player.PlayerAction;
-
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,7 @@ public class GameManagerImpl implements GameManager{
 
     private static final Logger log = Logger.getLogger(GameManagerImpl.class.getName());
     private String[][] mazeWorld;
-    private Map<Point, Integer> bookmarkSequence;
+    protected Map<Point, Integer> bookmarkSequence = new HashMap<>();;
     private int bookmarkCounter = 0;
     private Point playerLocation;
     private Point treasureLocation;
@@ -26,10 +25,13 @@ public class GameManagerImpl implements GameManager{
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
-        bookmarkSequence = new HashMap<>();
         this.data = data;
         player = new PlayerDummy();
         startGame();
+    }
+
+    protected GameManagerImpl() {
+
     }
 
     @Override
@@ -114,7 +116,7 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public boolean isWall(Point point) {
-        return  (mazeWorld[(int) point.getY()][(int) point.getX()].equals("#"));
+        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
     }
 
     @Override

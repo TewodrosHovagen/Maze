@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.util.Date;
 
 public class Logger {
-    private static String logPath;
+    private static String logPath= "./output.txt";
     private static boolean printToScreen = false;
 
     public Logger(String name){
