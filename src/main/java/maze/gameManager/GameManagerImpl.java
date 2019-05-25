@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import maze.FileDataParse.FileData;
+import maze.fileDataParse.FileData;
 import Utils.DirectionsEnum;
 import maze.player.PlayerDummy;
 import maze.player.PlayerAction;

@@ -1,4 +1,4 @@
-package maze.logging;
+package Utils.logging;
 
 
 import java.io.FileOutputStream;

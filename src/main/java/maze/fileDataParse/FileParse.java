@@ -1,7 +1,7 @@
-package maze.FileDataParse;
+package maze.fileDataParse;
 
 import Utils.WrongFileFormatException;
-import maze.logging.Logger;
+import Utils.logging.Logger;
 
 import java.awt.*;
 import java.io.*;
@@ -29,6 +29,8 @@ public class FileParse {
             Logger.info("Reading the maze.txt file");
             FileData fileData;
 //            String fileLocation;
+
+        //TODO: throw input output exception
             if (fileLocation.equals(""))
                 fileLocation ="maze.txt";
 

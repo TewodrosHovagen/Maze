@@ -1,6 +1,4 @@
-package maze.FileDataParse;
-
-import maze.logging.Logger;
+package maze.fileDataParse;
 
 import java.awt.*;
 import java.util.Arrays;
