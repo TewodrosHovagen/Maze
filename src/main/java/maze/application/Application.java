@@ -17,15 +17,15 @@ public class Application {
     }
 
     public static void startApplication(String[] args){
-        //  for testing, insteaT1edy234d of parameters from outline
+        //  for testing, instead of parameters from outline
         boolean runThePlayer = true;
 
 
         FileParse fileParse = new FileParse();
         FileData dataFile;
-
-        String mazeFilePath = arguments[0];
-        String outputFilePath = arguments[1];
+        //TODO: need to get file from main arguments
+        String mazeFilePath = args[0];
+        String outputFilePath = args[1];
 
         if(checkExistenceOfFilePath(outputFilePath)){
             Logger log = new Logger(outputFilePath);

@@ -1,6 +1,6 @@
 package maze.player;
 
-
+import Utils.Enums.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

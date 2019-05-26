@@ -1,12 +1,10 @@
 package maze.gameManager;
 
+import Utils.Enums.DirectionsEnum;
 import maze.fileDataParse.FileData;
-import Utils.Enums.*;
-
-import maze.player.Player;
 import maze.logging.OutputLog;
-
-import maze.player.PlayerRandom;
+import maze.player.Player;
+import maze.player.PlayerDummy;
 
 import java.awt.*;
 import java.util.HashMap;

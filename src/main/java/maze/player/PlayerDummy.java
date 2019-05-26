@@ -13,7 +13,7 @@ public class PlayerDummy extends Player {
     public DirectionsEnum move() {
         Map<WalkingDirectionsEnum, DirectionsEnum> currentDirectionMap = getDirectionsMap().get(getMainDirection());
         if (isHitWall()) {
-            if (getLastStep() == STRAIGHT) {
+            if (getLastStep()==STRAIGHT) {
                 setLastStep(RIGHT);
                 return currentDirectionMap.get(RIGHT);
             } else if (getLastStep() == RIGHT) {
