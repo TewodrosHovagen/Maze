@@ -34,7 +34,7 @@ public class Application {
             Logger log = new Logger(outputFilePath);
         }
         else{
-            System.out.println("ERROR--> output file location is not exist");
+            System.out.println("ERROR--> Output file location is not exist");
             Logger log = new Logger(true);
             runThePlayer = false;
         }
@@ -43,6 +43,7 @@ public class Application {
             dataFile = fileParse.parseFileData(mazeFilePath);
         }
         else{
+            System.out.println(String.format("ERROR--> Command line argument for maze: %s doesn't lead to a maze file", mazeFilePath ));
             dataFile = fileParse.parseFileData("");
             runThePlayer = false;
         }
