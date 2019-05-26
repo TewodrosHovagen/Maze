@@ -6,9 +6,11 @@ import org.junit.Test;
 
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileParseTest {
-    private final String pathTofileDataParseResources = "./src/test/resourcres/fileDataParse/";
+    private final String pathTofileDataParseResources = "./src/test/resources/fileDataParse/";
     private FileParse fileParse;
 
     @Before
@@ -34,7 +36,7 @@ public class FileParseTest {
     @Test
     public void fileToParseFirstLinesCorrectTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
-                + "correctInputFileExapmle.txt");
+                + "correctInputFileExample.txt");
         Assert.assertNotNull(fileData);
     }
 
