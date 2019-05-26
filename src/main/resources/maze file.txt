@@ -1,8 +1,0 @@
-Nice simple maze
-MaxSteps = 10
-Rows = 4
-Cols = 10
-#####      
-# @ #    #
-#   #  $ #
-    ##### 

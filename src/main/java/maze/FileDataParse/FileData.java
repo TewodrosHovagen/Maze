@@ -1,14 +1,12 @@
 package maze.FileDataParse;
 
-import maze.logging.Logger;
-
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Set;
 
 public class FileData {
 
-//    private static final Logger log = Logger.getLogger(FileData.class.getName());
+//    private static final OutputLog log = OutputLog.getLogger(FileData.class.getName());
     private String mazeName;
     private int maxSteps;
     private int columns;
@@ -92,7 +90,7 @@ public class FileData {
     public void printMazeWorld(){
         for (String[] row : mazeWorld) {
             System.out.println(Arrays.toString(row));
-//            Logger.info(Arrays.toString(row));
+//            OutputLog.writeToOutput(Arrays.toString(row));
         }
     }
 }

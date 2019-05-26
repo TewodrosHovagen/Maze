@@ -1,13 +1,14 @@
 package maze.FileDataParse;
 
 import Utils.WrongFileFormatException;
-import maze.logging.Logger;
+
 
 import java.awt.*;
 import java.io.*;
+import java.util.logging.Logger;
 
 public class FileParse {
-
+    private static final Logger log = Logger.getLogger(FileParse.class.getName());
     private static final int VALUE_LOCATION =1;
     private static final int ITEM_NAME_LOCATION =0;
     private static final String MAX_STEPS_FORMAT ="MaxSteps";
@@ -26,10 +27,10 @@ public class FileParse {
      * @return
      */
     public FileData parseFileData (String fileLocation) {
-            Logger.info("Reading the maze.txt file");
+            log.info("Reading the maze.txt file");
             FileData fileData;
 //            String fileLocation;
-            if (fileLocation.equals(""))
+            if (fileLocation.isEmpty())
                 fileLocation ="maze.txt";
 
             try(// create a Buffered Reader object instance with a FileReader
@@ -48,12 +49,12 @@ public class FileParse {
                     if (fileReader != null){
                         //If the file length is too long so need to work with the expected size
                         if (fileReader.length() >= fileData.getColumns()){
-                            //log.info("The file length " + fileReader.length() + " is more than declared in file data therefore using only the file data " + fileData.getColumns() + " as max column");
+                            //log.writeToOutput("The file length " + fileReader.length() + " is more than declared in file data therefore using only the file data " + fileData.getColumns() + " as max column");
                             for(int column=0; column < fileData.getColumns(); column++){
                                 addCharacterToBoard(fileReader.charAt(column),row,column,fileData,mazeWorld);
                             }
                         }else{
-                            //log.info("The file length " + fileReader.length() + " is less than declared in file data therefore need to complete to " + fileData.getColumns());
+                            //log.writeToOutput("The file length " + fileReader.length() + " is less than declared in file data therefore need to complete to " + fileData.getColumns());
                             int column=0;
                             while (column < fileReader.length()){
                                 addCharacterToBoard(fileReader.charAt(column),row,column,fileData,mazeWorld);
@@ -86,10 +87,10 @@ public class FileParse {
                     fileData.setMazeWorld(mazeWorld);
                 }
             } catch (IOException e) {
-                Logger.info("There was a problem with the file " + e);
+                log.info("There was a problem with the file " + e);
                 return null;
             } catch (WrongFileFormatException e) {
-                Logger.info("There was a wrong data in the file " + e);
+                log.info("There was a wrong data in the file " + e);
                 return null;
             }
         return fileData;
@@ -102,7 +103,7 @@ public class FileParse {
                 if (!foundPlayer) {
                     fileData.setPlayerLocation(new Point(row,column));
                     foundPlayer = true;
-                    Logger.info("Found a player in position" + new Point(row,column));
+                    log.info("Found a player in position" + new Point(row,column));
                 }else {
                     throw new WrongFileFormatException("The is more than one Players in the board");
                 }
@@ -111,7 +112,7 @@ public class FileParse {
                 if (!foundTreasure) {
                     fileData.setTreasureLocation(new Point(row,column));
                     foundTreasure = true;
-                    Logger.info("Found a treasure in position" + new Point(row,column));
+                    log.info("Found a treasure in position" + new Point(row,column));
                 }else {
                     throw new WrongFileFormatException("The is more than one Treasure in the board");
                 }
@@ -165,12 +166,12 @@ public class FileParse {
     private FileData parseFirstLines (BufferedReader br) throws WrongFileFormatException, IOException {
         FileData fileData = new FileData();
         try {
-            Logger.info("Paring the first 4 lines");
+            log.info("Paring the first 4 lines");
             String[] pairValues;
             //Get the maze Name
             String fileReader = br.readLine();
             fileData.setMazeName(fileReader);
-            Logger.info("Maze name is " + fileReader);
+            log.info("Maze name is " + fileReader);
 
             //Get the Max steps
             fileReader = br.readLine();
@@ -179,7 +180,7 @@ public class FileParse {
             fileData.setMaxSteps(rowValue);
             if (!pairValues[ITEM_NAME_LOCATION].equals(MAX_STEPS_FORMAT))
                 throw new WrongFileFormatException("Wrong item name the text is " + pairValues[ITEM_NAME_LOCATION] + " while should be " + MAX_STEPS_FORMAT);
-            Logger.info("Maze Max Step for user in the game is is " + rowValue);
+            log.info("Maze Max Step for user in the game is is " + rowValue);
 
             //Get the Totals Rows
             fileReader = br.readLine();
@@ -188,7 +189,7 @@ public class FileParse {
             fileData.setRows(totalRows);
             if (!pairValues[ITEM_NAME_LOCATION].equals(ROWS_FORMAT))
                 throw new WrongFileFormatException("Wrong item name the text is " + pairValues[ITEM_NAME_LOCATION] + " while should be " + ROWS_FORMAT);
-            Logger.info("The total number of rows is " + totalRows);
+            log.info("The total number of rows is " + totalRows);
 
             //Get the Totals Columns
             fileReader = br.readLine();
@@ -197,7 +198,7 @@ public class FileParse {
             fileData.setColumns(totalColumns);
             if (!pairValues[ITEM_NAME_LOCATION].equals(COLUMNS_FORMAT))
                 throw new WrongFileFormatException("Wrong item name the text is " + pairValues[ITEM_NAME_LOCATION] + " while should be " + COLUMNS_FORMAT);
-            Logger.info("The total number of columns is " + totalColumns);
+            log.info("The total number of columns is " + totalColumns);
 
         }catch (NumberFormatException e){
             throw new WrongFileFormatException();
@@ -206,7 +207,7 @@ public class FileParse {
     }
 
     private String[] getStringValue(String strToParse){
-        Logger.info("Parsing the line " + strToParse);
+        log.info("Parsing the line " + strToParse);
         strToParse = strToParse.replaceAll(" ","");
         String[] strValues = strToParse.split("=");
         return strValues;

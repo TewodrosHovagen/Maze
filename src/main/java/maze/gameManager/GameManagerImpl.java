@@ -2,8 +2,10 @@ package maze.gameManager;
 
 import maze.FileDataParse.FileData;
 import Utils.DirectionsEnum;
-import maze.player.PlayerDummy;
+import maze.logging.OutputLog;
 import maze.player.PlayerAction;
+import maze.player.PlayerRandom;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +28,7 @@ public class GameManagerImpl implements GameManager{
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
         this.data = data;
-        player = new PlayerDummy();
+        player = new PlayerRandom();
         startGame();
     }
 
@@ -37,18 +39,23 @@ public class GameManagerImpl implements GameManager{
     @Override
     public void startGame() {
         DirectionsEnum direction;
-        Point currentLocation;
+        Point currentLocation = playerLocation;
         int timesToPlay;
+        log.info("**************** START THE MAZE ****************");
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
             log.info("Step No: " + timesToPlay);
             direction = player.move();
+            OutputLog.writeToOutput(direction.name().charAt(0)+"");
+            log.info("Player position before move"+ currentLocation.getLocation());
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
+            log.info("Player position after move "+ currentLocation.getLocation());
             if(direction == DirectionsEnum.BOOKMARK){
                 addBookmark(currentLocation, bookmarkCounter++);
             }else {
                 if (isTreasure(currentLocation)) {
-                    log.info(String.format("Succeeded in %s steps", timesToPlay + 1));
+                    System.out.println(String.format("Succeeded in %s steps", timesToPlay + 1));
+                    OutputLog.writeToOutput("!");
                     break;
                 } else {
                     if (isWall(currentLocation)) {
@@ -63,6 +70,7 @@ public class GameManagerImpl implements GameManager{
             }
             playerLocation = currentLocation;
             log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
+            OutputLog.writeToOutput("X");
         }
         if (timesToPlay == data.getMaxSteps()) {
             System.out.println(String.format("Failed to solve maze in %s steps", timesToPlay));
@@ -116,7 +124,7 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public boolean isWall(Point point) {
-        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
+        return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
     }
 
     @Override

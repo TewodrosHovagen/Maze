@@ -5,6 +5,7 @@ import maze.FileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerImpl;
 import maze.logging.Logger;
+import maze.logging.OutputLog;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,7 +29,6 @@ public class Main {
 
         String mazeFilePath = arguments[0];
         String outputFilePath = arguments[1];
-
 
         if(checkExistenceOfFilePath(outputFilePath)){
             Logger log = new Logger(outputFilePath);
