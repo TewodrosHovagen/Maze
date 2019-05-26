@@ -1,4 +1,8 @@
 package Utils;
 
-public class NumberParseingException {
+public class NumberParseException extends NumberFormatException{
+
+    public NumberParseException(String message) {
+        super(message);
+    }
 }

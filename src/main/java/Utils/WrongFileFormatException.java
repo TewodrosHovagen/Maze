@@ -1,6 +1,6 @@
 package Utils;
 
-public class WrongFileFormatException extends Exception {
+public class WrongFileFormatException extends RuntimeException {
     public WrongFileFormatException() {
     }
 
