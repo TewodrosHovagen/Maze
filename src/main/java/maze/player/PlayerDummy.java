@@ -1,41 +1,36 @@
 package maze.player;
 
-import Utils.DirectionsEnum;
+import Utils.Enums.DirectionsEnum;
+import Utils.Enums.WalkingDirectionsEnum;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+
+import static Utils.Enums.WalkingDirectionsEnum.*;
 
 public class PlayerDummy extends Player {
 
-    private List<Integer> bookMarks;
-    private int bookMarksCounter;
-    private int isHitWall;
-    private Point startLocation;
-
-
-    public PlayerDummy() {
-        bookMarks = new ArrayList<>();
-    }
-
-
     @Override
     public DirectionsEnum move() {
-        switch (isHitWall) {
-            case 0:
-                return DirectionsEnum.UP;
-            case 1:
-                return DirectionsEnum.LEFT;
-            case 2:
-                return DirectionsEnum.RIGHT;
-            case 3:
-                return DirectionsEnum.DOWN;
-
-            default:
-                return DirectionsEnum.UP;
+        Map<WalkingDirectionsEnum, DirectionsEnum> currentDirectionMap = getDirectionsMap().get(getMainDirection());
+        if (isHitWall()) {
+            if (getLastStep() == STRAIGHT) {
+                setLastStep(RIGHT);
+                return currentDirectionMap.get(RIGHT);
+            } else if (getLastStep() == RIGHT) {
+                setLastStep(LEFT);
+                return currentDirectionMap.get(LEFT);
+            } else if (getLastStep() == LEFT) {
+                setLastStep(WalkingDirectionsEnum.BOOKMARK);
+                return DirectionsEnum.BOOKMARK;
+            } else {
+                setMainDirection(currentDirectionMap.get(BACK));
+                setLastStep(STRAIGHT);
+                return currentDirectionMap.get(BACK);
+            }
+        } else {
+            setMainDirection(currentDirectionMap.get(getLastStep()));
+            setLastStep(STRAIGHT);
+            return getMainDirection();
         }
-
     }
-
-
 }

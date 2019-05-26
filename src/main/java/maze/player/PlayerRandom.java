@@ -1,6 +1,6 @@
 package maze.player;
 
-import Utils.DirectionsEnum;
+import Utils.Enums.*;
 
 import java.util.Random;
 

@@ -1,12 +1,18 @@
 package maze.gameManager;
 
+<<<<<<< Updated upstream
 import maze.fileDataParse.FileData;
-import Utils.Enums.*;
-
-import maze.player.Player;
+import Utils.DirectionsEnum;
 import maze.logging.OutputLog;
-
+import maze.player.PlayerAction;
 import maze.player.PlayerRandom;
+=======
+import Utils.Enums.*;
+import Utils.Enums.DirectionsEnum;
+import maze.FileDataParse.FileData;
+import maze.player.Player;
+import maze.player.PlayerDummy;
+>>>>>>> Stashed changes
 
 import java.awt.*;
 import java.util.HashMap;
@@ -14,11 +20,12 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 
-public class GameManagerImpl implements GameManager{
+public class GameManagerImpl implements GameManager {
 
     private static final Logger log = Logger.getLogger(GameManagerImpl.class.getName());
     private String[][] mazeWorld;
     protected Map<Point, Integer> bookmarkSequence = new HashMap<>();
+    ;
     private int bookmarkCounter = 0;
     private Point playerLocation;
     private Point treasureLocation;
@@ -30,7 +37,7 @@ public class GameManagerImpl implements GameManager{
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
         this.data = data;
-        player = new PlayerDummy();
+        player = new PlayerRandom();
         startGame();
     }
 
@@ -51,8 +58,12 @@ public class GameManagerImpl implements GameManager{
             log.info("Player position before move"+ currentLocation.getLocation());
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
+<<<<<<< Updated upstream
             log.info("Player position after move "+ currentLocation.getLocation());
+            if(direction == DirectionsEnum.BOOKMARK){
+=======
             if (direction == DirectionsEnum.BOOKMARK) {
+>>>>>>> Stashed changes
                 addBookmark(currentLocation, bookmarkCounter++);
             } else {
                 if (isTreasure(currentLocation)) {
@@ -100,9 +111,7 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public boolean isWall(Point point) {
-    //TODO choose wich one is the correct shoshi.
-        //return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
-        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
+        return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
     }
 
     @Override

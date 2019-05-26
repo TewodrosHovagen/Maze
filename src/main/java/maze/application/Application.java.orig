@@ -13,11 +13,16 @@ public class Application {
 
 
     public static void main(String[] args) {
+<<<<<<< Updated upstream:src/main/java/maze/application/Application.java
         startApplication(args);
     }
 
     public static void startApplication(String[] args){
-        //  for testing, insteaT1edy234d of parameters from outline
+        //  for testing, instead of parameters from outline
+        String[] arguments = {"C:\\Users\\sb5844\\Projects\\biq\\Maze\\maze.txt","./output.txt"};
+=======
+        String[] arguments = {"C:\\Git\\mazeFile.txt","./output.txt"};
+>>>>>>> Stashed changes:src/main/java/maze/Main.java
         boolean runThePlayer = true;
 
 

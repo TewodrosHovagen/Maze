@@ -1,7 +1,13 @@
 package maze.gameManager;
 
+<<<<<<< Updated upstream
+import Utils.DirectionsEnum;
+import maze.fileDataParse.FileData;
+import maze.fileDataParse.FileParse;
+=======
 import maze.FileDataParse.FileData;
 import maze.FileDataParse.FileParse;
+>>>>>>> Stashed changes
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

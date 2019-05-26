@@ -1,9 +1,14 @@
 package maze.player;
 
+<<<<<<< Updated upstream
+import java.util.HashSet;
+=======
+import Utils.Enums.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+>>>>>>> Stashed changes
 import java.util.Set;
 
 import static Utils.Enums.DirectionsEnum.*;
@@ -11,6 +16,10 @@ import static Utils.Enums.WalkingDirectionsEnum.*;
 
 public abstract class Player implements PlayerAction {
 
+<<<<<<< Updated upstream
+    private int isHitWall = 0;
+    private Set<Integer> bookMarks = new HashSet<>();
+=======
     // initialize all player params in c'tor.
     public Player() {
         this.isHitWall = false;
@@ -112,6 +121,7 @@ public abstract class Player implements PlayerAction {
         return directionsMap;
     }
 
+>>>>>>> Stashed changes
 
     @Override
     public void hitWall() {

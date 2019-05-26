@@ -1,13 +1,13 @@
 package maze.player;
 
-import Utils.DirectionsEnum;
+import Utils.Enums.DirectionsEnum;
 
 public interface PlayerAction {
 
 
-    public DirectionsEnum move();
+    DirectionsEnum move();
 
-    public void hitWall();
+    void hitWall();
 
-    public void hitBookmark(int seq);
+    void hitBookmark(int seq);
 }
