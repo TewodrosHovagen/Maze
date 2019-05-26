@@ -26,7 +26,7 @@ public class FileParseTest {
     public void correctFileToParseLocationTest(){
 
     }
-
+    //TODO: null pointer
     @Test(expected = IOException.class)
     public void fileToParseCouldnotBeOpenedTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
@@ -67,9 +67,10 @@ public class FileParseTest {
     @Test
     public void fileToParseMazeBodyCorrectTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
-                + "correctInputFileExapmle.txt");
+                + "correctInputFileExample.txt");
         Assert.assertNotNull(fileData);
     }
+    //TODO:need to throw all error
     @Test(expected = WrongFileFormatException.class)
     public void fileToParseMazeBodyMissingAllBodyTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
@@ -115,7 +116,7 @@ public class FileParseTest {
     @Test
     public void fileToParseMazeBodyLessColumnsThanDefinedWillFilledBySpacesTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
-                + "mazeBodyLessColumnsThansDefined.txt");
+                + "mazeBodyLessColumnsThanDefined.txt");
         Assert.assertNotNull(fileData);
     }
     @Test
