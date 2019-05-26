@@ -175,7 +175,7 @@ public class FileParse {
 
     private FileData parseFirstLines (BufferedReader br) throws IOException {
         FileData fileData = new FileData();
-
+        try {
             Logger.info("Paring the first 4 lines");
             String[] pairValues;
             //Get the maze Name
@@ -186,55 +186,62 @@ public class FileParse {
             //Get the Max steps
             fileReader = br.readLine();
             pairValues = getStringValue(fileReader);
+            if (!pairValues[ITEM_NAME_LOCATION].equals(MAX_STEPS_FORMAT))
+                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
+
             try {
                 int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setMaxSteps(rowValue);
                 Logger.info("Maze Max Step for user in the game is is " + rowValue);
-            } catch (NumberParseException e){
+            } catch (NumberParseException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
             }
-            if (!pairValues[ITEM_NAME_LOCATION].equals(MAX_STEPS_FORMAT))
-                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
 
             //Get the Totals Rows
             fileReader = br.readLine();
             pairValues = getStringValue(fileReader);
+            if (!pairValues[ITEM_NAME_LOCATION].equals(ROWS_FORMAT))
+                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
+
             try {
                 int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setRows(totalRows);
                 Logger.info("The total number of rows is " + totalRows);
-            } catch (NumberParseException e){
+            } catch (NumberParseException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
             }
-            if (!pairValues[ITEM_NAME_LOCATION].equals(ROWS_FORMAT))
-                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
 
             //Get the Totals Columns
             fileReader = br.readLine();
             pairValues = getStringValue(fileReader);
+            if (!pairValues[ITEM_NAME_LOCATION].equals(COLUMNS_FORMAT))
+                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
+
             try {
                 int totalColumns = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setColumns(totalColumns);
                 Logger.info("The total number of columns is " + totalColumns);
 
-            }catch(NumberParseException e){
+            } catch (NumberParseException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
             }
-            if (!pairValues[ITEM_NAME_LOCATION].equals(COLUMNS_FORMAT))
-                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
+        } catch(ArrayIndexOutOfBoundsException e)   {
+            headerFileExceptions.add(new ArrayIndexOutOfBoundsException("Missing one of the parameters"));
 
-            if (!headerFileExceptions.isEmpty()){
-                System.out.println("Bad maze file header:");
-                throw new GenericMultipleException(headerFileExceptions);
+        }
+        if (!headerFileExceptions.isEmpty()){
+            System.out.println("Bad maze file header:");
+            throw new GenericMultipleException(headerFileExceptions);
 
-            }
+        }
         return fileData;
     }
 
     private String[] getStringValue(String strToParse){
         Logger.info("Parsing the line " + strToParse);
-        strToParse = strToParse.replaceAll(" ","");
         String[] strValues = strToParse.split("=");
+        strValues[0] = strValues[0].trim();
+        strValues[1] = strValues[1].trim();
         return strValues;
     }
 
