@@ -1,28 +1,26 @@
-package maze;
+package maze.application;
 
-import maze.FileDataParse.FileData;
-import maze.FileDataParse.FileParse;
+import Utils.logging.Logger;
+import maze.fileDataParse.FileData;
+import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerImpl;
-import maze.logging.Logger;
-import maze.logging.OutputLog;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Main {
+public class Application {
 
 
     public static void main(String[] args) {
+        startApplication(args);
+    }
+
+    public static void startApplication(String[] args){
+        //  for testing, instead of parameters from outline
         String[] arguments = {"C:\\Users\\sb5844\\Projects\\biq\\Maze\\maze.txt","./output.txt"};
         boolean runThePlayer = true;
-//        String[][] mazeWorld = new String[][]{
-//                {"#", "#", "#", "#", "#", " ", " ", " ", " ", " "},
-//                {"#", " ", "@", " ", "#", " ", " ", " ", " ", "#"},
-//                {"#", " ", " ", " ", "#", " ", " ", "$", " ", "#"},
-//                {" ", " ", " ", " ", "#", "#", "#", "#", "#", " "}
-//        };
+
 
         FileParse fileParse = new FileParse();
         FileData dataFile;
@@ -34,7 +32,7 @@ public class Main {
             Logger log = new Logger(outputFilePath);
         }
         else{
-            System.out.println("ERROR--> output file location is not exist");
+            System.out.println("ERROR--> Output file location is not exist");
             Logger log = new Logger(true);
             runThePlayer = false;
         }
@@ -43,6 +41,7 @@ public class Main {
             dataFile = fileParse.parseFileData(mazeFilePath);
         }
         else{
+            System.out.println(String.format("ERROR--> Command line argument for maze: %s doesn't lead to a maze file", mazeFilePath ));
             dataFile = fileParse.parseFileData("");
             runThePlayer = false;
         }
@@ -58,6 +57,7 @@ public class Main {
             System.out.println("GAME WILL NOT START!!!");
 
 //        game.startGame();
+//        gameManager starts the game in ctor
     }
 
     private static boolean checkExistenceOfFilePath(String pathWithFileName){
@@ -79,3 +79,9 @@ public class Main {
 
     }
 }
+//        String[][] mazeWorld = new String[][]{
+//                {"#", "#", "#", "#", "#", " ", " ", " ", " ", " "},
+//                {"#", " ", "@", " ", "#", " ", " ", " ", " ", "#"},
+//                {"#", " ", " ", " ", "#", " ", " ", "$", " ", "#"},
+//                {" ", " ", " ", " ", "#", "#", "#", "#", "#", " "}
+//        };

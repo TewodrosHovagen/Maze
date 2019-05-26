@@ -1,5 +1,4 @@
-package maze.FileDataParse;
-
+package maze.fileDataParse;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Set;

@@ -1,14 +1,17 @@
-package maze.FileDataParse;
+package maze.fileDataParse;
 
+import Utils.GenericMultipleException;
+import Utils.NumberParseException;
 import Utils.WrongFileFormatException;
-
+import Utils.logging.Logger;
 
 import java.awt.*;
 import java.io.*;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileParse {
-    private static final Logger log = Logger.getLogger(FileParse.class.getName());
+
     private static final int VALUE_LOCATION =1;
     private static final int ITEM_NAME_LOCATION =0;
     private static final String MAX_STEPS_FORMAT ="MaxSteps";
@@ -21,16 +24,23 @@ public class FileParse {
     private boolean foundPlayer = false;
     private boolean foundTreasure = false;
 
+    private List<RuntimeException> headerFileExceptions = new ArrayList<>();
+    private List<RuntimeException> bodyFileExceptions = new ArrayList<>();
+
+
+
     /**
      * The method generate parse the file.
      * @param fileLocation
      * @return
      */
     public FileData parseFileData (String fileLocation) {
-            log.info("Reading the maze.txt file");
+            Logger.info("Reading the maze.txt file");
             FileData fileData;
 //            String fileLocation;
-            if (fileLocation.isEmpty())
+
+            //TODO: throw input output exception
+            if (fileLocation.equals(""))
                 fileLocation ="maze.txt";
 
             try(// create a Buffered Reader object instance with a FileReader
@@ -74,52 +84,58 @@ public class FileParse {
                 }
 
                 if (!foundPlayer || !foundTreasure){
-                    if (!foundTreasure && ! foundPlayer){
-                        throw new WrongFileFormatException("There is no treasure and player on the board");
-                    }else{
-                        if (!foundPlayer){
-                            throw new WrongFileFormatException("There is no player on the board");
-                        }else{
-                            throw new WrongFileFormatException("There is no treasure on the board");
+                    if (!foundTreasure && ! foundPlayer) {
+                        bodyFileExceptions.add(new WrongFileFormatException("Missing @ in maze"));
+                        bodyFileExceptions.add(new WrongFileFormatException("Missing $ in maze"));
+                    }
+                    else {
+                        if (!foundPlayer) {
+                            bodyFileExceptions.add(new WrongFileFormatException("Missing @ in maze"));
+                        } else {
+                            bodyFileExceptions.add(new WrongFileFormatException("Missing $ in maze"));
                         }
                     }
                 }else{
                     fileData.setMazeWorld(mazeWorld);
                 }
             } catch (IOException e) {
-                log.info("There was a problem with the file " + e);
-                return null;
-            } catch (WrongFileFormatException e) {
-                log.info("There was a wrong data in the file " + e);
+                Logger.info("There was a problem with the file " + e);
+                System.out.println(String.format("Command line argument for maze: %s leads to a file that cannot be opened", fileLocation ));
                 return null;
             }
+        if(!bodyFileExceptions.isEmpty()) {
+            System.out.println("Bad maze in maze file:");
+            throw new GenericMultipleException(bodyFileExceptions);
+        }
         return fileData;
     }
 
 
-    private void addCharacterToBoard (char charItem, int row, int column, FileData fileData,String [][] mazeWorld ) throws  WrongFileFormatException{
+    private void addCharacterToBoard (char charItem, int row, int column, FileData fileData,String [][] mazeWorld ) {
         if(isValidChar(charItem)) {
             if(isPlayer(charItem)){
                 if (!foundPlayer) {
                     fileData.setPlayerLocation(new Point(row,column));
                     foundPlayer = true;
-                    log.info("Found a player in position" + new Point(row,column));
+                    Logger.info("Found a player in position" + new Point(row,column));
                 }else {
-                    throw new WrongFileFormatException("The is more than one Players in the board");
+                    bodyFileExceptions.add(new WrongFileFormatException("More than one @ in maze"));
                 }
             }
             if(isTreasure(charItem)){
                 if (!foundTreasure) {
                     fileData.setTreasureLocation(new Point(row,column));
                     foundTreasure = true;
-                    log.info("Found a treasure in position" + new Point(row,column));
+                    Logger.info("Found a treasure in position" + new Point(row,column));
                 }else {
-                    throw new WrongFileFormatException("The is more than one Treasure in the board");
+                    bodyFileExceptions.add(new WrongFileFormatException("More than one $ in maze"));
                 }
             }
             mazeWorld[row][column] = charItem + "";
         }else{
-            throw  new WrongFileFormatException("The character "  + charItem + " is not valid one");
+            bodyFileExceptions.add(new WrongFileFormatException(
+                    String.format("Wrong character in maze: %s in row %s, col %s", charItem, row, column)));
+
         }
     }
 
@@ -163,53 +179,74 @@ public class FileParse {
      * @throws IOException
      */
 
-    private FileData parseFirstLines (BufferedReader br) throws WrongFileFormatException, IOException {
+    private FileData parseFirstLines (BufferedReader br) throws IOException {
         FileData fileData = new FileData();
         try {
-            log.info("Paring the first 4 lines");
+            Logger.info("Paring the first 4 lines");
             String[] pairValues;
             //Get the maze Name
             String fileReader = br.readLine();
             fileData.setMazeName(fileReader);
-            log.info("Maze name is " + fileReader);
+            Logger.info("Maze name is " + fileReader);
 
             //Get the Max steps
             fileReader = br.readLine();
             pairValues = getStringValue(fileReader);
-            int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
-            fileData.setMaxSteps(rowValue);
             if (!pairValues[ITEM_NAME_LOCATION].equals(MAX_STEPS_FORMAT))
-                throw new WrongFileFormatException("Wrong item name the text is " + pairValues[ITEM_NAME_LOCATION] + " while should be " + MAX_STEPS_FORMAT);
-            log.info("Maze Max Step for user in the game is is " + rowValue);
+                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
+
+            try {
+                int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
+                fileData.setMaxSteps(rowValue);
+                Logger.info("Maze Max Step for user in the game is is " + rowValue);
+            } catch (NumberParseException e) {
+                headerFileExceptions.add(new NumberParseException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
+            }
 
             //Get the Totals Rows
             fileReader = br.readLine();
             pairValues = getStringValue(fileReader);
-            int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
-            fileData.setRows(totalRows);
             if (!pairValues[ITEM_NAME_LOCATION].equals(ROWS_FORMAT))
-                throw new WrongFileFormatException("Wrong item name the text is " + pairValues[ITEM_NAME_LOCATION] + " while should be " + ROWS_FORMAT);
-            log.info("The total number of rows is " + totalRows);
+                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
+
+            try {
+                int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
+                fileData.setRows(totalRows);
+                Logger.info("The total number of rows is " + totalRows);
+            } catch (NumberParseException e) {
+                headerFileExceptions.add(new NumberParseException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
+            }
 
             //Get the Totals Columns
             fileReader = br.readLine();
             pairValues = getStringValue(fileReader);
-            int totalColumns = Integer.parseInt(pairValues[VALUE_LOCATION]);;
-            fileData.setColumns(totalColumns);
             if (!pairValues[ITEM_NAME_LOCATION].equals(COLUMNS_FORMAT))
-                throw new WrongFileFormatException("Wrong item name the text is " + pairValues[ITEM_NAME_LOCATION] + " while should be " + COLUMNS_FORMAT);
-            log.info("The total number of columns is " + totalColumns);
+                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
 
-        }catch (NumberFormatException e){
-            throw new WrongFileFormatException();
+            try {
+                int totalColumns = Integer.parseInt(pairValues[VALUE_LOCATION]);
+                fileData.setColumns(totalColumns);
+                Logger.info("The total number of columns is " + totalColumns);
+
+            } catch (NumberParseException e) {
+                headerFileExceptions.add(new NumberParseException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
+            }
+        } catch(ArrayIndexOutOfBoundsException e)   {
+            headerFileExceptions.add(new ArrayIndexOutOfBoundsException("Missing one of the parameters"));
+
+        }
+        if (!headerFileExceptions.isEmpty()){
+            System.out.println("Bad maze file header:");
+            throw new GenericMultipleException(headerFileExceptions);
         }
         return fileData;
     }
 
     private String[] getStringValue(String strToParse){
-        log.info("Parsing the line " + strToParse);
-        strToParse = strToParse.replaceAll(" ","");
+        Logger.info("Parsing the line " + strToParse);
         String[] strValues = strToParse.split("=");
+        strValues[0] = strValues[0].trim();
+        strValues[1] = strValues[1].trim();
         return strValues;
     }
 

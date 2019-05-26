@@ -1,9 +1,8 @@
 package Utils;
 
-public class WrongFileFormatException extends RuntimeException {
+public class NumberParseException extends NumberFormatException{
     private String message;
-
-    public WrongFileFormatException(String message) {
+    public NumberParseException(String message) {
         this.message = message;
     }
     @Override
