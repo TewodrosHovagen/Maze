@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import maze.FileDataParse.FileData;
+import maze.fileDataParse.FileData;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

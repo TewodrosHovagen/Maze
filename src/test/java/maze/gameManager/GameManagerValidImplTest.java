@@ -1,8 +1,8 @@
 package maze.gameManager;
 
 import Utils.DirectionsEnum;
-import maze.FileDataParse.FileData;
-import maze.FileDataParse.FileParse;
+import maze.fileDataParse.FileData;
+import maze.fileDataParse.FileParse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
