@@ -84,10 +84,16 @@ public class FileParse {
                 }
 
                 if (!foundPlayer || !foundTreasure){
-                    if (!foundPlayer){
+                    if (!foundTreasure && ! foundPlayer) {
                         bodyFileExceptions.add(new WrongFileFormatException("Missing @ in maze"));
-                    }else{
                         bodyFileExceptions.add(new WrongFileFormatException("Missing $ in maze"));
+                    }
+                    else {
+                        if (!foundPlayer) {
+                            bodyFileExceptions.add(new WrongFileFormatException("Missing @ in maze"));
+                        } else {
+                            bodyFileExceptions.add(new WrongFileFormatException("Missing $ in maze"));
+                        }
                     }
                 }else{
                     fileData.setMazeWorld(mazeWorld);

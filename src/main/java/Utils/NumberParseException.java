@@ -1,8 +1,12 @@
 package Utils;
 
 public class NumberParseException extends NumberFormatException{
-
+    private String message;
     public NumberParseException(String message) {
-        super(message);
+        this.message = message;
+    }
+    @Override
+    public String getMessage(){
+        return message;
     }
 }

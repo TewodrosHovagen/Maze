@@ -6,9 +6,9 @@ public class GenericMultipleException extends RuntimeException {
     public GenericMultipleException(List<RuntimeException> exceptionsList) {
         for(RuntimeException e: exceptionsList){
             System.out.println(e.getMessage());
-            throw e;
-
         }
+        if(!exceptionsList.isEmpty())
+           throw exceptionsList.get(0);
     }
 
 }

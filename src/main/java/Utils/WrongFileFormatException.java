@@ -1,10 +1,13 @@
 package Utils;
 
 public class WrongFileFormatException extends RuntimeException {
-    public WrongFileFormatException() {
-    }
+    private String message;
 
     public WrongFileFormatException(String message) {
-        super(message);
+        this.message = message;
+    }
+    @Override
+    public String getMessage(){
+        return message;
     }
 }
