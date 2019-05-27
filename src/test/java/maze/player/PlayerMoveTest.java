@@ -2,16 +2,13 @@ package maze.player;
 
 import Utils.Enums.DirectionsEnum;
 import Utils.Enums.WalkingDirectionsEnum;
-import maze.fileDataParse.FileData;
-import maze.fileDataParse.FileParse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import static Utils.Enums.DirectionsEnum.EAST;
-import static Utils.Enums.DirectionsEnum.NORTH;
+import static Utils.Enums.DirectionsEnum.UP;
 import static Utils.Enums.WalkingDirectionsEnum.RIGHT;
 import static Utils.Enums.WalkingDirectionsEnum.STRAIGHT;
 
@@ -22,9 +19,9 @@ public class PlayerMoveTest {
     @Parameterized.Parameters
     public static Object[][] data() {
         return new Object[][]{
-                {STRAIGHT, NORTH, EAST, true},
-                {RIGHT, EAST, NORTH, true},
-                {STRAIGHT, NORTH, NORTH, false}
+                {STRAIGHT, UP, true, DirectionsEnum.RIGHT},
+                {RIGHT, DirectionsEnum.RIGHT,true, UP},
+                {STRAIGHT, UP, false, UP}
         };
     }
 
@@ -35,7 +32,7 @@ public class PlayerMoveTest {
     private DirectionsEnum expected;
     private boolean hitWall;
 
-    public PlayerMoveTest(WalkingDirectionsEnum lastStep, DirectionsEnum mainDirection, DirectionsEnum expected, boolean isHitWall) {
+    public PlayerMoveTest(WalkingDirectionsEnum lastStep, DirectionsEnum mainDirection, boolean isHitWall, DirectionsEnum expected) {
 //        this.player=new MazePlayer();
         this.lastStep = lastStep;
         this.mainDirection = mainDirection;
@@ -46,16 +43,12 @@ public class PlayerMoveTest {
     @Before
     public void initializeMazeAndPlayer() {
         player=new MazePlayer();
-        String mazeFilePath = "C:\\Git\\mazeFile.txt";
-        FileParse fileParse = new FileParse();
-        FileData fileData = fileParse.parseFileData(mazeFilePath);
-//        GameManager gameManager = new GameManagerImpl(fileData);
     }
 
 
     @Test
     public void moveToNorthHappyTest() {
-        player.setHitWall(true);
+        player.setHitWall(hitWall);
         player.setMainDirection(mainDirection);
         player.setHitWall(hitWall);
         DirectionsEnum test = player.move();
