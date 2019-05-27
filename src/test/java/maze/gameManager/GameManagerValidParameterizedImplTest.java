@@ -1,5 +1,6 @@
 package maze.gameManager;
 
+import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import org.junit.Assert;
@@ -25,8 +26,8 @@ public class GameManagerValidParameterizedImplTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-                        {0, 0,true,false},
-                        {1, 0,true,false},
+//                        {0, 0,true,false},
+//                        {1, 0,true,false},
                         {2, 7,false,true},
                         {2, 6,false,false},
                         {1, 2,false,false}

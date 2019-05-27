@@ -21,18 +21,18 @@ public class HandlePlayerLocationsImpTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-                        {0, 0, 0, 3, 4, 10,Enums.DirectionsEnum.NORTH},
-                        {0, 1, 0, 0, 4, 10,Enums.DirectionsEnum.NORTH},
-                        {3, 9, 3, 0, 4, 10,Enums.DirectionsEnum.EAST},
-                        {3, 8, 3, 9, 4, 10,Enums.DirectionsEnum.EAST},
-                        {0, 4, 9, 4, 4, 10,Enums.DirectionsEnum.WEST},
-                        {2, 7, 3, 7, 4, 10,Enums.DirectionsEnum.WEST},
-                        {3, 6, 0, 6, 4, 10,Enums.DirectionsEnum.SOUTH},
-                        {2, 6, 1, 6, 4, 10,Enums.DirectionsEnum.SOUTH},
-                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.NORTH},
-                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.SOUTH},
-                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.WEST},
-                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.EAST},
+                        {0, 0, 0, 3, 4, 10,Enums.DirectionsEnum.UP},
+                        {0, 1, 0, 0, 4, 10,Enums.DirectionsEnum.UP},
+                        {10, 3, 0, 3, 4, 10,Enums.DirectionsEnum.RIGHT},
+                        {8, 3, 9, 3, 4, 10,Enums.DirectionsEnum.RIGHT},
+                        {0, 4, 9, 4, 4, 10,Enums.DirectionsEnum.LEFT},
+                        {2, 7, 1, 7, 4, 10,Enums.DirectionsEnum.LEFT},
+                        {3, 9, 3, 0, 4, 10,Enums.DirectionsEnum.DOWN},
+                        {6, 2, 6, 3, 4, 10,Enums.DirectionsEnum.DOWN},
+                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.UP},
+                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.DOWN},
+                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.LEFT},
+                        {0, 0, 0, 0, 1, 1,Enums.DirectionsEnum.RIGHT},
                         {1, 2, 1, 2, 3, 10,Enums.DirectionsEnum.BOOKMARK}
                 }
         );

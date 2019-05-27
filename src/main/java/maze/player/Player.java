@@ -20,5 +20,18 @@ public abstract class Player implements PlayerInterface {
     public void hitBookmark(int seq) {
         bookMarks.add(seq);
     }
+    public void setHitWall(boolean hitWall) {
+        isHitWall = hitWall;
+    }
+    public boolean isHitWall() {
+        return isHitWall;
+    }
+    public Set<Integer> getBookMarks() {
+        return bookMarks;
+    }
+
+    public void setBookMarks(Set<Integer> bookMarks) {
+        this.bookMarks = bookMarks;
+    }
 }
 

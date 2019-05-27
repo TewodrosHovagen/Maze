@@ -57,6 +57,7 @@ public class Application {
             Logger.info("START THE GAME!!!");
             OutputLog outputFile = new OutputLog(outputFilePath);
             GameManager game = new GameManagerImpl(dataFile);
+            game.startGame();
         }
         else
             Logger.info("GAME WILL NOT START!!!");
