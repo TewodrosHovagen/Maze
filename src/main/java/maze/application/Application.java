@@ -48,7 +48,6 @@ public class Application {
             return;
         }
 
-        //TODO: need to get file from main arguments
         String mazeFilePath = args[0];
         String outputFilePath = args[1];
 

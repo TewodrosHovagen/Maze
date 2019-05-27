@@ -16,16 +16,7 @@ public class FileParseTest {
         this.fileParse = new FileParse();
     }
 
-//    @Test
-//    public void emptyFileParseLocationTest(){
-//
-//    }
-//    @Test
-//    public void correctFileToParseLocationTest(){
-//
-//    }
-    //TODO: null pointer
-    @Test(expected = NullPointerException.class)
+    @Test(expected = WrongFileFormatException.class)
     public void fileToParseCouldnotBeOpenedTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "nonOpenedFile");
@@ -36,6 +27,11 @@ public class FileParseTest {
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "correctInputFileExample.txt");
         Assert.assertNotNull(fileData);
+        Assert.assertEquals(fileData.getMazeName(),"Nice simple maze");
+        Assert.assertEquals(fileData.getMaxSteps(),10);
+        Assert.assertEquals(fileData.getRows(),4);
+        Assert.assertEquals(fileData.getColumns(),10);
+
     }
 
     @Test(expected = WrongFileFormatException.class)
@@ -55,6 +51,9 @@ public class FileParseTest {
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "correctSpacesInParamters.txt");
         Assert.assertNotNull(fileData);
+        Assert.assertEquals(fileData.getMaxSteps(),10);
+        Assert.assertEquals(fileData.getRows(),4);
+        Assert.assertEquals(fileData.getColumns(),10);
     }
     @Test(expected = WrongFileFormatException.class)
     public void fileToParseFirstLinesIncorrectSpacesTest(){
@@ -68,11 +67,27 @@ public class FileParseTest {
                 + "incorrectParamterNumber.txt");
         Assert.assertNull(fileData);
     }
+    @Test()
+    public void fileToParseFirstLinesStrangeNumberTest(){
+        FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
+                + "strangeParameterNumber.txt");
+        Assert.assertNotNull(fileData);
+        Assert.assertEquals(fileData.getMaxSteps(),10);
+
+    }
     @Test
     public void fileToParseMazeBodyCorrectTest(){
+        String[][] mazeWorld = new String[][]{
+                {"#", "#", "#", "#", "#", " ", " ", " ", " ", " "},
+                {"#", " ", "@", " ", " ", " ", " ", " ", "#", " "},
+                {"#", " ", " ", " ", "#", " ", " ", "$", " ", "#"},
+                {" ", " ", " ", " ", "#", "#", "#", "#", "#", " "}
+        };
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "correctInputFileExample.txt");
         Assert.assertNotNull(fileData);
+        Assert.assertEquals(fileData.getMazeWorld(), mazeWorld);
+
     }
     @Test(expected = WrongFileFormatException.class)
     public void fileToParseMazeBodyMissingAllBodyTest(){
@@ -121,24 +136,34 @@ public class FileParseTest {
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "mazeBodyLessRowsThanDefined.txt");
         Assert.assertNotNull(fileData);
+        Assert.assertEquals(fileData.getMazeWorld().length, 4);
     }
     @Test
     public void fileToParseMazeBodyLessColumnsThanDefinedWillFilledBySpacesTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "mazeBodyLessColumnsThanDefined.txt");
         Assert.assertNotNull(fileData);
+        for (int i = 0; i < 4; i++) {
+            Assert.assertEquals(fileData.getMazeWorld()[0].length, 10);
+        }
+
     }
     @Test
     public void fileToParseMazeBodyExtraRowsThanDefinedWillBeIgnoredTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "mazeBodyExtraRowsThanDefined.txt");
         Assert.assertNotNull(fileData);
+        Assert.assertEquals(fileData.getMazeWorld().length, 4);
+
     }
     @Test
     public void fileToParseMazeBodyExtraColumnsThanDefinedWillBeIgnoredTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "mazeBodyExtraColumnsThanDefined.txt");
         Assert.assertNotNull(fileData);
+        for (int i = 0; i < 4; i++) {
+            Assert.assertEquals(fileData.getMazeWorld()[0].length, 10);
+        }
     }
 
 

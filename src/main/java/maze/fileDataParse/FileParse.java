@@ -34,7 +34,7 @@ public class FileParse {
      * @param fileLocation
      * @return
      */
-    public FileData parseFileData (String fileLocation) {
+    public FileData parseFileData (String fileLocation){
             Logger.info("Reading the maze.txt file");
             FileData fileData;
 //            String fileLocation;
@@ -97,7 +97,7 @@ public class FileParse {
             } catch (IOException e) {
                 Logger.info("There was a problem with the file " + e);
                 System.out.println(String.format("Command line argument for maze: %s leads to a file that cannot be opened", fileLocation ));
-                return null;
+                throw new WrongFileFormatException(e.getMessage());
             }
         if(!bodyFileExceptions.isEmpty()) {
             System.out.println("Bad maze in maze file:");
@@ -244,15 +244,23 @@ public class FileParse {
         return fileData;
     }
 
-    private String[] getStringValue(String strToParse){
+    private String[] getStringValue(String strToParse) throws IOException{
         Logger.info("Parsing the line " + strToParse);
-        String[] strValues = strToParse.split("=");
-        if(strValues.length == 2) {
-            strValues[0] = strValues[0].trim();
-            strValues[1] = strValues[1].trim();
+        String[] strValues;
+        try{
+            strValues = strToParse.split("=");
+            if(strValues.length == 2) {
+                strValues[0] = strValues[0].trim();
+                strValues[1] = strValues[1].trim();
 
+            }
+            return strValues;
+        }catch(Exception e){
+            throw new IOException();
         }
-        return strValues;
+
+
+
 
     }
 
