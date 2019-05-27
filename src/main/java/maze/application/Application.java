@@ -1,6 +1,7 @@
 package maze.application;
 
 import Utils.logging.Logger;
+import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
@@ -16,23 +17,29 @@ public class Application {
         startApplication(args);
     }
 
-    public static void startApplication(String[] args){
-        //  for testing, instead of parameters from outline
+    public static void startApplication(String[] arguments){
+        Logger log = new Logger();
         boolean runThePlayer = true;
-
-
         FileParse fileParse = new FileParse();
         FileData dataFile;
+        String[] args = new String[2];
+        args[0] = "./src/main/resources/maze_file.txt";
+        args[1] = "./output.txt";
+
+        if (args.length != 2){
+            System.out.println(String.format("Missing maze file or output file argument in command line" ));
+
+        }
+
         //TODO: need to get file from main arguments
         String mazeFilePath = args[0];
         String outputFilePath = args[1];
 
         if(checkExistenceOfFilePath(outputFilePath)){
-            Logger log = new Logger(outputFilePath);
+            OutputLog outputFile = new OutputLog(outputFilePath);
         }
         else{
-            System.out.println("ERROR--> Output file location is not exist");
-            Logger log = new Logger(true);
+            System.out.println(String.format("Command line argument for output file: %s points to a bad path or to a file that already exists", outputFilePath ));
             runThePlayer = false;
         }
 
@@ -40,23 +47,22 @@ public class Application {
             dataFile = fileParse.parseFileData(mazeFilePath);
         }
         else{
-            System.out.println(String.format("ERROR--> Command line argument for maze: %s doesn't lead to a maze file", mazeFilePath ));
+            System.out.println(String.format("Command line argument for maze: %s doesn't lead to a maze file", mazeFilePath ));
             dataFile = fileParse.parseFileData("");
             runThePlayer = false;
         }
 
-        System.out.println(dataFile);
-        dataFile.printMazeWorld();
+        Logger.info(dataFile.toString());
+//        dataFile.printMazeWorld();
 
         if(runThePlayer) {
-            //            System.out.println("START THE GAME!!!");
+             Logger.info("START THE GAME!!!");
             GameManager game = new GameManagerImpl(dataFile);
         }
         else
-            System.out.println("GAME WILL NOT START!!!");
+            Logger.info("GAME WILL NOT START!!!");
 
-//        game.startGame();
-//        gameManager starts the game in ctor
+
     }
 
     private static boolean checkExistenceOfFilePath(String pathWithFileName){

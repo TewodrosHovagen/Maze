@@ -8,18 +8,19 @@ import java.io.OutputStreamWriter;
 import java.util.logging.Logger;
 
 public class OutputLog {
-    private static final Logger log = Logger.getLogger(OutputLog.class.getName());
-    private static String logPath= "./output.txt";
+    private static String logPath;
    // private static boolean printToScreen = false;
 
     public OutputLog(String path){
         logPath = path;
         File file = new File(logPath);
-        if (file.delete()) {
-            log.info("The previous file was deleted");
-        } else {
-            log.info("File was not deleted");
-        }
+        writeToOutput("",false);
+
+//        if (file.delete()) {
+//            log.info("The previous file was deleted");
+//        } else {
+//            log.info("File was not deleted");
+//        }
     }
 //    public OutputLog(boolean printToScreen){
 //        this.printToScreen = true;
@@ -35,19 +36,19 @@ public class OutputLog {
 //    }
 
     public static void writeToOutput(String logRecord){
-        try {
-            writeLog(String.format("%s%n", logRecord));
-        } catch (IOException e) {
-            e.printStackTrace();
+        writeToOutput(String.format("%s%n", logRecord),true);
+    }
+
+    private static void writeToOutput(String logRecord, boolean append) {
+    try{
+        writeLog(logRecord, append);
+    } catch (IOException e) {
+        e.printStackTrace();
         }
     }
 
-//    private static void writeToOutput(String logRecord, boolean append) {
-//        writeLog(logRecord, append);
-//    }
-
-    private static void writeLog(String logRecord) throws IOException {
-        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(logPath, true))) {
+    private static void writeLog(String logRecord, boolean append) throws IOException {
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(logPath, append))) {
             writer.write(logRecord);
         } catch (IOException e) {
             throw e;

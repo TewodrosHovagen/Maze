@@ -1,29 +1,32 @@
 package maze.player;
 
-<<<<<<< Updated upstream
-import java.util.HashSet;
-=======
-import Utils.Enums.*;
+import Utils.Enums.DirectionsEnum;
+import Utils.Enums.WalkingDirectionsEnum;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
->>>>>>> Stashed changes
 import java.util.Set;
 
 import static Utils.Enums.DirectionsEnum.*;
 import static Utils.Enums.WalkingDirectionsEnum.*;
 
-public abstract class Player implements PlayerAction {
+public class MazePlayer extends Player {
 
-<<<<<<< Updated upstream
-    private int isHitWall = 0;
-    private Set<Integer> bookMarks = new HashSet<>();
-=======
+
+    private WalkingDirectionsEnum lastStep;
+    private DirectionsEnum mainDirection;
+    final private Map<WalkingDirectionsEnum, DirectionsEnum> northMap;
+    final private Map<WalkingDirectionsEnum, DirectionsEnum> eastMap;
+    final private Map<WalkingDirectionsEnum, DirectionsEnum> westMap;
+    final private Map<WalkingDirectionsEnum, DirectionsEnum> southMap;
+    final private Map<DirectionsEnum, Map<WalkingDirectionsEnum, DirectionsEnum>> directionsMap;
+
+
     // initialize all player params in c'tor.
-    public Player() {
+    public MazePlayer() {
         this.isHitWall = false;
-        this.bookMarks = new HashSet<>();
+        this.bookMarks = new HashSet<>(); //map integer to list of directions
         this.lastStep = STRAIGHT;
         this.mainDirection = NORTH;
         this.northMap = new HashMap<>() {{
@@ -57,16 +60,6 @@ public abstract class Player implements PlayerAction {
             put(WEST, westMap);
         }};
     }
-
-    private boolean isHitWall;
-    private Set<Integer> bookMarks;
-    private WalkingDirectionsEnum lastStep;
-    private DirectionsEnum mainDirection;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> northMap;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> eastMap;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> westMap;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> southMap;
-    final private Map<DirectionsEnum, Map<WalkingDirectionsEnum, DirectionsEnum>> directionsMap;
 
 
     public boolean isHitWall() {
@@ -121,18 +114,29 @@ public abstract class Player implements PlayerAction {
         return directionsMap;
     }
 
->>>>>>> Stashed changes
 
     @Override
-    public void hitWall() {
-        System.out.println("You hit the wall");
-        isHitWall = true;
-    }
-
-
-    @Override
-    public void hitBookmark(int seq) {
-        bookMarks.add(seq);
+    public DirectionsEnum move() {
+        Map<WalkingDirectionsEnum, DirectionsEnum> currentDirectionMap = getDirectionsMap().get(getMainDirection());
+        if (isHitWall()) {
+            if (getLastStep() == STRAIGHT) {
+                setLastStep(RIGHT);
+                return currentDirectionMap.get(RIGHT);
+            } else if (getLastStep() == RIGHT) {
+                setLastStep(LEFT);
+                return currentDirectionMap.get(LEFT);
+            } else if (getLastStep() == LEFT) {
+                setLastStep(WalkingDirectionsEnum.BOOKMARK);
+                return DirectionsEnum.BOOKMARK;
+            } else {
+                setMainDirection(currentDirectionMap.get(BACK));
+                setLastStep(STRAIGHT);
+                return currentDirectionMap.get(BACK);
+            }
+        } else {
+            setMainDirection(currentDirectionMap.get(getLastStep()));
+            setLastStep(STRAIGHT);
+            return getMainDirection();
+        }
     }
 }
-

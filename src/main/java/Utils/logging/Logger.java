@@ -7,17 +7,16 @@ import java.io.OutputStreamWriter;
 import java.util.Date;
 
 public class Logger {
-    private static String logPath= "./output.txt";
-    private static boolean printToScreen = false;
+    private static String logPath= "./log.txt";
+//    private static boolean printToScreen = false;
 
-    public Logger(String name){
-        this.logPath = name;
+    public Logger(){
         writeToLogFile("",false);
 
     }
-    public Logger(boolean printToScreen){
-        this.printToScreen = true;
-    }
+//    public Logger(boolean printToScreen){
+//        this.printToScreen = true;
+//    }
 
     public static void debug(String logRecord){
         writeToLogFile(String.format("%s DEBUG %s", new Date(), logRecord));
@@ -40,16 +39,16 @@ public class Logger {
     }
 
     private static void writeLog(String logRecord, boolean append) {
-        if (!printToScreen){
+//        if (!printToScreen){
             try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(logPath, append))) {
                 writer.write(logRecord + '\n');
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else{
-            System.out.println(logRecord);
-        }
+//        }
+//        else{
+//            System.out.println(logRecord);
+//        }
 
     }
 

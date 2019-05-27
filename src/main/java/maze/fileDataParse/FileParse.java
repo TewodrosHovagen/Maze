@@ -245,9 +245,13 @@ public class FileParse {
     private String[] getStringValue(String strToParse){
         Logger.info("Parsing the line " + strToParse);
         String[] strValues = strToParse.split("=");
-        strValues[0] = strValues[0].trim();
-        strValues[1] = strValues[1].trim();
+        if(strValues.length == 2) {
+            strValues[0] = strValues[0].trim();
+            strValues[1] = strValues[1].trim();
+
+        }
         return strValues;
+
     }
 
 
