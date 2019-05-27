@@ -1,6 +1,5 @@
 package maze.gameManager;
 
-import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import org.junit.Assert;
@@ -18,7 +17,7 @@ import java.util.Map;
 public class GameManagerValidParameterizedImplTest {
 
 
-    private int xPosition,yPosition;
+    private int rowPosition, colPosition;
     private String fileDir = "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt";
     private boolean expectedResultIsWall, expectedResultIsTreasure;
 
@@ -26,8 +25,8 @@ public class GameManagerValidParameterizedImplTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-//                        {0, 0,true,false},
-//                        {1, 0,true,false},
+                        {0, 0,true,false},
+                        {0, 1,true,false},
                         {2, 7,false,true},
                         {2, 6,false,false},
                         {1, 2,false,false}
@@ -35,9 +34,9 @@ public class GameManagerValidParameterizedImplTest {
         );
     }
 
-    public GameManagerValidParameterizedImplTest(int xPosition, int yPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
+    public GameManagerValidParameterizedImplTest(int rowPosition, int colPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
+        this.rowPosition = rowPosition;
+        this.colPosition = colPosition;
         this.expectedResultIsTreasure=expectedResultIsTreasure;
         this.expectedResultIsWall = expectedResultIsWall;
     }
@@ -45,7 +44,7 @@ public class GameManagerValidParameterizedImplTest {
     @Test
     public void isWallValid() {
         //Arrange
-        Point currentPoint = new Point(xPosition,yPosition);
+        Point currentPoint = new Point(colPosition, rowPosition);
         FileData fileData = new FileParse().parseFileData(fileDir);
 
         //Act
@@ -58,22 +57,22 @@ public class GameManagerValidParameterizedImplTest {
     @Test
     public void isTreasureValid() {
         //Arrange
-        Point currentPoint = new Point(xPosition,yPosition);
+        Point currentPoint = new Point(colPosition, rowPosition);
         FileData fileData = new FileParse().parseFileData(fileDir);
 
         //Act
         GameManager gameManager = new GameManagerImpl(fileData);
 
         //Assert
-        Assert.assertEquals("The current point a wall when should not be",expectedResultIsTreasure,gameManager.isTreasure(currentPoint));
+        Assert.assertEquals("The current point treasure as expected",expectedResultIsTreasure,gameManager.isTreasure(currentPoint));
     }
 
     @Test
     public void addBookmarkValidTest() {
         //Arrange
         GameManagerImpl gameManager = new GameManagerImpl();
-        Point currentPoint = new Point(xPosition,yPosition);
-        Point expectedPoint = new Point(xPosition,yPosition);
+        Point currentPoint = new Point(colPosition, rowPosition);
+        Point expectedPoint = new Point(colPosition, rowPosition);
         int sequenceValue= 1;
         int expectedSequenceValue= 1;
         Map<Point,Integer> bookmarkManagerExpectedMap = new HashMap<>();

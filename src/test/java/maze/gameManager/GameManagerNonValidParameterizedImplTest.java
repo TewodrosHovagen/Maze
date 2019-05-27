@@ -15,7 +15,7 @@ import java.util.Collection;
 @RunWith(Parameterized.class)
 public class GameManagerNonValidParameterizedImplTest {
 
-    private int xPosition, yPosition;
+    private int rowPosition, colPosition;
     private String fileDir = "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt";
     private boolean expectedResultIsWall, expectedResultIsTreasure;
 
@@ -30,16 +30,16 @@ public class GameManagerNonValidParameterizedImplTest {
         );
     }
 
-    public GameManagerNonValidParameterizedImplTest(int xPosition, int yPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
+    public GameManagerNonValidParameterizedImplTest(int rowPosition, int colPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
+        this.rowPosition = rowPosition;
+        this.colPosition = colPosition;
         this.expectedResultIsTreasure = expectedResultIsTreasure;
         this.expectedResultIsWall = expectedResultIsWall;
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void isWallNonValid() {
-        Point currentPoint = new Point(xPosition, yPosition);
+        Point currentPoint = new Point(rowPosition, colPosition);
         FileData fileData = new FileParse().parseFileData(fileDir);
         GameManager gameManager = new GameManagerImpl(fileData);
         Assert.assertEquals("The current point a wall when should not be", expectedResultIsWall, gameManager.isWall(currentPoint));
@@ -47,7 +47,7 @@ public class GameManagerNonValidParameterizedImplTest {
 
     @Test
     public void isTreasureNonValid() {
-        Point currentPoint = new Point(xPosition, yPosition);
+        Point currentPoint = new Point(rowPosition, colPosition);
         FileData fileData = new FileParse().parseFileData(fileDir);
         GameManager gameManager = new GameManagerImpl(fileData);
         Assert.assertEquals("The current point a wall when should not be", expectedResultIsTreasure, gameManager.isTreasure(currentPoint));
