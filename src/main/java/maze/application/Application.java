@@ -12,18 +12,28 @@ import java.nio.file.Paths;
 
 public class Application {
 
-    private static boolean createAnOutputFile = false;
+    private boolean createAnOutputFile = false;
+    private boolean isInputFileExist = false;
+    private boolean runThePlayer = true;
 
-    public static boolean isCreateAnOutputFile() {
+
+    public boolean isCreateAnOutputFile() {
         return createAnOutputFile;
     }
-    public static void main(String[] args) {
-        startApplication(args);
+    public boolean isInputFileExist() {
+        return isInputFileExist;
+    }
+    public boolean isRunThePlayer() {
+        return runThePlayer;
     }
 
-    public static void startApplication(String[] args){
+    public static void main(String[] args) {
+        Application app = new Application();
+        app.startApplication(args);
+    }
+
+    public void startApplication(String[] args){
         Logger log = new Logger();
-        boolean runThePlayer = true;
 
         FileParse fileParse = new FileParse();
         FileData dataFile = null;
@@ -34,7 +44,8 @@ public class Application {
 
         if (args.length != 2){
             System.out.println(String.format("Missing maze file or output file argument in command line" ));
-
+            runThePlayer = false;
+            return;
         }
 
         //TODO: need to get file from main arguments
@@ -43,8 +54,6 @@ public class Application {
 
         if(checkExistenceOfFilePath(outputFilePath) && !checkExistenceOfFile(outputFilePath)){
             createAnOutputFile = true;
-            System.out.println("createAnOutputFile:"+ createAnOutputFile);
-
         }
         else{
             System.out.println(String.format("Command line argument for output file: %s points to a bad path or to a file that already exists", outputFilePath ));
@@ -52,6 +61,7 @@ public class Application {
         }
 
         if(checkExistenceOfFilePath(mazeFilePath) && checkExistenceOfFile(mazeFilePath)){
+            isInputFileExist = true;
             dataFile = fileParse.parseFileData(mazeFilePath);
         }
         else{
@@ -90,9 +100,3 @@ public class Application {
 
     }
 }
-//        String[][] mazeWorld = new String[][]{
-//                {"#", "#", "#", "#", "#", " ", " ", " ", " ", " "},
-//                {"#", " ", "@", " ", "#", " ", " ", " ", " ", "#"},
-//                {"#", " ", " ", " ", "#", " ", " ", "$", " ", "#"},
-//                {" ", " ", " ", " ", "#", "#", "#", "#", "#", " "}
-//        };
