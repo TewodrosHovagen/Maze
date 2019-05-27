@@ -68,7 +68,6 @@ public class FileParseTest {
                 + "correctInputFileExample.txt");
         Assert.assertNotNull(fileData);
     }
-    //TODO: need to throw all error
     @Test(expected = WrongFileFormatException.class)
     public void fileToParseMazeBodyMissingAllBodyTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
@@ -99,11 +98,16 @@ public class FileParseTest {
                 + "twoTreasureSigns.txt");
         Assert.assertNull(fileData);
     }
-    //TODO: add support in TAB chars etc...
     @Test(expected = WrongFileFormatException.class)
     public void fileToParseMazeBodyIncorrectCharTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "incorrectCharInMazeBody.txt");
+        Assert.assertNull(fileData);
+    }
+    @Test(expected = WrongFileFormatException.class)
+    public void fileToParseMazeBodyIncorrectCharTABTest(){
+        FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
+                + "incorrectCharTABInMazeBody.txt");
         Assert.assertNull(fileData);
     }
     @Test

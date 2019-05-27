@@ -1,6 +1,6 @@
 package maze.fileDataParse;
 
-import Utils.exceptions.GenericMultipleException;
+import Utils.exceptions.WrongFileFormatMultipleException;
 import Utils.exceptions.NumberParseException;
 import Utils.exceptions.WrongFileFormatException;
 import Utils.logging.Logger;
@@ -105,7 +105,7 @@ public class FileParse {
             }
         if(!bodyFileExceptions.isEmpty()) {
             System.out.println("Bad maze in maze file:");
-            throw new GenericMultipleException(bodyFileExceptions);
+            throw new WrongFileFormatMultipleException(bodyFileExceptions);
         }
         return fileData;
     }
@@ -117,7 +117,7 @@ public class FileParse {
                 if (!foundPlayer) {
                     fileData.setPlayerLocation(new Point(row,column));
                     foundPlayer = true;
-                    Logger.info("Found a player in position" + new Point(row,column));
+                    Logger.info(String.format("Found a player in position: (%s,%s)",row,column));
                 }else {
                     bodyFileExceptions.add(new WrongFileFormatException("More than one @ in maze"));
                 }
@@ -126,16 +126,22 @@ public class FileParse {
                 if (!foundTreasure) {
                     fileData.setTreasureLocation(new Point(row,column));
                     foundTreasure = true;
-                    Logger.info("Found a treasure in position" + new Point(row,column));
+                    Logger.info(String.format("Found a treasure in position: (%s,%s)",row,column));
                 }else {
                     bodyFileExceptions.add(new WrongFileFormatException("More than one $ in maze"));
                 }
             }
             mazeWorld[row][column] = charItem + "";
         }else{
-            bodyFileExceptions.add(new WrongFileFormatException(
-                    String.format("Wrong character in maze: %s in row %s, col %s", charItem, row, column)));
-
+            int ascii = (int) charItem;
+            if (ascii == 9) {
+                bodyFileExceptions.add(new WrongFileFormatException(
+                        String.format("Wrong character in maze: TAB in row %s, col %s", row, column)));
+            }
+            else if (ascii != 10) {
+                bodyFileExceptions.add(new WrongFileFormatException(
+                        String.format("Wrong character in maze: %s in row %s, col %s", charItem, row, column)));
+            }
         }
     }
 
@@ -237,7 +243,7 @@ public class FileParse {
         }
         if (!headerFileExceptions.isEmpty()){
             System.out.println("Bad maze file header:");
-            throw new GenericMultipleException(headerFileExceptions);
+            throw new WrongFileFormatMultipleException(headerFileExceptions);
         }
         return fileData;
     }

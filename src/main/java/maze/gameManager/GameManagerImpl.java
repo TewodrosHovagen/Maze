@@ -5,7 +5,6 @@ import Utils.logging.Logger;
 import maze.fileDataParse.FileData;
 import Utils.logging.OutputLog;
 import maze.player.MazePlayer;
-import maze.player.Player;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -101,8 +100,8 @@ public class GameManagerImpl implements GameManager{
     @Override
     public boolean isWall(Point point) {
     //TODO choose wich one is the correct shoshi.
-        //return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
-        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
+        return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
+//        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
     }
 
     @Override
@@ -112,14 +111,14 @@ public class GameManagerImpl implements GameManager{
 
     private Point getBackMove(DirectionsEnum direction) {
         switch (direction) {
-            case NORTH:
-                return move(DirectionsEnum.SOUTH);
-            case SOUTH:
-                return move(DirectionsEnum.NORTH);
-            case EAST:
-                return move(DirectionsEnum.WEST);
-            case WEST:
-                return move(DirectionsEnum.EAST);
+            case UP:
+                return move(DirectionsEnum.DOWN);
+            case DOWN:
+                return move(DirectionsEnum.UP);
+            case RIGHT:
+                return move(DirectionsEnum.LEFT);
+            case LEFT:
+                return move(DirectionsEnum.RIGHT);
             default:
                 return new Point();
         }
@@ -133,7 +132,7 @@ public class GameManagerImpl implements GameManager{
                     mazeWorld[i][j] = " ";
                     mazeWorld[playerLocation.x][playerLocation.y] = "@";
                     //TODO Tedy fix printMaze after change.
-//                    printMazeWorld();
+//                    data.printMazeWorld();
                     return;
                 }
             }
@@ -158,7 +157,7 @@ public class GameManagerImpl implements GameManager{
     protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
-            case SOUTH:
+            case UP:
                 int newPosition = playerLocation.y + 1;
                 if (newPosition >= data.getRows()) {
                     newLocation = new Point(playerLocation.x, 0);
@@ -166,7 +165,7 @@ public class GameManagerImpl implements GameManager{
                     newLocation = new Point(playerLocation.x, newPosition);
                 }
                 break;
-            case NORTH:
+            case DOWN:
                 newPosition = playerLocation.y - 1;
                 if (newPosition < 0) {
                     newLocation = new Point(playerLocation.x, data.getRows() - 1);
@@ -174,7 +173,7 @@ public class GameManagerImpl implements GameManager{
                     newLocation = new Point(playerLocation.x, newPosition);
                 }
                 break;
-            case WEST:
+            case LEFT:
                 newPosition = playerLocation.x- 1;
                 if (newPosition < 0) {
                     newLocation = new Point(data.getColumns() - 1, playerLocation.y);
@@ -183,7 +182,7 @@ public class GameManagerImpl implements GameManager{
                     newLocation = new Point(newPosition, playerLocation.y);
                 }
                 break;
-            case EAST:
+            case RIGHT:
                 newPosition = playerLocation.x + 1;
                 if (newPosition >= data.getColumns()) {
                     newLocation = new Point(0, playerLocation.y);
