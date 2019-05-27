@@ -1,6 +1,8 @@
 package maze.player;
 
 import Utils.Enums.*;
+import Utils.logging.Logger;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -115,7 +117,7 @@ public abstract class Player implements PlayerAction {
 
     @Override
     public void hitWall() {
-        System.out.println("You hit the wall");
+        Logger.info("You hit the wall");
         isHitWall = true;
     }
 
