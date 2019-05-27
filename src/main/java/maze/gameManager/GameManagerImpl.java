@@ -2,7 +2,7 @@ package maze.gameManager;
 
 import Utils.Enums.DirectionsEnum;
 import maze.fileDataParse.FileData;
-import maze.logging.OutputLog;
+import Utils.logging.OutputLog;
 import maze.player.Player;
 import maze.player.PlayerDummy;
 

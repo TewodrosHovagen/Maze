@@ -1,16 +1,10 @@
-package maze.logging;
+package Utils.logging;
 
 
-import maze.gameManager.GameManagerImpl;
-
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.Date;
 import java.util.logging.Logger;
 
 public class OutputLog {

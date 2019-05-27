@@ -1,8 +1,8 @@
 package maze.fileDataParse;
 
-import Utils.GenericMultipleException;
-import Utils.NumberParseException;
-import Utils.WrongFileFormatException;
+import Utils.exceptions.GenericMultipleException;
+import Utils.exceptions.NumberParseException;
+import Utils.exceptions.WrongFileFormatException;
 import Utils.logging.Logger;
 
 import java.awt.*;
