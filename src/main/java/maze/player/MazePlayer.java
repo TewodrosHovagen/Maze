@@ -10,6 +10,8 @@ import java.util.Set;
 
 import static Utils.Enums.DirectionsEnum.*;
 import static Utils.Enums.WalkingDirectionsEnum.*;
+import static Utils.Enums.WalkingDirectionsEnum.LEFT;
+import static Utils.Enums.WalkingDirectionsEnum.RIGHT;
 
 public class MazePlayer extends Player {
 
@@ -28,36 +30,36 @@ public class MazePlayer extends Player {
         this.isHitWall = false;
         this.bookMarks = new HashSet<>(); //map integer to list of directions
         this.lastStep = STRAIGHT;
-        this.mainDirection = NORTH;
+        this.mainDirection = UP;
         this.northMap = new HashMap<>() {{
-            put(STRAIGHT, NORTH);
-            put(BACK, SOUTH);
-            put(RIGHT, EAST);
-            put(LEFT, WEST);
+            put(STRAIGHT, UP);
+            put(BACK, DOWN);
+            put(RIGHT, DirectionsEnum.RIGHT);
+            put(LEFT, DirectionsEnum.LEFT);
         }};
         this.eastMap = new HashMap<>() {{
-            put(STRAIGHT, EAST);
-            put(BACK, WEST);
-            put(RIGHT, SOUTH);
-            put(LEFT, NORTH);
+            put(STRAIGHT, DirectionsEnum.RIGHT);
+            put(BACK, DirectionsEnum.LEFT);
+            put(RIGHT, DOWN);
+            put(LEFT, UP);
         }};
         this.westMap = new HashMap<>() {{
-            put(STRAIGHT, WEST);
-            put(BACK, EAST);
-            put(RIGHT, NORTH);
-            put(LEFT, SOUTH);
+            put(STRAIGHT, DirectionsEnum.LEFT);
+            put(BACK, DirectionsEnum.RIGHT);
+            put(RIGHT, UP);
+            put(LEFT, DOWN);
         }};
         this.southMap = new HashMap<>() {{
-            put(STRAIGHT, SOUTH);
-            put(BACK, NORTH);
-            put(RIGHT, WEST);
-            put(LEFT, EAST);
+            put(STRAIGHT, DOWN);
+            put(BACK, UP);
+            put(RIGHT, DirectionsEnum.LEFT);
+            put(LEFT, DirectionsEnum.RIGHT);
         }};
         this.directionsMap = new HashMap<>() {{
-            put(NORTH, northMap);
-            put(SOUTH, southMap);
-            put(EAST, eastMap);
-            put(WEST, westMap);
+            put(UP, northMap);
+            put(DOWN, southMap);
+            put(DirectionsEnum.RIGHT, eastMap);
+            put(DirectionsEnum.LEFT, westMap);
         }};
     }
 

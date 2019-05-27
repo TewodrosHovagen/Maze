@@ -78,3 +78,1037 @@ Sat May 25 19:29:07 IDT 2019 INFO B
 
 Sat May 25 19:29:07 IDT 2019 INFO X
 
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=3]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=8]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is null
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line null
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows : 4
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Max Steps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=2,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=3,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps    = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows =    4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols   =    10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line #####
+Mon May 27 11:44:45 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 11:44:45 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 11:44:45 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 11:44:45 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 11:44:45 IDT 2019 INFO The total number of rows is 4
+Mon May 27 11:44:45 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 11:44:45 IDT 2019 INFO The total number of columns is 10
+Mon May 27 11:44:45 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:42 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:42 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:42 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:42 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:42 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:42 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:42 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:42 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:42 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:21:43 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:21:43 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:21:43 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:21:43 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:21:43 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:21:43 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:21:43 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:21:43 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:21:43 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:09 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:09 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:09 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:09 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:09 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:09 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:09 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:09 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:09 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:10 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:10 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:10 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:10 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:10 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:22:10 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:22:10 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:22:10 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:22:10 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:22:11 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:22:11 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:22:11 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:22:11 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:22:11 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:22:11 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:22:11 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:43:00 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:43:00 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:43:00 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:43:00 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:43:00 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:43:00 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:43:00 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:43:00 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:43:00 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:43:00 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:43:00 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+Mon May 27 13:43:00 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 13:43:00 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 13:43:00 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 13:43:00 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 13:43:00 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 13:43:00 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 13:43:00 IDT 2019 INFO The total number of rows is 4
+Mon May 27 13:43:00 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 13:43:00 IDT 2019 INFO The total number of columns is 10
+Mon May 27 13:43:00 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
+Mon May 27 13:43:00 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+N
+X
+E
+!
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X

@@ -3,9 +3,7 @@ package Utils;
 public class Enums {
 
     public enum DirectionsEnum {
-        NORTH, EAST, SOUTH, WEST, BOOKMARK
-
-
+        UP, RIGHT, DOWN, LEFT, BOOKMARK
     }
 
     public enum WalkingDirectionsEnum {

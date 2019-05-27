@@ -8,8 +8,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameManagerNonValidImplTest {
-
+public class GameManagerImplTest {
 
     @Test
     void addBookmarkNonValidPointTest() {

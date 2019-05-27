@@ -5,7 +5,6 @@ import Utils.logging.Logger;
 import maze.fileDataParse.FileData;
 import Utils.logging.OutputLog;
 import maze.player.MazePlayer;
-import maze.player.Player;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -17,6 +16,8 @@ public class GameManagerImpl implements GameManager{
     private String[][] mazeWorld;
     protected Map<Point, Integer> bookmarkSequence = new HashMap<>();
     private int bookmarkCounter = 0;
+    private final String FOUND = "!";
+    private final String NOT_FOUND = "X";
     private Point playerLocation;
     private Point treasureLocation;
     private FileData data;
@@ -54,7 +55,7 @@ public class GameManagerImpl implements GameManager{
             } else {
                 if (isTreasure(currentLocation)) {
                     Logger.info(String.format("Succeeded in %s steps", timesToPlay + 1));
-                    OutputLog.writeToOutput("!");
+                    OutputLog.writeToOutput(FOUND);
                     break;
                 } else {
                     if (isWall(currentLocation)) {
@@ -78,10 +79,10 @@ public class GameManagerImpl implements GameManager{
             Logger.info(direction.toString());
             printMazeWorldAfterChange();
             Logger.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
-            OutputLog.writeToOutput("X");
         }
         if (timesToPlay == data.getMaxSteps()) {
             Logger.info(String.format("Failed to solve maze in %s steps", timesToPlay));
+            OutputLog.writeToOutput(NOT_FOUND);
         }
     }
 
@@ -98,8 +99,8 @@ public class GameManagerImpl implements GameManager{
     @Override
     public boolean isWall(Point point) {
     //TODO choose wich one is the correct shoshi.
-        //return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
-        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
+        return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
+//        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
     }
 
     @Override
@@ -109,14 +110,14 @@ public class GameManagerImpl implements GameManager{
 
     private Point getBackMove(DirectionsEnum direction) {
         switch (direction) {
-            case NORTH:
-                return move(DirectionsEnum.SOUTH);
-            case SOUTH:
-                return move(DirectionsEnum.NORTH);
-            case EAST:
-                return move(DirectionsEnum.WEST);
-            case WEST:
-                return move(DirectionsEnum.EAST);
+            case UP:
+                return move(DirectionsEnum.DOWN);
+            case DOWN:
+                return move(DirectionsEnum.UP);
+            case RIGHT:
+                return move(DirectionsEnum.LEFT);
+            case LEFT:
+                return move(DirectionsEnum.RIGHT);
             default:
                 return new Point();
         }
@@ -130,7 +131,7 @@ public class GameManagerImpl implements GameManager{
                     mazeWorld[i][j] = " ";
                     mazeWorld[playerLocation.x][playerLocation.y] = "@";
                     //TODO Tedy fix printMaze after change.
-//                    printMazeWorld();
+//                    data.printMazeWorld();
                     return;
                 }
             }
@@ -152,41 +153,54 @@ public class GameManagerImpl implements GameManager{
         return bookmarkSequence.get(currentLocation);
     }
 
-    private Point movePlayerLocation(DirectionsEnum directionsEnum) {
+    protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
-            case NORTH:
+            case UP:
                 int newPosition = playerLocation.y + 1;
-                if (newPosition >= data.getColumns())
-                    newLocation = new Point(playerLocation.x,0);
-                else
-                    newLocation = new Point(playerLocation.x,newPosition);
-                break;
-            case SOUTH:
-                newPosition = playerLocation.y - 1;
-                if (newPosition < 0)
-                    newLocation = new Point(playerLocation.x,data.getColumns()-1);
-                else
+                if (newPosition >= data.getRows()) {
+                    newLocation = new Point(playerLocation.x, 0);
+                }else {
                     newLocation = new Point(playerLocation.x, newPosition);
+                }
                 break;
-            case WEST:
+            case DOWN:
+                newPosition = playerLocation.y - 1;
+                if (newPosition < 0) {
+                    newLocation = new Point(playerLocation.x, data.getRows() - 1);
+                }else {
+                    newLocation = new Point(playerLocation.x, newPosition);
+                }
+                break;
+            case LEFT:
                 newPosition = playerLocation.x- 1;
-                if (newPosition < 0)
-                    newLocation = new Point(data.getRows()-1, playerLocation.y);
-                else
+                if (newPosition < 0) {
+                    newLocation = new Point(data.getColumns() - 1, playerLocation.y);
+                }
+                else {
                     newLocation = new Point(newPosition, playerLocation.y);
+                }
                 break;
-            case EAST:
+            case RIGHT:
                 newPosition = playerLocation.x + 1;
-                if (newPosition >=data.getRows())
+                if (newPosition > data.getColumns()) {
                     newLocation = new Point(0, playerLocation.y);
-                else
+                }else {
                     newLocation = new Point(newPosition, playerLocation.y);
+                }
                 break;
             case BOOKMARK:
-//                newLocation = new Point(playerLocation.x, playerLocation.y);
+                newLocation = new Point(playerLocation.x, playerLocation.y);
                 break;
         }
         return newLocation;
+    }
+
+    protected void setData(FileData data) {
+        this.data = data;
+    }
+
+    protected void setPlayerLocation(Point playerLocation) {
+        this.playerLocation = playerLocation;
     }
 }

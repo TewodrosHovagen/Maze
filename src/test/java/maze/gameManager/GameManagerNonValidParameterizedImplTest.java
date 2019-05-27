@@ -13,27 +13,26 @@ import java.util.Collection;
 
 
 @RunWith(Parameterized.class)
-public class GameManagerWallTreasureNonValidImplTest {
+public class GameManagerNonValidParameterizedImplTest {
+
+    private int xPosition, yPosition;
+    private String fileDir = "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt";
+    private boolean expectedResultIsWall, expectedResultIsTreasure;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-                        {Integer.MAX_VALUE, Integer.MAX_VALUE, false, false, "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"},
-                        {Integer.MIN_VALUE, Integer.MIN_VALUE, false, false, "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"},
-                        {-1, -1, false, false, "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"}
+                        {Integer.MAX_VALUE, Integer.MAX_VALUE, false, false},
+                        {Integer.MIN_VALUE, Integer.MIN_VALUE, false, false},
+                        {-1, -1, false, false}
                 }
         );
     }
 
-    private int xPosition, yPosition;
-    private String fileDir;
-    private boolean expectedResultIsWall, expectedResultIsTreasure;
-
-    public GameManagerWallTreasureNonValidImplTest(int xPosition, int yPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure, String fileDir) {
+    public GameManagerNonValidParameterizedImplTest(int xPosition, int yPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.fileDir = fileDir;
         this.expectedResultIsTreasure = expectedResultIsTreasure;
         this.expectedResultIsWall = expectedResultIsWall;
     }
