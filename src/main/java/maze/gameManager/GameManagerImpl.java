@@ -3,8 +3,8 @@ package maze.gameManager;
 import Utils.Enums.DirectionsEnum;
 import maze.fileDataParse.FileData;
 import Utils.logging.OutputLog;
+import maze.player.MazePlayer;
 import maze.player.Player;
-import maze.player.PlayerDummy;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -21,14 +21,14 @@ public class GameManagerImpl implements GameManager{
     private Point playerLocation;
     private Point treasureLocation;
     private FileData data;
-    private Player player;
+    private MazePlayer player;
 
     public GameManagerImpl(FileData data) {
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
         this.data = data;
-        player = new PlayerDummy();
+        player = new MazePlayer();
         startGame();
     }
 
