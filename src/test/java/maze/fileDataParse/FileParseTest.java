@@ -16,16 +16,16 @@ public class FileParseTest {
         this.fileParse = new FileParse();
     }
 
-    @Test
-    public void emptyFileParseLocationTest(){
-
-    }
-    @Test
-    public void correctFileToParseLocationTest(){
-
-    }
+//    @Test
+//    public void emptyFileParseLocationTest(){
+//
+//    }
+//    @Test
+//    public void correctFileToParseLocationTest(){
+//
+//    }
     //TODO: null pointer
-    @Test(expected = IOException.class)
+    @Test(expected = NullPointerException.class)
     public void fileToParseCouldnotBeOpenedTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "nonOpenedFile");
@@ -60,6 +60,12 @@ public class FileParseTest {
     public void fileToParseFirstLinesIncorrectSpacesTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "incorrectSpacesInParamters.txt");
+        Assert.assertNull(fileData);
+    }
+    @Test(expected = NumberFormatException.class)
+    public void fileToParseFirstLinesIncorrectNumberTest(){
+        FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
+                + "incorrectParamterNumber.txt");
         Assert.assertNull(fileData);
     }
     @Test

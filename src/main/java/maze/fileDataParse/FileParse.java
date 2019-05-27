@@ -39,10 +39,6 @@ public class FileParse {
             FileData fileData;
 //            String fileLocation;
 
-            //TODO: throw input output exception
-            if (fileLocation.equals(""))
-                fileLocation ="maze.txt";
-
             try(// create a Buffered Reader object instance with a FileReader
                 BufferedReader br = new BufferedReader(new FileReader(fileLocation))) {
 
