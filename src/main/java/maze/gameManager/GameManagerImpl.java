@@ -32,11 +32,7 @@ public class GameManagerImpl implements GameManager{
         player = new MazePlayer();
     }
 
-
-
-    protected GameManagerImpl() {
-
-    }
+    protected GameManagerImpl() {   }
 
     @Override
     public void startGame() {
@@ -77,7 +73,6 @@ public class GameManagerImpl implements GameManager{
             }
             //TODO Tedy remove all sout to log file.
             playerLocation = currentLocation;
-            //Logger.info(player.getMainDirection().toString());
             Logger.info(direction.toString());
             printMazeWorldAfterChange();
             Logger.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
@@ -110,7 +105,7 @@ public class GameManagerImpl implements GameManager{
         return point.equals(treasureLocation);
     }
 
-    private Point getBackMove(DirectionsEnum direction) {
+    protected Point getBackMove(DirectionsEnum direction) {
         switch (direction) {
             case UP:
                 return move(DirectionsEnum.DOWN);
@@ -121,7 +116,7 @@ public class GameManagerImpl implements GameManager{
             case LEFT:
                 return move(DirectionsEnum.RIGHT);
             default:
-                return new Point();
+                return move(DirectionsEnum.BOOKMARK);
         }
     }
 
@@ -139,14 +134,6 @@ public class GameManagerImpl implements GameManager{
             }
         }
     }
-
-    public void addtMazeWorldBookMark() {
-        //TODO Tedy add bookMark to map if needed.
-        mazeWorld[playerLocation.x][playerLocation.y] = "b";
-        printMazeWorldAfterChange();
-    }
-
-
     private boolean isBookmarkLocation(Point currentLocation) {
         return bookmarkSequence.containsKey(currentLocation);
     }
@@ -175,7 +162,7 @@ public class GameManagerImpl implements GameManager{
                 }
                 break;
             case LEFT:
-                newPosition = playerLocation.x- 1;
+                newPosition = playerLocation.x - 1;
                 if (newPosition < 0) {
                     newLocation = new Point(data.getColumns() - 1, playerLocation.y);
                 }
@@ -206,7 +193,8 @@ public class GameManagerImpl implements GameManager{
         this.playerLocation = playerLocation;
     }
 
-    public void setPlayer(Player player) {
+    protected void setPlayer(Player player) {
         this.player = player;
     }
+
 }

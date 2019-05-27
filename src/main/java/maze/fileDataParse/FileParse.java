@@ -111,18 +111,18 @@ public class FileParse {
         if(isValidChar(charItem)) {
             if(isPlayer(charItem)){
                 if (!foundPlayer) {
-                    fileData.setPlayerLocation(new Point(row,column));
+                    fileData.setPlayerLocation(new Point(column,row));
                     foundPlayer = true;
-                    Logger.info(String.format("Found a player in position: (%s,%s)",row,column));
+                    Logger.info(String.format("Found a player in position: (%s,%s)",column,row));
                 }else {
                     bodyFileExceptions.add(new WrongFileFormatException("More than one @ in maze"));
                 }
             }
             if(isTreasure(charItem)){
                 if (!foundTreasure) {
-                    fileData.setTreasureLocation(new Point(row,column));
+                    fileData.setTreasureLocation(new Point(column,row));
                     foundTreasure = true;
-                    Logger.info(String.format("Found a treasure in position: (%s,%s)",row,column));
+                    Logger.info(String.format("Found a treasure in position: (%s,%s)",column,row));
                 }else {
                     bodyFileExceptions.add(new WrongFileFormatException("More than one $ in maze"));
                 }

@@ -1,17 +1,37 @@
 package maze.gameManager;
 
+import Utils.Enums;
+import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
+import maze.fileDataParse.FileParse;
+import maze.player.Player;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+@RunWith(MockitoJUnitRunner.class)
 public class GameManagerImplTest {
 
+    @Mock
+    Player player;
+    private String fileDir ="C:\\Maze\\src\\test\\resources\\simpleMazeFileTest.txt";
+    private String fileOutputDir ="./output.txt";
+
+
     @Test
-    void addBookmarkNonValidPointTest() {
+    public void addBookmarkNonValidPointTest() {
         //Arrange
         GameManagerImpl gameManager = new GameManagerImpl(new FileData());
         Point currentPoint = new Point(2,3);
@@ -36,7 +56,7 @@ public class GameManagerImplTest {
     }
 
     @Test
-    void addBookmarkNonValidSequenceTest() {
+    public void addBookmarkNonValidSequenceTest() {
         //Arrange
         GameManagerImpl gameManager = new GameManagerImpl(new FileData());
         Point currentPoint = new Point(2,3);
@@ -57,6 +77,98 @@ public class GameManagerImplTest {
                 Assert.assertEquals("The keys does not match", itemActual.getKey(), itemExpected.getKey());
                 Assert.assertNotEquals("The values does not match", itemActual.getValue(), itemExpected.getValue());
             }
+        }
+    }
+
+    @Test
+    public void startGameWinTest() throws IOException {
+        //Arrange
+        FileData fileData = new FileParse().parseFileData(fileDir);
+        OutputLog outputFile = new OutputLog(fileOutputDir);
+        GameManagerImpl gameManager = new GameManagerImpl(fileData);
+        gameManager.setPlayer(player);
+        Enums.DirectionsEnum direction = Enums.DirectionsEnum.RIGHT;
+        String directionExpectedSTR = "R";
+        String gameExpectedStatusSTR = "!";
+        Mockito.when(player.move()).thenReturn(direction);
+
+        //Act
+        gameManager.startGame();
+
+        //Assert
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
+            BufferedReader bufferedReader = new BufferedReader(reader)) {
+            Assert.assertEquals("The test did not move to " + direction,directionExpectedSTR,bufferedReader.readLine());
+            Assert.assertEquals("Game state is not correct",gameExpectedStatusSTR,bufferedReader.readLine());
+        }
+    }
+
+    @Test
+    public void startGameWallTest() throws IOException {
+        //Arrange
+        FileData fileData = new FileParse().parseFileData(fileDir);
+        OutputLog outputFile = new OutputLog(fileOutputDir);
+        GameManagerImpl gameManager = new GameManagerImpl(fileData);
+        gameManager.setPlayer(player);
+        Enums.DirectionsEnum direction = Enums.DirectionsEnum.UP;
+        String directionExpectedSTR = "U";
+        String gameExpectedStatusSTR = "X";
+        Mockito.when(player.move()).thenReturn(direction);
+
+        //Act
+        gameManager.startGame();
+
+        //Assert
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            Assert.assertEquals("The test did not move to " + direction,directionExpectedSTR,bufferedReader.readLine());
+            Assert.assertEquals("Game state is not correct",gameExpectedStatusSTR,bufferedReader.readLine());
+        }
+    }
+
+    @Test
+    public void startGameNoWinTest() throws IOException {
+        //Arrange
+        FileData fileData = new FileParse().parseFileData(fileDir);
+        OutputLog outputFile = new OutputLog(fileOutputDir);
+        GameManagerImpl gameManager = new GameManagerImpl(fileData);
+        gameManager.setPlayer(player);
+        Enums.DirectionsEnum direction = Enums.DirectionsEnum.LEFT;
+        String directionExpectedSTR = "L";
+        String gameExpectedStatusSTR = "X";
+        Mockito.when(player.move()).thenReturn(direction);
+
+        //Act
+        gameManager.startGame();
+
+        //Assert
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            Assert.assertEquals("The test did not move to " + direction,directionExpectedSTR,bufferedReader.readLine());
+            Assert.assertEquals("Game state is not correct",gameExpectedStatusSTR,bufferedReader.readLine());
+        }
+    }
+
+    @Test
+    public void startGameNoWinBookmarkTest() throws IOException {
+        //Arrange
+        FileData fileData = new FileParse().parseFileData(fileDir);
+        OutputLog outputFile = new OutputLog(fileOutputDir);
+        GameManagerImpl gameManager = new GameManagerImpl(fileData);
+        gameManager.setPlayer(player);
+        Enums.DirectionsEnum direction = Enums.DirectionsEnum.BOOKMARK;
+        String directionExpectedSTR = "B";
+        String gameExpectedStatusSTR = "X";
+        Mockito.when(player.move()).thenReturn(direction);
+
+        //Act
+        gameManager.startGame();
+
+        //Assert
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            Assert.assertEquals("The test did not move to " + direction,directionExpectedSTR,bufferedReader.readLine());
+            Assert.assertEquals("Game state is not correct",gameExpectedStatusSTR,bufferedReader.readLine());
         }
     }
 }
