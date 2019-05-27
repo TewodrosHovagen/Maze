@@ -1,5 +1,6 @@
 package maze.gameManager;
 
+import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import org.junit.Assert;
@@ -45,6 +46,7 @@ public class GameManagerValidParameterizedImplTest {
     public void isWallValid() {
         //Arrange
         Point currentPoint = new Point(xPosition,yPosition);
+        OutputLog outputFile = new OutputLog("./output.txt");
         FileData fileData = new FileParse().parseFileData(fileDir);
 
         //Act

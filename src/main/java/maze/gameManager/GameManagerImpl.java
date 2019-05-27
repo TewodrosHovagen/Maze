@@ -22,7 +22,7 @@ public class GameManagerImpl implements GameManager{
     private Point playerLocation;
     private Point treasureLocation;
     private FileData data;
-    private MazePlayer player;
+    private Player player;
 
     public GameManagerImpl(FileData data) {
         this.mazeWorld = data.getMazeWorld();
@@ -30,8 +30,9 @@ public class GameManagerImpl implements GameManager{
         treasureLocation = data.getTreasureLocation();
         this.data = data;
         player = new MazePlayer();
-        startGame();
     }
+
+
 
     protected GameManagerImpl() {
 
@@ -76,7 +77,7 @@ public class GameManagerImpl implements GameManager{
             }
             //TODO Tedy remove all sout to log file.
             playerLocation = currentLocation;
-            Logger.info(player.getMainDirection().toString());
+            //Logger.info(player.getMainDirection().toString());
             Logger.info(direction.toString());
             printMazeWorldAfterChange();
             Logger.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
@@ -184,7 +185,7 @@ public class GameManagerImpl implements GameManager{
                 break;
             case EAST:
                 newPosition = playerLocation.x + 1;
-                if (newPosition > data.getColumns()) {
+                if (newPosition >= data.getColumns()) {
                     newLocation = new Point(0, playerLocation.y);
                 }else {
                     newLocation = new Point(newPosition, playerLocation.y);
@@ -203,5 +204,9 @@ public class GameManagerImpl implements GameManager{
 
     protected void setPlayerLocation(Point playerLocation) {
         this.playerLocation = playerLocation;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

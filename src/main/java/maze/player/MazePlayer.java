@@ -61,23 +61,6 @@ public class MazePlayer extends Player {
         }};
     }
 
-
-    public boolean isHitWall() {
-        return isHitWall;
-    }
-
-    public void setHitWall(boolean hitWall) {
-        isHitWall = hitWall;
-    }
-
-    public Set<Integer> getBookMarks() {
-        return bookMarks;
-    }
-
-    public void setBookMarks(Set<Integer> bookMarks) {
-        this.bookMarks = bookMarks;
-    }
-
     public WalkingDirectionsEnum getLastStep() {
         return lastStep;
     }
