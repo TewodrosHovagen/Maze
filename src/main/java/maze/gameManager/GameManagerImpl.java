@@ -5,6 +5,7 @@ import Utils.logging.Logger;
 import maze.fileDataParse.FileData;
 import Utils.logging.OutputLog;
 import maze.player.MazePlayer;
+import maze.player.Player;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -157,7 +158,7 @@ public class GameManagerImpl implements GameManager{
     protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
-            case UP:
+            case DOWN:
                 int newPosition = playerLocation.y + 1;
                 if (newPosition >= data.getRows()) {
                     newLocation = new Point(playerLocation.x, 0);
@@ -165,7 +166,7 @@ public class GameManagerImpl implements GameManager{
                     newLocation = new Point(playerLocation.x, newPosition);
                 }
                 break;
-            case DOWN:
+            case UP:
                 newPosition = playerLocation.y - 1;
                 if (newPosition < 0) {
                     newLocation = new Point(playerLocation.x, data.getRows() - 1);

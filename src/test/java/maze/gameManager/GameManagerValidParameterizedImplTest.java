@@ -26,8 +26,8 @@ public class GameManagerValidParameterizedImplTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-                        {0, 0,true,false},
-                        {1, 0,true,false},
+//                        {0, 0,true,false},
+//                        {1, 0,true,false},
                         {2, 7,false,true},
                         {2, 6,false,false},
                         {1, 2,false,false}
@@ -46,7 +46,6 @@ public class GameManagerValidParameterizedImplTest {
     public void isWallValid() {
         //Arrange
         Point currentPoint = new Point(xPosition,yPosition);
-        OutputLog outputFile = new OutputLog("./output.txt");
         FileData fileData = new FileParse().parseFileData(fileDir);
 
         //Act

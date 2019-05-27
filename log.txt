@@ -1300,3 +1300,487 @@ Mon May 27 16:01:12 IDT 2019 INFO Parsing the line Cols = 10
 Mon May 27 16:01:12 IDT 2019 INFO The total number of columns is 10
 Mon May 27 16:01:12 IDT 2019 INFO Found a player in positionjava.awt.Point[x=1,y=2]
 Mon May 27 16:01:12 IDT 2019 INFO Found a treasure in positionjava.awt.Point[x=2,y=7]
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:49 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:49 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:49 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:49 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:49 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:49 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:49 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:49 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:49 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:05:50 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:05:50 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:05:50 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:05:50 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:05:50 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:05:50 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:05:50 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:05:50 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:05:50 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:07:54 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:07:54 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:07:54 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:07:54 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:07:54 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:07:54 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:07:54 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:07:54 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:07:54 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:08:57 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:08:58 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:08:58 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:08:58 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:08:58 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:08:58 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:08:58 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:08:58 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:08:58 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:08:58 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:08:58 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:08:58 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:08:58 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:08:58 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:08:58 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:08:58 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:08:58 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:08:58 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:08:58 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:08:58 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:08:58 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:08:58 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:08:58 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:08:58 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:08:58 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:08:58 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:08:58 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:08:58 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:08:58 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:08:58 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:08:58 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:08:58 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:08:58 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:08:58 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:08:58 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:08:58 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:08:58 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:08:58 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:08:58 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:08:58 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:08:58 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:08:58 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:08:58 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:08:58 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:08:58 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:08:58 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:08:58 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:08:58 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:08:58 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:09:20 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:09:20 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:09:20 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:09:20 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:09:20 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:09:20 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:09:20 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:09:20 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:09:20 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:09:20 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:09:20 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:09:20 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:09:20 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:09:20 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:09:20 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:09:20 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:09:20 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:09:20 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:09:20 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:09:20 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:09:20 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:09:20 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:09:20 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:09:20 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:09:20 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:09:20 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:09:20 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:09:20 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:09:20 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:09:20 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:09:20 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:09:20 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:09:20 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:09:20 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:09:20 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:09:20 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:09:20 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:09:20 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:09:20 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:09:20 IDT 2019 INFO Found a treasure in position: (2,7)
+Mon May 27 16:09:20 IDT 2019 INFO Reading the maze.txt file
+Mon May 27 16:09:20 IDT 2019 INFO Paring the first 4 lines
+Mon May 27 16:09:20 IDT 2019 INFO Maze name is Nice simple maze
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line MaxSteps = 10
+Mon May 27 16:09:20 IDT 2019 INFO Maze Max Step for user in the game is is 10
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Rows = 4
+Mon May 27 16:09:20 IDT 2019 INFO The total number of rows is 4
+Mon May 27 16:09:20 IDT 2019 INFO Parsing the line Cols = 10
+Mon May 27 16:09:20 IDT 2019 INFO The total number of columns is 10
+Mon May 27 16:09:20 IDT 2019 INFO Found a player in position: (1,2)
+Mon May 27 16:09:20 IDT 2019 INFO Found a treasure in position: (2,7)
