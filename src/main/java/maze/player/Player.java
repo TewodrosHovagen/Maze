@@ -2,7 +2,7 @@ package maze.player;
 
 import java.util.Set;
 
-public abstract class Player implements PlayerAction {
+public abstract class Player implements PlayerInterface {
 
     protected boolean isHitWall;
     protected Set<Integer> bookMarks;
