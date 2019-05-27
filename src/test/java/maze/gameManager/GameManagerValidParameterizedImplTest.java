@@ -14,33 +14,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RunWith(Parameterized.class)
-public class GameManagerValidImplTest {
+public class GameManagerValidParameterizedImplTest {
 
-    private enum TestSignature {
-        WALL,TREASURE,MOVE
-    }
+
+    private int xPosition,yPosition;
+    private String fileDir = "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt";
+    private boolean expectedResultIsWall, expectedResultIsTreasure;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-                        {0, 0,true,false,"C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"},
-                        {1, 0,true,false,"C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"},
-                        {2, 7,false,true,"C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"},
-                        {2, 6,false,false,"C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"},
-                        {1, 2,false,false,"C:\\Maze\\src\\test\\resources\\mazeFileTest.txt"}
+                        {0, 0,true,false},
+                        {1, 0,true,false},
+                        {2, 7,false,true},
+                        {2, 6,false,false},
+                        {1, 2,false,false}
                 }
         );
     }
 
-    private int xPosition,yPosition;
-    private String fileDir;
-    private boolean expectedResultIsWall, expectedResultIsTreasure;
-
-    public GameManagerValidImplTest(int xPosition, int yPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure, String fileDir) {
+    public GameManagerValidParameterizedImplTest(int xPosition, int yPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.fileDir = fileDir;
         this.expectedResultIsTreasure=expectedResultIsTreasure;
         this.expectedResultIsWall = expectedResultIsWall;
     }

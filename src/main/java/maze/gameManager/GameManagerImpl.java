@@ -79,10 +79,10 @@ public class GameManagerImpl implements GameManager{
             System.out.println(direction);
             printMazeWorldAfterChange();
             log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
-            OutputLog.writeToOutput("X");
         }
         if (timesToPlay == data.getMaxSteps()) {
             System.out.println(String.format("Failed to solve maze in %s steps", timesToPlay));
+            OutputLog.writeToOutput("X");
         }
     }
 
@@ -153,41 +153,54 @@ public class GameManagerImpl implements GameManager{
         return bookmarkSequence.get(currentLocation);
     }
 
-    private Point movePlayerLocation(DirectionsEnum directionsEnum) {
+    protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
-            case NORTH:
-                int newPosition = playerLocation.y + 1;
-                if (newPosition >= data.getColumns())
-                    newLocation = new Point(playerLocation.x,0);
-                else
-                    newLocation = new Point(playerLocation.x,newPosition);
-                break;
             case SOUTH:
-                newPosition = playerLocation.y - 1;
-                if (newPosition < 0)
-                    newLocation = new Point(playerLocation.x,data.getColumns()-1);
-                else
+                int newPosition = playerLocation.y + 1;
+                if (newPosition >= data.getRows()) {
+                    newLocation = new Point(playerLocation.x, 0);
+                }else {
                     newLocation = new Point(playerLocation.x, newPosition);
+                }
+                break;
+            case NORTH:
+                newPosition = playerLocation.y - 1;
+                if (newPosition < 0) {
+                    newLocation = new Point(playerLocation.x, data.getRows() - 1);
+                }else {
+                    newLocation = new Point(playerLocation.x, newPosition);
+                }
                 break;
             case WEST:
                 newPosition = playerLocation.x- 1;
-                if (newPosition < 0)
-                    newLocation = new Point(data.getRows()-1, playerLocation.y);
-                else
+                if (newPosition < 0) {
+                    newLocation = new Point(data.getColumns() - 1, playerLocation.y);
+                }
+                else {
                     newLocation = new Point(newPosition, playerLocation.y);
+                }
                 break;
             case EAST:
                 newPosition = playerLocation.x + 1;
-                if (newPosition >=data.getRows())
+                if (newPosition > data.getColumns()) {
                     newLocation = new Point(0, playerLocation.y);
-                else
+                }else {
                     newLocation = new Point(newPosition, playerLocation.y);
+                }
                 break;
             case BOOKMARK:
-//                newLocation = new Point(playerLocation.x, playerLocation.y);
+                newLocation = new Point(playerLocation.x, playerLocation.y);
                 break;
         }
         return newLocation;
+    }
+
+    protected void setData(FileData data) {
+        this.data = data;
+    }
+
+    protected void setPlayerLocation(Point playerLocation) {
+        this.playerLocation = playerLocation;
     }
 }

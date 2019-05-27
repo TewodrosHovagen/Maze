@@ -4,8 +4,6 @@ public class Enums {
 
     public enum DirectionsEnum {
         NORTH, EAST, SOUTH, WEST, BOOKMARK
-
-
     }
 
     public enum WalkingDirectionsEnum {
