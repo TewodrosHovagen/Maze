@@ -20,8 +20,10 @@ public class Application {
     public static void startApplication(String[] arguments){
         Logger log = new Logger();
         boolean runThePlayer = true;
+        boolean createAnOutputFile = false;
+
         FileParse fileParse = new FileParse();
-        FileData dataFile;
+        FileData dataFile = null;
         String[] args = new String[2];
         args[0] = "./src/main/resources/maze_file.txt";
         args[1] = "./output.txt";
@@ -35,8 +37,8 @@ public class Application {
         String mazeFilePath = args[0];
         String outputFilePath = args[1];
 
-        if(checkExistenceOfFilePath(outputFilePath)){
-            OutputLog outputFile = new OutputLog(outputFilePath);
+        if(checkExistenceOfFilePath(outputFilePath) && !checkExistenceOfFile(outputFilePath)){
+            createAnOutputFile = true;
         }
         else{
             System.out.println(String.format("Command line argument for output file: %s points to a bad path or to a file that already exists", outputFilePath ));
@@ -48,15 +50,12 @@ public class Application {
         }
         else{
             System.out.println(String.format("Command line argument for maze: %s doesn't lead to a maze file", mazeFilePath ));
-            dataFile = fileParse.parseFileData("");
             runThePlayer = false;
         }
 
-        Logger.info(dataFile.toString());
-//        dataFile.printMazeWorld();
-
-        if(runThePlayer) {
-             Logger.info("START THE GAME!!!");
+        if(runThePlayer && createAnOutputFile) {
+            Logger.info("START THE GAME!!!");
+            OutputLog outputFile = new OutputLog(outputFilePath);
             GameManager game = new GameManagerImpl(dataFile);
         }
         else
