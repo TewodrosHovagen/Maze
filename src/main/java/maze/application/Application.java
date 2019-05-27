@@ -12,21 +12,25 @@ import java.nio.file.Paths;
 
 public class Application {
 
+    private static boolean createAnOutputFile = false;
 
+    public static boolean isCreateAnOutputFile() {
+        return createAnOutputFile;
+    }
     public static void main(String[] args) {
         startApplication(args);
     }
 
-    public static void startApplication(String[] arguments){
+    public static void startApplication(String[] args){
         Logger log = new Logger();
         boolean runThePlayer = true;
-        boolean createAnOutputFile = false;
 
         FileParse fileParse = new FileParse();
         FileData dataFile = null;
-        String[] args = new String[2];
-        args[0] = "./src/main/resources/maze_file.txt";
-        args[1] = "./output.txt";
+        //TODO: Shoshi to remove when tested perfect
+//        String[] args = new String[2];
+//        args[0] = "./src/main/resources/maze_file.txt";
+//        args[1] = "./output.txt";
 
         if (args.length != 2){
             System.out.println(String.format("Missing maze file or output file argument in command line" ));
@@ -39,6 +43,8 @@ public class Application {
 
         if(checkExistenceOfFilePath(outputFilePath) && !checkExistenceOfFile(outputFilePath)){
             createAnOutputFile = true;
+            System.out.println("createAnOutputFile:"+ createAnOutputFile);
+
         }
         else{
             System.out.println(String.format("Command line argument for output file: %s points to a bad path or to a file that already exists", outputFilePath ));

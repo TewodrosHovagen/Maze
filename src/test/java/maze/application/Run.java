@@ -4,6 +4,6 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty"} , features = "src\\test\\java\\maze\\application\\" , glue="maze.application")
+@CucumberOptions(plugin = {"pretty"} , features = "./" )
 public class Run {
 }
