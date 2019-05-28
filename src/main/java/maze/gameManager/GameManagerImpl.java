@@ -11,6 +11,10 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static maze.fileDataParse.FileParse.PLAYER;
+import static maze.fileDataParse.FileParse.SPACE;
+import static maze.fileDataParse.FileParse.WALL;
+
 
 public class GameManagerImpl implements GameManager{
 
@@ -21,6 +25,7 @@ public class GameManagerImpl implements GameManager{
     private final String NOT_FOUND = "X";
     private Point playerLocation;
     private Point treasureLocation;
+    private Point playerPreviousLocation;
     private FileData data;
     private Player player;
 
@@ -72,9 +77,10 @@ public class GameManagerImpl implements GameManager{
                 }
             }
             //TODO Tedy remove all sout to log file.
+            //playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
             Logger.info(direction.toString());
-            printMazeWorldAfterChange();
+            //printMazeWorldAfterChange();
             Logger.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
         }
         if (timesToPlay == data.getMaxSteps()) {
@@ -96,7 +102,7 @@ public class GameManagerImpl implements GameManager{
     @Override
     public boolean isWall(Point point) {
     //TODO choose wich one is the correct shoshi.
-        return mazeWorld[(int) point.getY()][(int) point.getX()].equals("#");
+        return mazeWorld[(int) point.getY()][(int) point.getX()].equals(WALL+"");
 //        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
     }
 
@@ -121,18 +127,11 @@ public class GameManagerImpl implements GameManager{
     }
 
     public void printMazeWorldAfterChange() {
-
-        for (int i = 0; i < mazeWorld.length * mazeWorld[0].length; i++) {
-            for (int j = 0; j < mazeWorld[0].length; j++) {
-                if (mazeWorld[i][j].equals("@")) {
-                    mazeWorld[i][j] = " ";
-                    mazeWorld[playerLocation.x][playerLocation.y] = "@";
-                    //TODO Tedy fix printMaze after change.
-//                    data.printMazeWorld();
-                    return;
-                }
-            }
-        }
+        if(mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()].equals(PLAYER+""))
+            mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()] =SPACE+"";
+        mazeWorld[(int)playerLocation.getY()][(int)playerLocation.getX()] =PLAYER+"";
+        data.printMazeWorld();
+        System.out.println("**************************************");
     }
     private boolean isBookmarkLocation(Point currentLocation) {
         return bookmarkSequence.containsKey(currentLocation);

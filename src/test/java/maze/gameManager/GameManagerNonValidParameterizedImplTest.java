@@ -16,7 +16,7 @@ import java.util.Collection;
 public class GameManagerNonValidParameterizedImplTest {
 
     private int rowPosition, colPosition;
-    private String fileDir = "C:\\Maze\\src\\test\\resources\\mazeFileTest.txt";
+    private String fileDir = "./src/test/resources/mazeFileTest.txt";
     private boolean expectedResultIsWall, expectedResultIsTreasure;
 
     @Parameterized.Parameters

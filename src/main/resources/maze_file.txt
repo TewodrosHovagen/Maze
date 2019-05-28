@@ -1,5 +1,5 @@
 Nice simple maze
-MaxSteps = 10
+MaxSteps = 30
 Rows = 4
 Cols = 10
 #####      

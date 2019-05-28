@@ -26,7 +26,7 @@ public class GameManagerImplTest {
 
     @Mock
     Player player;
-    private String fileDir ="C:\\Maze\\src\\test\\resources\\simpleMazeFileTest.txt";
+    private String fileDir ="./src/test/resources/simpleMazeFileTest.txt";
     private String fileOutputDir ="./output.txt";
 
 

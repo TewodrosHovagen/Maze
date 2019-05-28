@@ -17,10 +17,10 @@ public class FileParse {
     private static final String MAX_STEPS_FORMAT ="MaxSteps";
     private static final String COLUMNS_FORMAT ="Cols";
     private static final String ROWS_FORMAT ="Rows";
-    private static final char PLAYER ='@';
-    private static final char WALL = '#';
-    private static final char TREASURE ='$';
-    private static final char SPACE =' ';
+    public static final char PLAYER ='@';
+    public static final char WALL = '#';
+    public static final char TREASURE ='$';
+    public static final char SPACE =' ';
     private boolean foundPlayer = false;
     private boolean foundTreasure = false;
 
@@ -30,14 +30,13 @@ public class FileParse {
 
 
     /**
-     * The method generate parse the file.
-     * @param fileLocation
-     * @return
+     * The method parse the file from a given location and generate a FileData object.
+     * @param fileLocation - location for the maze data
+     * @return - FileData object with all the maze data
      */
     public FileData parseFileData (String fileLocation){
-            Logger.info("Reading the maze.txt file");
+            Logger.info("Reading the maze.txt file in location "+fileLocation);
             FileData fileData;
-//            String fileLocation;
 
             try(// create a Buffered Reader object instance with a FileReader
                 BufferedReader br = new BufferedReader(new FileReader(fileLocation))) {
@@ -106,7 +105,14 @@ public class FileParse {
         return fileData;
     }
 
-
+    /**
+     * The method add character to the board
+     * @param charItem
+     * @param row
+     * @param column
+     * @param fileData
+     * @param mazeWorld
+     */
     private void addCharacterToBoard (char charItem, int row, int column, FileData fileData,String [][] mazeWorld ) {
         if(isValidChar(charItem)) {
             if(isPlayer(charItem)){
@@ -201,7 +207,7 @@ public class FileParse {
                 int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setMaxSteps(rowValue);
                 Logger.info("Maze Max Step for user in the game is is " + rowValue);
-            } catch (NumberParseException e) {
+            } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
             }
 
@@ -215,7 +221,7 @@ public class FileParse {
                 int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setRows(totalRows);
                 Logger.info("The total number of rows is " + totalRows);
-            } catch (NumberParseException e) {
+            } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
             }
 
@@ -230,7 +236,7 @@ public class FileParse {
                 fileData.setColumns(totalColumns);
                 Logger.info("The total number of columns is " + totalColumns);
 
-            } catch (NumberParseException e) {
+            } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
             }
         } catch(ArrayIndexOutOfBoundsException e)   {
