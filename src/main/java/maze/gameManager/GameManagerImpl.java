@@ -17,7 +17,8 @@ import static maze.fileDataParse.FileParse.WALL;
 
 
 public class GameManagerImpl implements GameManager{
-
+    
+    private final Logger log = Logger.getInstance();
     private String[][] mazeWorld;
     protected Map<Point, Integer> bookmarkSequence = new HashMap<>();
     private int bookmarkCounter = 0;
@@ -44,20 +45,20 @@ public class GameManagerImpl implements GameManager{
         DirectionsEnum direction;
         Point currentLocation = playerLocation;
         int timesToPlay;
-        Logger.info("**************** START THE MAZE ****************");
+        log.info("**************** START THE MAZE ****************");
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
-            Logger.info("Step No: " + timesToPlay);
+            log.info("Step No: " + timesToPlay);
             direction = player.move();
             outputFile.writeToOutput(direction.name().charAt(0)+"");
-            Logger.info("Player position before move"+ currentLocation.getLocation());
-            Logger.info("Go Direction: " + direction);
+            log.info("Player position before move"+ currentLocation.getLocation());
+            log.info("Go Direction: " + direction);
             currentLocation = move(direction);
-            Logger.info("Player position after move "+ currentLocation.getLocation());
+            log.info("Player position after move "+ currentLocation.getLocation());
             if (direction == DirectionsEnum.BOOKMARK) {
                 addBookmark(currentLocation, bookmarkCounter++);
             } else {
                 if (isTreasure(currentLocation)) {
-                    Logger.info(String.format("Succeeded in %s steps", timesToPlay + 1));
+                    log.info(String.format("Succeeded in %s steps", timesToPlay + 1));
                     outputFile.writeToOutput(FOUND);
                     break;
                 } else {
@@ -65,9 +66,9 @@ public class GameManagerImpl implements GameManager{
                         //TODO Tedy remove all sout to log file.
                         player.hitWall();
                         playerLocation = currentLocation;
-                        Logger.info("hit : "+currentLocation);
+                        log.info("hit : "+currentLocation);
                         currentLocation = getBackMove(direction);
-                        Logger.info("current : "+currentLocation);
+                        log.info("current : "+currentLocation);
                     } else {
                         player.setHitWall(false);
                     }
@@ -79,19 +80,23 @@ public class GameManagerImpl implements GameManager{
             //TODO Tedy remove all sout to log file.
             //playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
-            Logger.info(direction.toString());
+            log.info(direction.toString());
             //printMazeWorldAfterChange();
-            Logger.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
+            log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
         }
         if (timesToPlay == data.getMaxSteps()) {
-            Logger.info(String.format("Failed to solve maze in %s steps", timesToPlay));
+            log.info(String.format("Failed to solve maze in %s steps", timesToPlay));
             outputFile.writeToOutput(NOT_FOUND);
         }
     }
 
     @Override
     public void addBookmark(Point currentPoint, int currentSequence) {
+        if(bookmarkSequence.get(currentPoint) != null){
+            player.removeBookamrk(bookmarkSequence.get(currentPoint));
+        }
         bookmarkSequence.put(currentPoint, currentSequence);
+        player.addBookamrk(currentSequence);
     }
 
     @Override

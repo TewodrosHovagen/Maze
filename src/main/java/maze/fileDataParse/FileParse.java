@@ -12,6 +12,7 @@ import java.util.List;
 
 public class FileParse {
 
+    private final Logger log = Logger.getInstance();
     private static final int VALUE_LOCATION =1;
     private static final int ITEM_NAME_LOCATION =0;
     private static final String MAX_STEPS_FORMAT ="MaxSteps";
@@ -35,7 +36,7 @@ public class FileParse {
      * @return - FileData object with all the maze data
      */
     public FileData parseFileData (String fileLocation){
-            Logger.info("Reading the maze.txt file in location "+fileLocation);
+            log.info("Reading the maze.txt file in location "+fileLocation);
             FileData fileData;
 
             try(// create a Buffered Reader object instance with a FileReader
@@ -94,7 +95,7 @@ public class FileParse {
                     fileData.setMazeWorld(mazeWorld);
                 }
             } catch (IOException e) {
-                Logger.info("There was a problem with the file " + e);
+                log.info("There was a problem with the file " + e);
                 System.out.println(String.format("Command line argument for maze: %s leads to a file that cannot be opened", fileLocation ));
                 throw new WrongFileFormatException(e.getMessage());
             }
@@ -119,7 +120,7 @@ public class FileParse {
                 if (!foundPlayer) {
                     fileData.setPlayerLocation(new Point(column,row));
                     foundPlayer = true;
-                    Logger.info(String.format("Found a player in position: (%s,%s)",column,row));
+                    log.info(String.format("Found a player in position: (%s,%s)",column,row));
                 }else {
                     bodyFileExceptions.add(new WrongFileFormatException("More than one @ in maze"));
                 }
@@ -128,7 +129,7 @@ public class FileParse {
                 if (!foundTreasure) {
                     fileData.setTreasureLocation(new Point(column,row));
                     foundTreasure = true;
-                    Logger.info(String.format("Found a treasure in position: (%s,%s)",column,row));
+                    log.info(String.format("Found a treasure in position: (%s,%s)",column,row));
                 }else {
                     bodyFileExceptions.add(new WrongFileFormatException("More than one $ in maze"));
                 }
@@ -190,12 +191,12 @@ public class FileParse {
     private FileData parseFirstLines (BufferedReader br) throws IOException {
         FileData fileData = new FileData();
         try {
-            Logger.info("Paring the first 4 lines");
+            log.info("Paring the first 4 lines");
             String[] pairValues;
             //Get the maze Name
             String fileReader = br.readLine();
             fileData.setMazeName(fileReader);
-            Logger.info("Maze name is " + fileReader);
+            log.info("Maze name is " + fileReader);
 
             //Get the Max steps
             fileReader = br.readLine();
@@ -206,7 +207,7 @@ public class FileParse {
             try {
                 int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setMaxSteps(rowValue);
-                Logger.info("Maze Max Step for user in the game is is " + rowValue);
+                log.info("Maze Max Step for user in the game is is " + rowValue);
             } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
             }
@@ -220,7 +221,7 @@ public class FileParse {
             try {
                 int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setRows(totalRows);
-                Logger.info("The total number of rows is " + totalRows);
+                log.info("The total number of rows is " + totalRows);
             } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
             }
@@ -234,7 +235,7 @@ public class FileParse {
             try {
                 int totalColumns = Integer.parseInt(pairValues[VALUE_LOCATION]);
                 fileData.setColumns(totalColumns);
-                Logger.info("The total number of columns is " + totalColumns);
+                log.info("The total number of columns is " + totalColumns);
 
             } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
@@ -251,7 +252,7 @@ public class FileParse {
     }
 
     private String[] getStringValue(String strToParse) throws IOException{
-        Logger.info("Parsing the line " + strToParse);
+        log.info("Parsing the line " + strToParse);
         String[] strValues;
         try{
             strValues = strToParse.split("=");

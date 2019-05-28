@@ -1,11 +1,13 @@
 package maze.fileDataParse;
+import Utils.logging.Logger;
+
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Set;
 
 public class FileData {
 
-//    private static final OutputLog log = OutputLog.getLogger(FileData.class.getName());
+    private final Logger log = Logger.getInstance();
     private String mazeName;
     private int maxSteps;
     private int columns;

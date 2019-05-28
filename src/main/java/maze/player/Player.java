@@ -6,19 +6,25 @@ import java.util.Set;
 
 public abstract class Player implements PlayerInterface {
 
+    private final Logger log = Logger.getInstance();
     protected boolean isHitWall;
     protected Set<Integer> bookMarks;
 
     @Override
     public void hitWall() {
-        Logger.info("You hit the wall");
+        log.info("You hit the wall");
         isHitWall = true;
     }
 
 
     @Override
     public void hitBookmark(int seq) {
+    }
+    public void addBookamrk(int seq) {
         bookMarks.add(seq);
+    }
+    public void removeBookamrk(int seq) {
+        bookMarks.remove(seq);
     }
     public void setHitWall(boolean hitWall) {
         isHitWall = hitWall;

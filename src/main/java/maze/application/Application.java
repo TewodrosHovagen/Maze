@@ -7,13 +7,13 @@ import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerImpl;
 
-import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Application {
 
+    private static final Logger log = Logger.getInstance();
     private boolean createAnOutputFile = false;
     private boolean isInputFileExist = false;
     private boolean runThePlayer = true;
@@ -33,30 +33,24 @@ public class Application {
     public static void main(String[] args) {
         Application app = new Application();
         app.startApplication(args);
+        closeLogger();
     }
 
-    public void startApplication(String[] args){
-        Logger log = new Logger();
 
-//        FileData dataFile = null;
-        //TODO: Shoshi to remove when tested perfect
-//        String[] args = new String[2];
-//        args[0] = "./src/main/resources/maze_file.txt";
-//        args[1] = "./output.txt";
-
+    public void startApplication(String[] args) {
         argumentsValidationBeforeStartApplication(args);
 
-        if(runThePlayer && createAnOutputFile) {
-            Logger.info("START THE GAME!!!");
-            try(OutputLog outputFile = new OutputLog(outputFilePath)){
+        if (runThePlayer && createAnOutputFile) {
+            log.info("START THE GAME!!!");
+            try (OutputLog outputFile = new OutputLog(outputFilePath)) {
                 GameManager game = new GameManagerImpl(dataFile);
                 game.startGame(outputFile);
-            }  catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Problem while writing to output file: " + e);
             }
-        }
-        else
-            Logger.info("GAME WILL NOT START!!!");
+        } else
+            log.info("GAME WILL NOT START!!!");
+
     }
 
     private void argumentsValidationBeforeStartApplication(String[] args) {
@@ -122,5 +116,12 @@ public class Application {
         Path path = Paths.get(pathWithFileName);
         Path absPath = path.toAbsolutePath();
         return Files.exists(absPath);
+    }
+    private static void closeLogger() {
+        try {
+            log.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

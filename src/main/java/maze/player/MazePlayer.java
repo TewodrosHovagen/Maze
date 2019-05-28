@@ -2,11 +2,11 @@ package maze.player;
 
 import Utils.Enums.DirectionsEnum;
 import Utils.Enums.WalkingDirectionsEnum;
+import Utils.logging.Logger;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import static Utils.Enums.DirectionsEnum.*;
 import static Utils.Enums.WalkingDirectionsEnum.*;
@@ -15,7 +15,7 @@ import static Utils.Enums.WalkingDirectionsEnum.RIGHT;
 
 public class MazePlayer extends Player {
 
-
+    private final Logger log = Logger.getInstance();
     private WalkingDirectionsEnum lastStep;
     private DirectionsEnum mainDirection;
     final private Map<WalkingDirectionsEnum, DirectionsEnum> northMap;

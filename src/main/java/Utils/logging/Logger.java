@@ -1,44 +1,61 @@
 package Utils.logging;
 
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Date;
 
-public class Logger {
-    private static String logPath= "./log.txt";
+public class Logger implements AutoCloseable {
+    private static Logger logger_instance = null;
+    private final String logPath= "./log.txt";
+    private FileOutputStream fileOutput;
+    private OutputStreamWriter writer;
 
-    public Logger(){
-        writeToLogFile("",false);
+    private Logger()  {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(logPath);
+             OutputStreamWriter streamWriter = new OutputStreamWriter(fileOutputStream) ;
+            fileOutput = fileOutputStream;
+            writer = streamWriter;
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+    public static Logger getInstance()
+    {
+        if (logger_instance == null)
+            logger_instance = new Logger();
+
+        return logger_instance;
     }
 
-    public static void debug(String logRecord){
-        writeToLogFile(String.format("%s DEBUG %s%n", new Date(), logRecord));
+    public void debug(String logRecord){
+        writeLog(String.format("%s DEBUG %s%n", new Date(), logRecord));
+    }
+    public void error(String logRecord){
+        writeLog(String.format("%s ERROR %s%n", new Date(), logRecord));
+    }
+    public void info(String logRecord){
+        writeLog(String.format("%s INFO %s%n", new Date(), logRecord));
     }
 
-    public static void error(String logRecord){
-        writeToLogFile(String.format("%s ERROR %s%n", new Date(), logRecord));
+
+
+    private  void writeLog(String logRecord) {
+        try {
+            writer.write(logRecord);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void info(String logRecord){
-        writeToLogFile(String.format("%s INFO %s%n", new Date(), logRecord));
-    }
 
-    private static void writeToLogFile(String logRecord) {
-        writeLog(logRecord,true);
+    @Override
+    public void close() throws Exception {
+        writer.close();
+        fileOutput.close();
     }
-
-    private static void writeToLogFile(String logRecord, boolean append) {
-        writeLog(logRecord, append);
-    }
-
-    private static void writeLog(String logRecord, boolean append) {
-            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(logPath, append))) {
-                writer.write(logRecord);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-    }
-
 }
