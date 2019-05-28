@@ -8,26 +8,21 @@ import java.util.Date;
 
 public class Logger {
     private static String logPath= "./log.txt";
-//    private static boolean printToScreen = false;
 
     public Logger(){
         writeToLogFile("",false);
-
     }
-//    public Logger(boolean printToScreen){
-//        this.printToScreen = true;
-//    }
 
     public static void debug(String logRecord){
-        writeToLogFile(String.format("%s DEBUG %s", new Date(), logRecord));
+        writeToLogFile(String.format("%s DEBUG %s%n", new Date(), logRecord));
     }
 
     public static void error(String logRecord){
-        writeToLogFile(String.format("%s ERROR %s", new Date(), logRecord));
+        writeToLogFile(String.format("%s ERROR %s%n", new Date(), logRecord));
     }
 
     public static void info(String logRecord){
-        writeToLogFile(String.format("%s INFO %s", new Date(), logRecord));
+        writeToLogFile(String.format("%s INFO %s%n", new Date(), logRecord));
     }
 
     private static void writeToLogFile(String logRecord) {
@@ -39,17 +34,11 @@ public class Logger {
     }
 
     private static void writeLog(String logRecord, boolean append) {
-//        if (!printToScreen){
             try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(logPath, append))) {
-                writer.write(logRecord + '\n');
+                writer.write(logRecord);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//        }
-//        else{
-//            System.out.println(logRecord);
-//        }
-
     }
 
 }
