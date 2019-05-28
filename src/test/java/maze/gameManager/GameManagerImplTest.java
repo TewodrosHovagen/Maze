@@ -93,7 +93,7 @@ public class GameManagerImplTest {
         Mockito.when(player.move()).thenReturn(direction);
 
         //Act
-        gameManager.startGame();
+        gameManager.startGame(outputFile);
 
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -116,7 +116,7 @@ public class GameManagerImplTest {
         Mockito.when(player.move()).thenReturn(direction);
 
         //Act
-        gameManager.startGame();
+        gameManager.startGame(outputFile);
 
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -139,7 +139,7 @@ public class GameManagerImplTest {
         Mockito.when(player.move()).thenReturn(direction);
 
         //Act
-        gameManager.startGame();
+        gameManager.startGame(outputFile);
 
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -162,7 +162,7 @@ public class GameManagerImplTest {
         Mockito.when(player.move()).thenReturn(direction);
 
         //Act
-        gameManager.startGame();
+        gameManager.startGame(outputFile);
 
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
