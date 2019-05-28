@@ -40,7 +40,7 @@ public class GameManagerImpl implements GameManager{
     protected GameManagerImpl() {   }
 
     @Override
-    public void startGame() {
+    public void startGame(OutputLog outputFile) {
         DirectionsEnum direction;
         Point currentLocation = playerLocation;
         int timesToPlay;
@@ -48,7 +48,7 @@ public class GameManagerImpl implements GameManager{
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
             Logger.info("Step No: " + timesToPlay);
             direction = player.move();
-            OutputLog.writeToOutput(direction.name().charAt(0)+"");
+            outputFile.writeToOutput(direction.name().charAt(0)+"");
             Logger.info("Player position before move"+ currentLocation.getLocation());
             Logger.info("Go Direction: " + direction);
             currentLocation = move(direction);
@@ -58,7 +58,7 @@ public class GameManagerImpl implements GameManager{
             } else {
                 if (isTreasure(currentLocation)) {
                     Logger.info(String.format("Succeeded in %s steps", timesToPlay + 1));
-                    OutputLog.writeToOutput(FOUND);
+                    outputFile.writeToOutput(FOUND);
                     break;
                 } else {
                     if (isWall(currentLocation)) {
@@ -85,7 +85,7 @@ public class GameManagerImpl implements GameManager{
         }
         if (timesToPlay == data.getMaxSteps()) {
             Logger.info(String.format("Failed to solve maze in %s steps", timesToPlay));
-            OutputLog.writeToOutput(NOT_FOUND);
+            outputFile.writeToOutput(NOT_FOUND);
         }
     }
 

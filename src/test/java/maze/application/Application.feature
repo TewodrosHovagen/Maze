@@ -40,7 +40,7 @@ Feature: Application main
     Given init the application
     When start app with one missing path <input_file>
     Then isRunThePlayer flag is false
-    And isInputFileExist flag is false
+    And isInputFileExist flag is true
     And createAnOutputFile flag is false
     Examples:
       |input_file|
@@ -56,3 +56,10 @@ Feature: Application main
     Examples:
       |output_file|
       |"./src/test/java/maze/application/output1.txt"|
+
+  Scenario: input file and output file - missing path
+    Given init the application
+    When start app with two missing paths
+    Then isRunThePlayer flag is false
+    And isInputFileExist flag is false
+    And createAnOutputFile flag is false

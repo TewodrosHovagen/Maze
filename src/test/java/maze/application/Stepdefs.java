@@ -35,6 +35,11 @@ public class Stepdefs {
         String[] args = {file_path};
         app.startApplication(args);
     }
+    @When("start app with two missing paths")
+    public void start_app_with_missing_paths(){
+        String[] args = new String[0];
+        app.startApplication(args);
+    }
 
     @Then("{word} flag is {word}")
     public void checkAppFlagsState(String flag, String condition){

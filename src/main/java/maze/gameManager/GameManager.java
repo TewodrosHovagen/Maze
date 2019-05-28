@@ -1,14 +1,16 @@
 package maze.gameManager;
 
 import Utils.Enums.*;
+import Utils.logging.OutputLog;
 
 import java.awt.*;
 
 public interface GameManager {
     /**
      * Start the game
+     * @param outputFile - outputFile
      */
-    public void startGame();
+    public void startGame(OutputLog outputFile);
 
     /**
      * Add bookmark to bookmark map

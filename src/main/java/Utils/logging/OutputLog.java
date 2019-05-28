@@ -1,41 +1,31 @@
 package Utils.logging;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.util.logging.Logger;
 
-public class OutputLog {
-    private static String logPath;
+public class OutputLog implements AutoCloseable{
+    private String logPath;
+    private FileOutputStream fileOutput;
+    private OutputStreamWriter writer;
 
-    public OutputLog(String path){
+    public OutputLog(String path) throws FileNotFoundException {
         logPath = path;
-        File file = new File(logPath);
-        writeToOutput("",false);
+        fileOutput = new FileOutputStream(logPath);
+        writer = new OutputStreamWriter(fileOutput);
     }
 
-    public static void writeToOutput(String logRecord){
-        writeToOutput(String.format("%s%n", logRecord),true);
-    }
-
-    private static void writeToOutput(String logRecord, boolean append) {
-    try{
-        writeLog(logRecord, append);
-    } catch (IOException e) {
-        e.printStackTrace();
-        }
-    }
-
-    private static void writeLog(String logRecord, boolean append) throws IOException {
-        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(logPath, append))) {
-            writer.write(logRecord);
+    public void writeToOutput(String logRecord){
+        try {
+            writer.write(String.format("%s%n", logRecord));
         } catch (IOException e) {
-            throw e;
+            e.printStackTrace();
         }
     }
 
-
-
+    @Override
+    public void close() throws Exception {
+        writer.close();
+        fileOutput.close();
+    }
 }
