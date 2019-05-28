@@ -61,7 +61,7 @@ public class FileParseTest {
                 + "incorrectSpacesInParamters.txt");
         Assert.assertNull(fileData);
     }
-    @Test(expected = NumberFormatException.class)
+    @Test(expected = WrongFileFormatException.class)
     public void fileToParseFirstLinesIncorrectNumberTest(){
         FileData fileData = fileParse.parseFileData(pathTofileDataParseResources
                 + "incorrectParamterNumber.txt");
