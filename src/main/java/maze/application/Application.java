@@ -16,6 +16,10 @@ public class Application {
     private boolean isInputFileExist = false;
     private boolean runThePlayer = true;
 
+    public static void main(String[] args) {
+        Application app = new Application();
+        app.startApplication(args);
+    }
 
     public boolean isCreateAnOutputFile() {
         return createAnOutputFile;
@@ -25,11 +29,6 @@ public class Application {
     }
     public boolean isRunThePlayer() {
         return runThePlayer;
-    }
-
-    public static void main(String[] args) {
-        Application app = new Application();
-        app.startApplication(args);
     }
 
     public void startApplication(String[] args){
@@ -76,26 +75,17 @@ public class Application {
         }
         else
             Logger.info("GAME WILL NOT START!!!");
-
-
     }
 
     private static boolean checkExistenceOfFilePath(String pathWithFileName){
         Path path = Paths.get(pathWithFileName);
         Path parentPath = path.getParent().toAbsolutePath();
-        if (Files.exists(parentPath)) {
-            return true;
-        }
-        return false;
+        return Files.exists(parentPath);
 
     }
     private static boolean checkExistenceOfFile(String pathWithFileName){
         Path path = Paths.get(pathWithFileName);
         Path absPath = path.toAbsolutePath();
-        if (Files.exists(absPath)) {
-            return true;
-        }
-        return false;
-
+        return Files.exists(absPath);
     }
 }
