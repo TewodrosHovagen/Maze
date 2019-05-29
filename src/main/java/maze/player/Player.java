@@ -2,13 +2,15 @@ package maze.player;
 
 import Utils.logging.Logger;
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Player implements PlayerInterface {
 
     private final Logger log = Logger.getInstance();
     protected boolean isHitWall;
-    protected Set<Integer> bookMarks;
+    protected Map<Integer,Integer> bookMarks=new HashMap<>();
+    protected int currentSequence=0;
 
     @Override
     public void hitWall() {
@@ -18,11 +20,21 @@ public abstract class Player implements PlayerInterface {
 
 
     @Override
-    public void hitBookmark(int seq) { log.info("You hit bookmark: "+ seq); }
-    public void addBookamrk(int seq) {
-        bookMarks.add(seq);
+    public void hitBookmark(int seq) {
+        //TODO need to rethink the preset bookmark
+        if(bookMarks.containsKey(seq)){
+            int amountOfVisit = bookMarks.get(seq);
+            amountOfVisit++;
+            bookMarks.put(seq,amountOfVisit);
+        }else {
+            addBookmark(seq);
+        }
     }
-    public void removeBookamrk(int seq) {
+    public void addBookmark(int seq) {
+        bookMarks.put(seq,1);
+        currentSequence++;
+    }
+    public void removeBookmark(int seq) {
         bookMarks.remove(seq);
     }
     public void setHitWall(boolean hitWall) {
@@ -31,11 +43,11 @@ public abstract class Player implements PlayerInterface {
     public boolean isHitWall() {
         return isHitWall;
     }
-    public Set<Integer> getBookMarks() {
+    public Map<Integer, Integer> getBookMarks() {
         return bookMarks;
     }
 
-    public void setBookMarks(Set<Integer> bookMarks) {
+    public void setBookMarks(Map<Integer, Integer> bookMarks) {
         this.bookMarks = bookMarks;
     }
 }

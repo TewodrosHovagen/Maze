@@ -23,7 +23,6 @@ public class MazePlayer extends Player {
     // initialize all player params in c'tor.
     public MazePlayer() {
         this.isHitWall = false;
-        this.bookMarks = new HashSet<>(); //map integer to list of directions
         this.lastStep = WalkingDirectionsEnum.STRAIGHT;
         this.mainDirection = DirectionsEnum.UP;
         this.northMap = new HashMap<>() {{
@@ -107,6 +106,7 @@ public class MazePlayer extends Player {
                 return currentDirectionMap.get(WalkingDirectionsEnum.LEFT);
             } else if (getLastStep() == WalkingDirectionsEnum.LEFT) {
                 setLastStep(WalkingDirectionsEnum.BOOKMARK);
+                addBookmark(currentSequence);
                 return DirectionsEnum.BOOKMARK;
             } else {
                 setMainDirection(currentDirectionMap.get(WalkingDirectionsEnum.BACK));
@@ -114,6 +114,7 @@ public class MazePlayer extends Player {
                 return currentDirectionMap.get(WalkingDirectionsEnum.BACK);
             }
         } else {
+            setHitWall(false);
             setMainDirection(currentDirectionMap.get(getLastStep()));
             setLastStep(WalkingDirectionsEnum.STRAIGHT);
             return getMainDirection();

@@ -7,7 +7,7 @@ Feature: Application main
       |input_file|output_file|
       |"./src/test/resources/fileDataParse/correctInputFileExample.txt"|"C:\Users\sb5844\Projects\biq\Maze\src\test\java\maze\application\output1.txt"|
       |"./src/test/resources/fileDataParse/correctInputFileExample.txt"|"./src/test/java/maze/application/output2.txt"|
-
+    #TO TEACHER NOTE - The relative path needs to be changed according to your own environment path.
 
   Scenario Outline: input file - relative path or absolute path
     Given init the application
@@ -17,7 +17,7 @@ Feature: Application main
       |input_file|output_file|
       |"C:\Users\sb5844\Projects\biq\Maze\src\test\resources\fileDataParse\correctInputFileExample.txt"|"./src/test/java/maze/application/output3.txt"|
       |"./src/test/resources/fileDataParse/correctInputFileExample.txt"|"./src/test/java/maze/application/output4.txt"|
-
+    #TO TEACHER NOTE - The relative path needs to be changed according to your own environment path.
 
   Scenario Outline: output file - incorrect path
     Given init the application

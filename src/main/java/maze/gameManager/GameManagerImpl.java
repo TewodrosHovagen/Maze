@@ -63,21 +63,17 @@ public class GameManagerImpl implements GameManager{
                     break;
                 } else {
                     if (isWall(currentLocation)) {
-                        //TODO Tedy remove all sout to log file.
                         player.hitWall();
                         playerLocation = currentLocation;
                         log.info("hit : "+currentLocation);
                         currentLocation = getBackMove(direction);
                         log.info("current : "+currentLocation);
-                    } else {
-                        player.setHitWall(false);
                     }
                     if (isBookmarkLocation(currentLocation)) {
                         player.hitBookmark(getBookmarkSequence(currentLocation));
                     }
                 }
             }
-            //TODO Tedy remove all sout to log file.
             //playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
             log.info(direction.toString());
@@ -92,11 +88,7 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public void addBookmark(Point currentPoint, int currentSequence) {
-        if(bookmarkSequence.get(currentPoint) != null){
-            player.removeBookamrk(bookmarkSequence.get(currentPoint));
-        }
         bookmarkSequence.put(currentPoint, currentSequence);
-        player.addBookamrk(currentSequence);
     }
 
     @Override
@@ -106,9 +98,7 @@ public class GameManagerImpl implements GameManager{
 
     @Override
     public boolean isWall(Point point) {
-    //TODO choose wich one is the correct shoshi.
         return mazeWorld[(int) point.getY()][(int) point.getX()].equals(WALL+"");
-//        return mazeWorld[(int) point.getX()][(int) point.getY()].equals("#");
     }
 
     @Override
