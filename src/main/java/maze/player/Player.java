@@ -30,24 +30,24 @@ public abstract class Player implements PlayerInterface {
             addBookmark(seq);
         }
     }
-    public void addBookmark(int seq) {
+    protected void addBookmark(int seq) {
         bookMarks.put(seq,1);
         currentSequence++;
     }
-    public void removeBookmark(int seq) {
+    protected void removeBookmark(int seq) {
         bookMarks.remove(seq);
     }
     public void setHitWall(boolean hitWall) {
         isHitWall = hitWall;
     }
-    public boolean isHitWall() {
+    protected boolean isHitWall() {
         return isHitWall;
     }
-    public Map<Integer, Integer> getBookMarks() {
+    protected Map<Integer, Integer> getBookMarks() {
         return bookMarks;
     }
 
-    public void setBookMarks(Map<Integer, Integer> bookMarks) {
+    protected void setBookMarks(Map<Integer, Integer> bookMarks) {
         this.bookMarks = bookMarks;
     }
 }

@@ -57,39 +57,39 @@ public class MazePlayer extends Player {
         }};
     }
 
-    public WalkingDirectionsEnum getLastStep() {
+    protected WalkingDirectionsEnum getLastStep() {
         return lastStep;
     }
 
-    public void setLastStep(WalkingDirectionsEnum lastStep) {
+    protected void setLastStep(WalkingDirectionsEnum lastStep) {
         this.lastStep = lastStep;
     }
 
-    public DirectionsEnum getMainDirection() {
+    protected DirectionsEnum getMainDirection() {
         return mainDirection;
     }
 
-    public void setMainDirection(DirectionsEnum mainDirection) {
+    protected void setMainDirection(DirectionsEnum mainDirection) {
         this.mainDirection = mainDirection;
     }
 
-    public Map<WalkingDirectionsEnum, DirectionsEnum> getNorthMap() {
+    protected Map<WalkingDirectionsEnum, DirectionsEnum> getNorthMap() {
         return northMap;
     }
 
-    public Map<WalkingDirectionsEnum, DirectionsEnum> getEastMap() {
+    protected Map<WalkingDirectionsEnum, DirectionsEnum> getEastMap() {
         return eastMap;
     }
 
-    public Map<WalkingDirectionsEnum, DirectionsEnum> getWestMap() {
+    protected Map<WalkingDirectionsEnum, DirectionsEnum> getWestMap() {
         return westMap;
     }
 
-    public Map<WalkingDirectionsEnum, DirectionsEnum> getSouthMap() {
+    protected Map<WalkingDirectionsEnum, DirectionsEnum> getSouthMap() {
         return southMap;
     }
 
-    public Map<DirectionsEnum, Map<WalkingDirectionsEnum, DirectionsEnum>> getDirectionsMap() {
+    protected Map<DirectionsEnum, Map<WalkingDirectionsEnum, DirectionsEnum>> getDirectionsMap() {
         return directionsMap;
     }
 
@@ -98,6 +98,7 @@ public class MazePlayer extends Player {
     public DirectionsEnum move() {
         Map<WalkingDirectionsEnum, DirectionsEnum> currentDirectionMap = getDirectionsMap().get(getMainDirection());
         if (isHitWall()) {
+            setHitWall(false);
             if (getLastStep() == WalkingDirectionsEnum.STRAIGHT) {
                 setLastStep(WalkingDirectionsEnum.RIGHT);
                 return currentDirectionMap.get(WalkingDirectionsEnum.RIGHT);
@@ -114,7 +115,6 @@ public class MazePlayer extends Player {
                 return currentDirectionMap.get(WalkingDirectionsEnum.BACK);
             }
         } else {
-            setHitWall(false);
             setMainDirection(currentDirectionMap.get(getLastStep()));
             setLastStep(WalkingDirectionsEnum.STRAIGHT);
             return getMainDirection();
