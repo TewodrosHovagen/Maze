@@ -18,8 +18,7 @@ public abstract class Player implements PlayerInterface {
 
 
     @Override
-    public void hitBookmark(int seq) {
-    }
+    public void hitBookmark(int seq) { log.info("You hit bookmark: "+ seq); }
     public void addBookamrk(int seq) {
         bookMarks.add(seq);
     }
