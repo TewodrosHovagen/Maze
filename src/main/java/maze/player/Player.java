@@ -37,7 +37,7 @@ public abstract class Player implements PlayerInterface {
     protected void removeBookmark(int seq) {
         bookMarks.remove(seq);
     }
-    public void setHitWall(boolean hitWall) {
+    protected void setHitWall(boolean hitWall) {
         isHitWall = hitWall;
     }
     protected boolean isHitWall() {
