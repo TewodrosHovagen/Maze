@@ -81,20 +81,20 @@ public class GameManagerImplTest {
     }
 
     @Test
-    public void startGameWinTest() throws IOException {
+    public void startGameWinTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        OutputLog outputFile = new OutputLog(fileOutputDir);
-        GameManagerImpl gameManager = new GameManagerImpl(fileData);
-        gameManager.setPlayer(player);
         Enums.DirectionsEnum direction = Enums.DirectionsEnum.RIGHT;
         String directionExpectedSTR = "R";
         String gameExpectedStatusSTR = "!";
-        Mockito.when(player.move()).thenReturn(direction);
+        try (OutputLog outputFile = new OutputLog(fileOutputDir)) {
+            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            gameManager.setPlayer(player);
+            Mockito.when(player.move()).thenReturn(direction);
 
-        //Act
-        gameManager.startGame(outputFile);
-
+            //Act
+            gameManager.startGame(outputFile);
+        }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
             BufferedReader bufferedReader = new BufferedReader(reader)) {
@@ -104,20 +104,20 @@ public class GameManagerImplTest {
     }
 
     @Test
-    public void startGameWallTest() throws IOException {
+    public void startGameWallTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        OutputLog outputFile = new OutputLog(fileOutputDir);
-        GameManagerImpl gameManager = new GameManagerImpl(fileData);
-        gameManager.setPlayer(player);
         Enums.DirectionsEnum direction = Enums.DirectionsEnum.UP;
         String directionExpectedSTR = "U";
         String gameExpectedStatusSTR = "X";
-        Mockito.when(player.move()).thenReturn(direction);
+        try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
+            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            gameManager.setPlayer(player);
+            Mockito.when(player.move()).thenReturn(direction);
 
-        //Act
-        gameManager.startGame(outputFile);
-
+            //Act
+            gameManager.startGame(outputFile);
+        }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
              BufferedReader bufferedReader = new BufferedReader(reader)) {
@@ -127,20 +127,20 @@ public class GameManagerImplTest {
     }
 
     @Test
-    public void startGameNoWinTest() throws IOException {
+    public void startGameNoWinTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        OutputLog outputFile = new OutputLog(fileOutputDir);
-        GameManagerImpl gameManager = new GameManagerImpl(fileData);
-        gameManager.setPlayer(player);
         Enums.DirectionsEnum direction = Enums.DirectionsEnum.LEFT;
         String directionExpectedSTR = "L";
         String gameExpectedStatusSTR = "X";
-        Mockito.when(player.move()).thenReturn(direction);
+        try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
+            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            gameManager.setPlayer(player);
+            Mockito.when(player.move()).thenReturn(direction);
 
-        //Act
-        gameManager.startGame(outputFile);
-
+            //Act
+            gameManager.startGame(outputFile);
+        }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
              BufferedReader bufferedReader = new BufferedReader(reader)) {
@@ -150,20 +150,20 @@ public class GameManagerImplTest {
     }
 
     @Test
-    public void startGameNoWinBookmarkTest() throws IOException {
+    public void startGameNoWinBookmarkTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        OutputLog outputFile = new OutputLog(fileOutputDir);
-        GameManagerImpl gameManager = new GameManagerImpl(fileData);
-        gameManager.setPlayer(player);
         Enums.DirectionsEnum direction = Enums.DirectionsEnum.BOOKMARK;
         String directionExpectedSTR = "B";
         String gameExpectedStatusSTR = "X";
-        Mockito.when(player.move()).thenReturn(direction);
+        try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
+            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            gameManager.setPlayer(player);
+            Mockito.when(player.move()).thenReturn(direction);
 
-        //Act
-        gameManager.startGame(outputFile);
-
+            //Act
+            gameManager.startGame(outputFile);
+        }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
              BufferedReader bufferedReader = new BufferedReader(reader)) {
