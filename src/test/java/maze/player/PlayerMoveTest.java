@@ -19,9 +19,9 @@ public class PlayerMoveTest {
     @Parameterized.Parameters
     public static Object[][] data() {
         return new Object[][]{
-                {STRAIGHT, UP, true, DirectionsEnum.RIGHT},
-                {RIGHT, DirectionsEnum.RIGHT,true, UP},
-                {STRAIGHT, UP, false, UP}
+                {WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.UP, true, DirectionsEnum.RIGHT},
+                {WalkingDirectionsEnum.RIGHT, DirectionsEnum.RIGHT,true, DirectionsEnum.UP},
+                {WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.UP, false, DirectionsEnum.UP}
         };
     }
 
@@ -33,7 +33,6 @@ public class PlayerMoveTest {
     private boolean hitWall;
 
     public PlayerMoveTest(WalkingDirectionsEnum lastStep, DirectionsEnum mainDirection, boolean isHitWall, DirectionsEnum expected) {
-//        this.player=new MazePlayer();
         this.lastStep = lastStep;
         this.mainDirection = mainDirection;
         this.expected = expected;
@@ -42,13 +41,14 @@ public class PlayerMoveTest {
 
     @Before
     public void initializeMazeAndPlayer() {
-        player=new MazePlayer();
+        player = new MazePlayer();
     }
 
 
     @Test
     public void moveToNorthHappyTest() {
         player.setHitWall(hitWall);
+        player.setLastStep(lastStep);
         player.setMainDirection(mainDirection);
         player.setHitWall(hitWall);
         DirectionsEnum test = player.move();

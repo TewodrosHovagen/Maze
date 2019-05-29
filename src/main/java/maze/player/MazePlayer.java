@@ -8,11 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import static Utils.Enums.DirectionsEnum.*;
-import static Utils.Enums.WalkingDirectionsEnum.*;
-import static Utils.Enums.WalkingDirectionsEnum.LEFT;
-import static Utils.Enums.WalkingDirectionsEnum.RIGHT;
-
 public class MazePlayer extends Player {
 
     private final Logger log = Logger.getInstance();
@@ -29,35 +24,35 @@ public class MazePlayer extends Player {
     public MazePlayer() {
         this.isHitWall = false;
         this.bookMarks = new HashSet<>(); //map integer to list of directions
-        this.lastStep = STRAIGHT;
-        this.mainDirection = UP;
+        this.lastStep = WalkingDirectionsEnum.STRAIGHT;
+        this.mainDirection = DirectionsEnum.UP;
         this.northMap = new HashMap<>() {{
-            put(STRAIGHT, UP);
-            put(BACK, DOWN);
-            put(RIGHT, DirectionsEnum.RIGHT);
-            put(LEFT, DirectionsEnum.LEFT);
+            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.UP);
+            put(WalkingDirectionsEnum.BACK, DirectionsEnum.DOWN);
+            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.RIGHT);
+            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.LEFT);
         }};
         this.eastMap = new HashMap<>() {{
-            put(STRAIGHT, DirectionsEnum.RIGHT);
-            put(BACK, DirectionsEnum.LEFT);
-            put(RIGHT, DOWN);
-            put(LEFT, UP);
+            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.RIGHT);
+            put(WalkingDirectionsEnum.BACK, DirectionsEnum.LEFT);
+            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.DOWN);
+            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.UP);
         }};
         this.westMap = new HashMap<>() {{
-            put(STRAIGHT, DirectionsEnum.LEFT);
-            put(BACK, DirectionsEnum.RIGHT);
-            put(RIGHT, UP);
-            put(LEFT, DOWN);
+            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.LEFT);
+            put(WalkingDirectionsEnum.BACK, DirectionsEnum.RIGHT);
+            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.UP);
+            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.DOWN);
         }};
         this.southMap = new HashMap<>() {{
-            put(STRAIGHT, DOWN);
-            put(BACK, UP);
-            put(RIGHT, DirectionsEnum.LEFT);
-            put(LEFT, DirectionsEnum.RIGHT);
+            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.DOWN);
+            put(WalkingDirectionsEnum.BACK, DirectionsEnum.UP);
+            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.LEFT);
+            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.RIGHT);
         }};
         this.directionsMap = new HashMap<>() {{
-            put(UP, northMap);
-            put(DOWN, southMap);
+            put(DirectionsEnum.UP, northMap);
+            put(DirectionsEnum.DOWN, southMap);
             put(DirectionsEnum.RIGHT, eastMap);
             put(DirectionsEnum.LEFT, westMap);
         }};
@@ -104,23 +99,23 @@ public class MazePlayer extends Player {
     public DirectionsEnum move() {
         Map<WalkingDirectionsEnum, DirectionsEnum> currentDirectionMap = getDirectionsMap().get(getMainDirection());
         if (isHitWall()) {
-            if (getLastStep() == STRAIGHT) {
-                setLastStep(RIGHT);
-                return currentDirectionMap.get(RIGHT);
-            } else if (getLastStep() == RIGHT) {
-                setLastStep(LEFT);
-                return currentDirectionMap.get(LEFT);
-            } else if (getLastStep() == LEFT) {
+            if (getLastStep() == WalkingDirectionsEnum.STRAIGHT) {
+                setLastStep(WalkingDirectionsEnum.RIGHT);
+                return currentDirectionMap.get(WalkingDirectionsEnum.RIGHT);
+            } else if (getLastStep() == WalkingDirectionsEnum.RIGHT) {
+                setLastStep(WalkingDirectionsEnum.LEFT);
+                return currentDirectionMap.get(WalkingDirectionsEnum.LEFT);
+            } else if (getLastStep() == WalkingDirectionsEnum.LEFT) {
                 setLastStep(WalkingDirectionsEnum.BOOKMARK);
                 return DirectionsEnum.BOOKMARK;
             } else {
-                setMainDirection(currentDirectionMap.get(BACK));
-                setLastStep(STRAIGHT);
-                return currentDirectionMap.get(BACK);
+                setMainDirection(currentDirectionMap.get(WalkingDirectionsEnum.BACK));
+                setLastStep(WalkingDirectionsEnum.STRAIGHT);
+                return currentDirectionMap.get(WalkingDirectionsEnum.BACK);
             }
         } else {
             setMainDirection(currentDirectionMap.get(getLastStep()));
-            setLastStep(STRAIGHT);
+            setLastStep(WalkingDirectionsEnum.STRAIGHT);
             return getMainDirection();
         }
     }
