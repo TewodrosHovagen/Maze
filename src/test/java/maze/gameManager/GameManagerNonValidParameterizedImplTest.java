@@ -39,17 +39,27 @@ public class GameManagerNonValidParameterizedImplTest {
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void isWallNonValid() {
+        //Arrange
         Point currentPoint = new Point(rowPosition, colPosition);
         FileData fileData = new FileParse().parseFileData(fileDir);
-        GameManager gameManager = new GameManagerImpl(fileData);
-        Assert.assertEquals("The current point a wall when should not be", expectedResultIsWall, gameManager.isWall(currentPoint));
+
+        //Act
+        GameManager gameManagerInterface = new GameManagerImpl(fileData);
+
+        //Assert
+        Assert.assertEquals("The current point a wall when should not be", expectedResultIsWall, gameManagerInterface.isWall(currentPoint));
     }
 
     @Test
     public void isTreasureNonValid() {
+        //Arrange
         Point currentPoint = new Point(rowPosition, colPosition);
         FileData fileData = new FileParse().parseFileData(fileDir);
-        GameManager gameManager = new GameManagerImpl(fileData);
-        Assert.assertEquals("The current point a wall when should not be", expectedResultIsTreasure, gameManager.isTreasure(currentPoint));
+
+        //Act
+        GameManager gameManagerInterface = new GameManagerImpl(fileData);
+
+        //Assert
+        Assert.assertEquals("The current point a wall when should not be", expectedResultIsTreasure, gameManagerInterface.isTreasure(currentPoint));
     }
 }

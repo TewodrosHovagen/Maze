@@ -16,11 +16,10 @@ import static maze.fileDataParse.FileParse.SPACE;
 import static maze.fileDataParse.FileParse.WALL;
 
 
-public class GameManagerImpl implements GameManager{
+public class GameManagerImpl extends GameManager {
     
     private final Logger log = Logger.getInstance();
     private String[][] mazeWorld;
-    protected Map<Point, Integer> bookmarkSequence = new HashMap<>();
     private int bookmarkCounter = 0;
     private final String FOUND = "!";
     private final String NOT_FOUND = "X";
@@ -87,22 +86,17 @@ public class GameManagerImpl implements GameManager{
     }
 
     @Override
-    public void addBookmark(Point currentPoint, int currentSequence) {
-        bookmarkSequence.put(currentPoint, currentSequence);
-    }
-
-    @Override
-    public Point move(DirectionsEnum direction) {
+    protected Point move(DirectionsEnum direction) {
         return movePlayerLocation(direction);
     }
 
     @Override
-    public boolean isWall(Point point) {
+    protected boolean isWall(Point point) {
         return mazeWorld[(int) point.getY()][(int) point.getX()].equals(WALL+"");
     }
 
     @Override
-    public boolean isTreasure(Point point) {
+    protected boolean isTreasure(Point point) {
         return point.equals(treasureLocation);
     }
 
@@ -128,13 +122,7 @@ public class GameManagerImpl implements GameManager{
         data.printMazeWorld();
         System.out.println("**************************************");
     }
-    private boolean isBookmarkLocation(Point currentLocation) {
-        return bookmarkSequence.containsKey(currentLocation);
-    }
 
-    private int getBookmarkSequence(Point currentLocation) {
-        return bookmarkSequence.get(currentLocation);
-    }
 
     protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
         Point newLocation = null;

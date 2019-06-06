@@ -2,3 +2,5 @@
 **/.idea/
 /.idea/
 /target/
+output.txt
+log.txt

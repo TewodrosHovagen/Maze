@@ -48,10 +48,10 @@ public class GameManagerValidParameterizedImplTest {
         FileData fileData = new FileParse().parseFileData(fileDir);
 
         //Act
-        GameManager gameManager = new GameManagerImpl(fileData);
+        GameManager gameManagerInterface = new GameManagerImpl(fileData);
 
         //Assert
-        Assert.assertEquals("The current point a wall when should not be",expectedResultIsWall,gameManager.isWall(currentPoint));
+        Assert.assertEquals("The current point a wall when should not be",expectedResultIsWall, gameManagerInterface.isWall(currentPoint));
     }
 
     @Test
@@ -61,10 +61,10 @@ public class GameManagerValidParameterizedImplTest {
         FileData fileData = new FileParse().parseFileData(fileDir);
 
         //Act
-        GameManager gameManager = new GameManagerImpl(fileData);
+        GameManager gameManagerInterface = new GameManagerImpl(fileData);
 
         //Assert
-        Assert.assertEquals("The current point treasure as expected",expectedResultIsTreasure,gameManager.isTreasure(currentPoint));
+        Assert.assertEquals("The current point treasure as expected",expectedResultIsTreasure, gameManagerInterface.isTreasure(currentPoint));
     }
 
     @Test
