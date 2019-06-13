@@ -20,15 +20,16 @@ public class GameManagerImpl extends GameManager {
     
     private final Logger log = Logger.getInstance();
     private String[][] mazeWorld;
-    private int bookmarkCounter = 0;
+
     private final String FOUND = "!";
     private final String NOT_FOUND = "X";
-    private Point playerLocation;
     private Point treasureLocation;
-    private Point playerPreviousLocation;
-    private FileData data;
     private Player player;
     private OutputLog outputFile;
+    protected int bookmarkCounter = 0;
+    protected FileData data;
+    protected Point playerLocation;
+    protected Point playerPreviousLocation;
 
     public GameManagerImpl(FileData data) {
         this.mazeWorld = data.getMazeWorld();
