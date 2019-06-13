@@ -8,8 +8,7 @@ import java.awt.*;
 public interface GameManagerInterface {
     /**
      * Start the game
-     * @param outputFile - outputFile
      */
-    void startGame(OutputLog outputFile);
+    void startGame();
 
 }

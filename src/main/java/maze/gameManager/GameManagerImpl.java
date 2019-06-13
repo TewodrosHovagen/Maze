@@ -28,6 +28,7 @@ public class GameManagerImpl extends GameManager {
     private Point playerPreviousLocation;
     private FileData data;
     private Player player;
+    private OutputLog outputFile;
 
     public GameManagerImpl(FileData data) {
         this.mazeWorld = data.getMazeWorld();
@@ -40,7 +41,7 @@ public class GameManagerImpl extends GameManager {
     protected GameManagerImpl() {   }
 
     @Override
-    public void startGame(OutputLog outputFile) {
+    public void startGame() {
         DirectionsEnum direction;
         Point currentLocation = playerLocation;
         int timesToPlay;
@@ -179,4 +180,5 @@ public class GameManagerImpl extends GameManager {
         this.player = player;
     }
 
+    public void setOutputFile(OutputLog outputFile) { this.outputFile = outputFile;  }
 }

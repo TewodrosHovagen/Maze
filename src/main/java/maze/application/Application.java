@@ -43,8 +43,9 @@ public class Application {
         if (runThePlayer && createAnOutputFile) {
             log.info("START THE GAME!!!");
             try (OutputLog outputFile = new OutputLog(outputFilePath)) {
-                GameManager game = new GameManagerImpl(dataFile);
-                game.startGame(outputFile);
+                GameManagerImpl game = new GameManagerImpl(dataFile);
+                game.setOutputFile(outputFile);
+                game.startGame();
             } catch (Exception e) {
                 System.out.println("Problem while writing to output file: " + e);
             }
