@@ -90,10 +90,11 @@ public class GameManagerImplTest {
         try (OutputLog outputFile = new OutputLog(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(fileData);
             gameManager.setPlayer(player);
+            gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame(outputFile);
+            gameManager.startGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -113,10 +114,11 @@ public class GameManagerImplTest {
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(fileData);
             gameManager.setPlayer(player);
+            gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame(outputFile);
+            gameManager.startGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -136,10 +138,11 @@ public class GameManagerImplTest {
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(fileData);
             gameManager.setPlayer(player);
+            gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame(outputFile);
+            gameManager.startGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -159,10 +162,11 @@ public class GameManagerImplTest {
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(fileData);
             gameManager.setPlayer(player);
+            gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame(outputFile);
+            gameManager.startGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
