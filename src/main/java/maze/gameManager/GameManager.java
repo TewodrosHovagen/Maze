@@ -1,6 +1,8 @@
 package maze.gameManager;
 
 import Utils.Enums;
+import maze.fileDataParse.FileData;
+import maze.player.Player;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -9,6 +11,9 @@ import java.util.Map;
 public abstract class GameManager implements GameManagerInterface{
 
     Map<Point, Integer> bookmarkSequence = new HashMap<>();
+    protected Player player;
+    protected FileData data;
+
     /**
      * Add bookmark to bookmark map
      * @param currentPoint - location to bookmark
@@ -59,7 +64,19 @@ public abstract class GameManager implements GameManagerInterface{
      */
     protected abstract boolean isTreasure(Point point);
 
+    public Player getPlayer() {
+        return player;
+    }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
+    public FileData getData() {
+        return data;
+    }
 
+    public void setData(FileData data) {
+        this.data = data;
+    }
 }

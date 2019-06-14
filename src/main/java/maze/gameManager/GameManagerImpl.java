@@ -24,10 +24,8 @@ public class GameManagerImpl extends GameManager {
     private final String FOUND = "!";
     private final String NOT_FOUND = "X";
     private Point treasureLocation;
-    private Player player;
     private OutputLog outputFile;
     protected int bookmarkCounter = 0;
-    protected FileData data;
     protected Point playerLocation;
     protected Point playerPreviousLocation;
 
@@ -169,16 +167,8 @@ public class GameManagerImpl extends GameManager {
         return newLocation;
     }
 
-    protected void setData(FileData data) {
-        this.data = data;
-    }
-
     protected void setPlayerLocation(Point playerLocation) {
         this.playerLocation = playerLocation;
-    }
-
-    protected void setPlayer(Player player) {
-        this.player = player;
     }
 
     public void setOutputFile(OutputLog outputFile) { this.outputFile = outputFile;  }
