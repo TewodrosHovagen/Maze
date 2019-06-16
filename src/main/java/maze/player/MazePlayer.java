@@ -1,123 +1,179 @@
 package maze.player;
 
-import Utils.Enums.DirectionsEnum;
+import Utils.Enums.MainDirectionsEnum;
 import Utils.Enums.WalkingDirectionsEnum;
-import Utils.logging.Logger;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+
+import static Utils.Enums.MainDirectionsEnum.DOWN;
+import static Utils.Enums.MainDirectionsEnum.UP;
+import static Utils.Enums.WalkingDirectionsEnum.*;
 
 public class MazePlayer extends Player {
 
-    private final Logger log = Logger.getInstance();
+
     private WalkingDirectionsEnum lastStep;
-    private DirectionsEnum mainDirection;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> northMap;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> eastMap;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> westMap;
-    final private Map<WalkingDirectionsEnum, DirectionsEnum> southMap;
-    final private Map<DirectionsEnum, Map<WalkingDirectionsEnum, DirectionsEnum>> directionsMap;
+    private MainDirectionsEnum mainDirection;
+    private boolean isBookMark;
+    private int bookMarkCounter = -1;
+    private boolean setBookmarkNextMove = true;
+
+    private Map<Integer, List<MainDirectionsEnum>> bookMarkMap;
+    final private Map<WalkingDirectionsEnum, MainDirectionsEnum> northMap;
+    final private Map<WalkingDirectionsEnum, MainDirectionsEnum> eastMap;
+    final private Map<WalkingDirectionsEnum, MainDirectionsEnum> westMap;
+    final private Map<WalkingDirectionsEnum, MainDirectionsEnum> southMap;
+    final private Map<MainDirectionsEnum, Map<WalkingDirectionsEnum, MainDirectionsEnum>> directionsMap;
+    private int bookmarkSeq;
+
+
+    @Override
+    public MainDirectionsEnum move() {
+        Map<WalkingDirectionsEnum, MainDirectionsEnum> currentDirectionMap = directionsMap.get(mainDirection);
+        MainDirectionsEnum mainDirectionToReturn;
+        if (setBookmarkNextMove&&!isBookMark) {
+            bookMarkCounter++;
+            mainDirectionToReturn = MainDirectionsEnum.BOOKMARK;
+
+            bookMarkMap.computeIfAbsent(bookMarkCounter, k -> new ArrayList<>());
+            bookMarkMap.get(bookMarkCounter).add(mainDirection);
+            setBookmarkNextMove = false;
+        } else if (isHitWall) {
+            mainDirectionToReturn = moveByLastStep(currentDirectionMap);
+            if(isBookMark) {
+                if (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
+                    bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
+                }
+                setBookmarkNextMove=false;
+                isBookMark=false;
+            }
+            isHitWall = false;
+        }else if (isBookMark) {
+            WalkingDirectionsEnum lastStepDirection = lastStep;
+            mainDirectionToReturn = currentDirectionMap.get(lastStepDirection);
+
+            if (bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
+                if(bookMarkMap.get(bookMarkCounter).size()<3) {
+                    mainDirectionToReturn = moveByLastStep(currentDirectionMap);
+                    if (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
+                        bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
+                    }
+                }
+
+            } else {
+                bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
+            }
+
+            isBookMark = false;
+        } else {
+            WalkingDirectionsEnum lastStepDirection = lastStep;
+            mainDirectionToReturn = currentDirectionMap.get(lastStepDirection);
+            setMainDirection(mainDirectionToReturn);
+            setLastStep(STRAIGHT);
+
+        }
+        return mainDirectionToReturn;
+    }
+
+    @Override
+    public void hitWall() {
+        System.out.println("You hit the wall");
+        isHitWall = true;
+        setBookmarkNextMove = true;
+    }
+
+    @Override
+    public void hitBookmark(int seq) {
+        bookmarkSeq = seq;
+        isBookMark = true;
+    }
+
+    private MainDirectionsEnum moveByLastStep(Map<WalkingDirectionsEnum, MainDirectionsEnum> currentDirectionMap) {
+        MainDirectionsEnum directionToReturn;
+        if (lastStep == STRAIGHT) {
+            setLastStep(RIGHT);
+            directionToReturn = currentDirectionMap.get(RIGHT);
+        } else if (lastStep == RIGHT) {
+            setLastStep(LEFT);
+            directionToReturn = currentDirectionMap.get(LEFT);
+        } else {
+            setMainDirection(currentDirectionMap.get(BACK));
+            setLastStep(STRAIGHT);
+            directionToReturn = currentDirectionMap.get(BACK);
+        }
+        return directionToReturn;
+    }
+
+
 
 
     // initialize all player params in c'tor.
     public MazePlayer() {
-        this.isHitWall = false;
-        this.lastStep = WalkingDirectionsEnum.STRAIGHT;
-        this.mainDirection = DirectionsEnum.UP;
+        super();
+        bookMarkMap = new HashMap<>();
+        isBookMark = false;
+        this.lastStep = STRAIGHT;
+        this.mainDirection = UP;
         this.northMap = new HashMap<>() {{
-            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.UP);
-            put(WalkingDirectionsEnum.BACK, DirectionsEnum.DOWN);
-            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.RIGHT);
-            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.LEFT);
+            put(STRAIGHT, UP);
+            put(BACK, DOWN);
+            put(RIGHT, MainDirectionsEnum.RIGHT);
+            put(LEFT, MainDirectionsEnum.LEFT);
         }};
         this.eastMap = new HashMap<>() {{
-            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.RIGHT);
-            put(WalkingDirectionsEnum.BACK, DirectionsEnum.LEFT);
-            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.DOWN);
-            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.UP);
+            put(STRAIGHT, MainDirectionsEnum.RIGHT);
+            put(BACK, MainDirectionsEnum.LEFT);
+            put(RIGHT, DOWN);
+            put(LEFT, UP);
         }};
         this.westMap = new HashMap<>() {{
-            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.LEFT);
-            put(WalkingDirectionsEnum.BACK, DirectionsEnum.RIGHT);
-            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.UP);
-            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.DOWN);
+            put(STRAIGHT, MainDirectionsEnum.LEFT);
+            put(BACK, MainDirectionsEnum.RIGHT);
+            put(RIGHT, UP);
+            put(LEFT, DOWN);
         }};
         this.southMap = new HashMap<>() {{
-            put(WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.DOWN);
-            put(WalkingDirectionsEnum.BACK, DirectionsEnum.UP);
-            put(WalkingDirectionsEnum.RIGHT, DirectionsEnum.LEFT);
-            put(WalkingDirectionsEnum.LEFT, DirectionsEnum.RIGHT);
+            put(STRAIGHT, DOWN);
+            put(BACK, UP);
+            put(RIGHT, MainDirectionsEnum.LEFT);
+            put(LEFT, MainDirectionsEnum.RIGHT);
         }};
         this.directionsMap = new HashMap<>() {{
-            put(DirectionsEnum.UP, northMap);
-            put(DirectionsEnum.DOWN, southMap);
-            put(DirectionsEnum.RIGHT, eastMap);
-            put(DirectionsEnum.LEFT, westMap);
+            put(UP, northMap);
+            put(DOWN, southMap);
+            put(MainDirectionsEnum.RIGHT, eastMap);
+            put(MainDirectionsEnum.LEFT, westMap);
         }};
     }
 
-    protected WalkingDirectionsEnum getLastStep() {
-        return lastStep;
-    }
-
-    protected void setLastStep(WalkingDirectionsEnum lastStep) {
+    public void setLastStep(WalkingDirectionsEnum lastStep) {
         this.lastStep = lastStep;
     }
 
-    protected DirectionsEnum getMainDirection() {
-        return mainDirection;
-    }
-
-    protected void setMainDirection(DirectionsEnum mainDirection) {
+    public void setMainDirection(MainDirectionsEnum mainDirection) {
         this.mainDirection = mainDirection;
     }
 
-    protected Map<WalkingDirectionsEnum, DirectionsEnum> getNorthMap() {
+    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getNorthMap() {
         return northMap;
     }
 
-    protected Map<WalkingDirectionsEnum, DirectionsEnum> getEastMap() {
+    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getEastMap() {
         return eastMap;
     }
 
-    protected Map<WalkingDirectionsEnum, DirectionsEnum> getWestMap() {
+    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getWestMap() {
         return westMap;
     }
 
-    protected Map<WalkingDirectionsEnum, DirectionsEnum> getSouthMap() {
+    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getSouthMap() {
         return southMap;
     }
 
-    protected Map<DirectionsEnum, Map<WalkingDirectionsEnum, DirectionsEnum>> getDirectionsMap() {
+    protected Map<MainDirectionsEnum, Map<WalkingDirectionsEnum, MainDirectionsEnum>> getDirectionsMap() {
         return directionsMap;
-    }
-
-
-    @Override
-    public DirectionsEnum move() {
-        Map<WalkingDirectionsEnum, DirectionsEnum> currentDirectionMap = getDirectionsMap().get(getMainDirection());
-        if (isHitWall()) {
-            setHitWall(false);
-            if (getLastStep() == WalkingDirectionsEnum.STRAIGHT) {
-                setLastStep(WalkingDirectionsEnum.RIGHT);
-                return currentDirectionMap.get(WalkingDirectionsEnum.RIGHT);
-            } else if (getLastStep() == WalkingDirectionsEnum.RIGHT) {
-                setLastStep(WalkingDirectionsEnum.LEFT);
-                return currentDirectionMap.get(WalkingDirectionsEnum.LEFT);
-            } else if (getLastStep() == WalkingDirectionsEnum.LEFT) {
-                setLastStep(WalkingDirectionsEnum.BOOKMARK);
-                addBookmark(currentSequence);
-                return DirectionsEnum.BOOKMARK;
-            } else {
-                setMainDirection(currentDirectionMap.get(WalkingDirectionsEnum.BACK));
-                setLastStep(WalkingDirectionsEnum.STRAIGHT);
-                return currentDirectionMap.get(WalkingDirectionsEnum.BACK);
-            }
-        } else {
-            setMainDirection(currentDirectionMap.get(getLastStep()));
-            setLastStep(WalkingDirectionsEnum.STRAIGHT);
-            return getMainDirection();
-        }
     }
 }

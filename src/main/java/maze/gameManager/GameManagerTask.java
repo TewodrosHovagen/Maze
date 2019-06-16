@@ -21,7 +21,7 @@ public class GameManagerTask extends GameManagerImpl implements Runnable {
 
     @Override
     public void startGame() {
-        Enums.DirectionsEnum direction;
+        Enums.MainDirectionsEnum direction;
         Point currentLocation = playerLocation;
         int timesToPlay;
         log.info("**************** START THE MAZE ****************");
@@ -32,7 +32,7 @@ public class GameManagerTask extends GameManagerImpl implements Runnable {
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
             log.info("Player position after move "+ currentLocation.getLocation());
-            if (direction == Enums.DirectionsEnum.BOOKMARK) {
+            if (direction == Enums.MainDirectionsEnum.BOOKMARK) {
                 addBookmark(currentLocation, bookmarkCounter++);
             } else {
                 if (isTreasure(currentLocation)) {

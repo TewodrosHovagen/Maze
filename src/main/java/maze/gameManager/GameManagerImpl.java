@@ -1,19 +1,14 @@
 package maze.gameManager;
 
-import Utils.Enums.DirectionsEnum;
+import Utils.Enums.MainDirectionsEnum;
 import Utils.logging.Logger;
-import maze.fileDataParse.FileData;
 import Utils.logging.OutputLog;
+import maze.fileDataParse.FileData;
 import maze.player.MazePlayer;
-import maze.player.Player;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
-import static maze.fileDataParse.FileParse.PLAYER;
-import static maze.fileDataParse.FileParse.SPACE;
-import static maze.fileDataParse.FileParse.WALL;
+import static maze.fileDataParse.FileParse.*;
 
 
 public class GameManagerImpl extends GameManager {
@@ -41,7 +36,7 @@ public class GameManagerImpl extends GameManager {
 
     @Override
     public void startGame() {
-        DirectionsEnum direction;
+        MainDirectionsEnum direction;
         Point currentLocation = playerLocation;
         int timesToPlay;
         log.info("**************** START THE MAZE ****************");
@@ -53,7 +48,7 @@ public class GameManagerImpl extends GameManager {
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
             log.info("Player position after move "+ currentLocation.getLocation());
-            if (direction == DirectionsEnum.BOOKMARK) {
+            if (direction == MainDirectionsEnum.BOOKMARK) {
                 addBookmark(currentLocation, bookmarkCounter++);
             } else {
                 if (isTreasure(currentLocation)) {
@@ -72,11 +67,11 @@ public class GameManagerImpl extends GameManager {
                         player.hitBookmark(getBookmarkSequence(currentLocation));
                     }
                 }
-            }
-            //playerPreviousLocation = playerLocation;
+          }
+//            playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
             log.info(direction.toString());
-            //printMazeWorldAfterChange();
+//            if (direction!=MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
             log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
         }
         if (timesToPlay == data.getMaxSteps()) {
@@ -86,7 +81,7 @@ public class GameManagerImpl extends GameManager {
     }
 
     @Override
-    protected Point move(DirectionsEnum direction) {
+    protected Point move(MainDirectionsEnum direction) {
         return movePlayerLocation(direction);
     }
 
@@ -100,18 +95,18 @@ public class GameManagerImpl extends GameManager {
         return point.equals(treasureLocation);
     }
 
-    protected Point getBackMove(DirectionsEnum direction) {
+    protected Point getBackMove(MainDirectionsEnum direction) {
         switch (direction) {
             case UP:
-                return move(DirectionsEnum.DOWN);
+                return move(MainDirectionsEnum.DOWN);
             case DOWN:
-                return move(DirectionsEnum.UP);
+                return move(MainDirectionsEnum.UP);
             case RIGHT:
-                return move(DirectionsEnum.LEFT);
+                return move(MainDirectionsEnum.LEFT);
             case LEFT:
-                return move(DirectionsEnum.RIGHT);
+                return move(MainDirectionsEnum.RIGHT);
             default:
-                return move(DirectionsEnum.BOOKMARK);
+                return move(MainDirectionsEnum.BOOKMARK);
         }
     }
 
@@ -124,7 +119,7 @@ public class GameManagerImpl extends GameManager {
     }
 
 
-    protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
+    protected Point movePlayerLocation(MainDirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
             case DOWN:

@@ -3,7 +3,6 @@ package Utils.logging;
 import maze.fileDataParse.FileData;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
-import maze.player.Player;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
