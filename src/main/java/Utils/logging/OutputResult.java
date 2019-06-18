@@ -3,7 +3,7 @@ package Utils.logging;
 import maze.fileDataParse.FileData;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
-import maze.player.MazePlayer;
+import maze.player.PlayerMaze;
 import maze.player.PlayerRandom;
 import org.apache.commons.io.FileUtils;
 
@@ -117,7 +117,7 @@ public class OutputResult {
         FileData fileData2 = new FileData();
         fileData2.setMazeName("Maze 2");
         GameManager gameManager1 = new GameManagerTask(fileData1, new PlayerRandom());
-        GameManager gameManager2 = new GameManagerTask(fileData2, new MazePlayer());
+        GameManager gameManager2 = new GameManagerTask(fileData2, new PlayerMaze());
         List<GameManager> gameManagerList = new ArrayList<>();
         gameManagerList.add(gameManager1);
         gameManagerList.add(gameManager2);

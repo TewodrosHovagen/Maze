@@ -27,7 +27,7 @@ public class GameManagerImpl extends GameManager {
     protected int timesToPlay;
 
     public GameManagerImpl(FileData data) {
-        this(data, new MazePlayer());
+        this(data, new PlayerMaze());
     }
 
     GameManagerImpl(FileData data, Player player) {
@@ -108,7 +108,7 @@ public class GameManagerImpl extends GameManager {
         outputFile.writeToOutput(result);
     }
 
-    protected Point getBackMove(MainDirectionsEnum direction) {
+    protected Point getBackMove(Enums.MainDirectionsEnum direction) {
         switch (direction) {
             case UP:
                 return move(Enums.MainDirectionsEnum.DOWN);
