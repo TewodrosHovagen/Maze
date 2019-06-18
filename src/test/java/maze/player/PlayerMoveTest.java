@@ -1,16 +1,12 @@
 package maze.player;
 
-import Utils.Enums.DirectionsEnum;
+import Utils.Enums.MainDirectionsEnum;
 import Utils.Enums.WalkingDirectionsEnum;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import static Utils.Enums.DirectionsEnum.UP;
-import static Utils.Enums.WalkingDirectionsEnum.RIGHT;
-import static Utils.Enums.WalkingDirectionsEnum.STRAIGHT;
 
 @RunWith(Parameterized.class)
 public class PlayerMoveTest {
@@ -19,20 +15,20 @@ public class PlayerMoveTest {
     @Parameterized.Parameters
     public static Object[][] data() {
         return new Object[][]{
-                {WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.UP, true, DirectionsEnum.RIGHT},
-                {WalkingDirectionsEnum.RIGHT, DirectionsEnum.RIGHT,true, DirectionsEnum.UP},
-                {WalkingDirectionsEnum.STRAIGHT, DirectionsEnum.UP, false, DirectionsEnum.UP}
+                {WalkingDirectionsEnum.STRAIGHT, MainDirectionsEnum.UP, true, MainDirectionsEnum.RIGHT},
+                {WalkingDirectionsEnum.RIGHT, MainDirectionsEnum.RIGHT,true, MainDirectionsEnum.UP},
+                {WalkingDirectionsEnum.STRAIGHT, MainDirectionsEnum.UP, false, MainDirectionsEnum.UP}
         };
     }
 
 
     private MazePlayer player;
     private WalkingDirectionsEnum lastStep;
-    private DirectionsEnum mainDirection;
-    private DirectionsEnum expected;
+    private MainDirectionsEnum mainDirection;
+    private MainDirectionsEnum expected;
     private boolean hitWall;
 
-    public PlayerMoveTest(WalkingDirectionsEnum lastStep, DirectionsEnum mainDirection, boolean isHitWall, DirectionsEnum expected) {
+    public PlayerMoveTest(WalkingDirectionsEnum lastStep, MainDirectionsEnum mainDirection, boolean isHitWall, MainDirectionsEnum expected) {
         this.lastStep = lastStep;
         this.mainDirection = mainDirection;
         this.expected = expected;
@@ -51,7 +47,7 @@ public class PlayerMoveTest {
         player.setLastStep(lastStep);
         player.setMainDirection(mainDirection);
         player.setHitWall(hitWall);
-        DirectionsEnum test = player.move();
+        MainDirectionsEnum test = player.move();
         Assert.assertEquals(expected, test);
 
 
@@ -62,7 +58,7 @@ public class PlayerMoveTest {
         player.setLastStep(lastStep);
         player.setMainDirection(mainDirection);
         player.setHitWall(hitWall);
-        DirectionsEnum test = player.move();
+        MainDirectionsEnum test = player.move();
         Assert.assertEquals(expected, test);
 
 

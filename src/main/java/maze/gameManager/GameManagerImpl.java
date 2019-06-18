@@ -1,9 +1,9 @@
 package maze.gameManager;
 
-import Utils.Enums.DirectionsEnum;
+import Utils.Enums.MainDirectionsEnum;
 import Utils.logging.Logger;
-import maze.fileDataParse.FileData;
 import Utils.logging.OutputLog;
+import maze.fileDataParse.FileData;
 import maze.player.MazePlayer;
 import maze.player.Player;
 import java.awt.*;
@@ -42,7 +42,7 @@ public class GameManagerImpl extends GameManager {
 
     @Override
     public void startGame() {
-        DirectionsEnum direction;
+        MainDirectionsEnum direction;
         Point currentLocation = playerLocation;
         log.info("**************** START THE MAZE ****************");
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
@@ -53,7 +53,7 @@ public class GameManagerImpl extends GameManager {
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
             log.info("Player position after move "+ currentLocation.getLocation());
-            if (direction == DirectionsEnum.BOOKMARK) {
+            if (direction == MainDirectionsEnum.BOOKMARK) {
                 addBookmark(currentLocation, bookmarkCounter++);
             } else {
                 if (isTreasure(currentLocation)) {
@@ -88,7 +88,7 @@ public class GameManagerImpl extends GameManager {
     }
 
     @Override
-    protected Point move(DirectionsEnum direction) {
+    protected Point move(MainDirectionsEnum direction) {
         return movePlayerLocation(direction);
     }
 
@@ -107,22 +107,22 @@ public class GameManagerImpl extends GameManager {
         outputFile.writeToOutput(result);
     }
 
-    protected Point getBackMove(DirectionsEnum direction) {
+    protected Point getBackMove(MainDirectionsEnum direction) {
         switch (direction) {
             case UP:
-                return move(DirectionsEnum.DOWN);
+                return move(MainDirectionsEnum.DOWN);
             case DOWN:
-                return move(DirectionsEnum.UP);
+                return move(MainDirectionsEnum.UP);
             case RIGHT:
-                return move(DirectionsEnum.LEFT);
+                return move(MainDirectionsEnum.LEFT);
             case LEFT:
-                return move(DirectionsEnum.RIGHT);
+                return move(MainDirectionsEnum.RIGHT);
             default:
-                return move(DirectionsEnum.BOOKMARK);
+                return move(MainDirectionsEnum.BOOKMARK);
         }
     }
 
-    protected Point movePlayerLocation(DirectionsEnum directionsEnum) {
+    protected Point movePlayerLocation(MainDirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
             case DOWN:
@@ -169,6 +169,8 @@ public class GameManagerImpl extends GameManager {
         this.playerLocation = playerLocation;
     }
 
+    public void setOutputFile(OutputLog outputFile) { this.outputFile = outputFile;  }
+
     public void printMazeWorldAfterChange() {
         if(mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()].equals(PLAYER+""))
             mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()] =SPACE+"";
@@ -176,6 +178,4 @@ public class GameManagerImpl extends GameManager {
         data.printMazeWorld();
         System.out.println("**************************************");
     }
-
-    public void setOutputFile(OutputLog outputFile) { this.outputFile = outputFile;  }
 }

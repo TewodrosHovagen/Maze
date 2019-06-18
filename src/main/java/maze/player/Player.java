@@ -19,21 +19,6 @@ public abstract class Player implements PlayerInterface {
     }
 
 
-    @Override
-    public void hitBookmark(int seq) {
-        //TODO need to rethink the preset bookmark
-        if(bookMarks.containsKey(seq)){
-            int amountOfVisit = bookMarks.get(seq);
-            amountOfVisit++;
-            bookMarks.put(seq,amountOfVisit);
-        }else {
-            addBookmark(seq);
-        }
-    }
-    protected void addBookmark(int seq) {
-        bookMarks.put(seq,1);
-        currentSequence++;
-    }
     protected void removeBookmark(int seq) {
         bookMarks.remove(seq);
     }

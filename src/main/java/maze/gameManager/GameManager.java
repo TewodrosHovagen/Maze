@@ -48,7 +48,7 @@ public abstract class GameManager implements GameManagerInterface{
      * @param direction - direction got from player
      * @return - point of location after move
      */
-    protected abstract Point move(Enums.DirectionsEnum direction);
+    protected abstract Point move(Enums.MainDirectionsEnum direction);
 
     /**
      * Manager check if location point is marked as wall

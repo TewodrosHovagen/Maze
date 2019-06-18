@@ -1,6 +1,6 @@
 package maze.player;
 
-import Utils.Enums.DirectionsEnum;
+import Utils.Enums.MainDirectionsEnum;
 
 public interface PlayerInterface {
 
@@ -8,7 +8,7 @@ public interface PlayerInterface {
      * Player move logic
      * @return direction to move to
      */
-    DirectionsEnum move();
+    MainDirectionsEnum move();
 
     /**
      * Method to inform the player that now hitWall
