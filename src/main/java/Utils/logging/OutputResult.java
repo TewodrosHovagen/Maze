@@ -3,17 +3,17 @@ package Utils.logging;
 import maze.fileDataParse.FileData;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
-import maze.player.Player;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class OutputResult {
 
-    public static void printOutputResult(Map<FileData,List<GameManager>> gameResultMap){
+    public static void printExcelOutputResult(Map<FileData,List<GameManager>> gameResultMap){
 //        byte[] report = new XlsxBuilder().
 //                startSheet("Dream cars").                            // start with sheet
 //                startRow().                                          // then go row by row
@@ -83,11 +83,39 @@ public class OutputResult {
         }
     }
 
+
+    public static void printConsoleOutputResult(Map<FileData,List<GameManager>> gameResultMap){
+
+        System.out.println("******** MAZE RESULT ********");
+        System.out.print("           ");
+
+        for(Map.Entry<FileData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+            for(GameManager gameManager : gameItem.getValue()){
+                System.out.print(gameManager.getPlayer().getClass().getSimpleName() + "     ");
+            }
+            System.out.println("");
+            break;
+        }
+
+
+        for(Map.Entry<FileData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+            System.out.print(gameItem.getKey().getMazeName());
+            for(GameManager gameManager : gameItem.getValue()){
+                System.out.print(((GameManagerTask)gameManager).getMaxStepsResults()+"     ");
+            }
+            System.out.println();
+        }
+    }
+
     private static void saveMyFile(byte[] bytes) throws IOException {
         FileUtils.writeByteArrayToFile(new File("C:\\Users\\sm0679\\Desktop\\output\\result.xlsx"), bytes);
     }
 
     public static void main(String[] args) {
-        printOutputResult(null);
+        Map<FileData,List<GameManager>> gameResultMap = new HashMap<>();
+        FileData fileData = new FileData();
+        fileData.setMazeName("Maze 1");
+
+        printConsoleOutputResult(null);
     }
 }

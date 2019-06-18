@@ -64,6 +64,11 @@ public abstract class GameManager implements GameManagerInterface{
      */
     protected abstract boolean isTreasure(Point point);
 
+    /**
+     * The game result handler deals with the game output value.
+     */
+    protected abstract void gameResultHandler();
+
     public Player getPlayer() {
         return player;
     }
