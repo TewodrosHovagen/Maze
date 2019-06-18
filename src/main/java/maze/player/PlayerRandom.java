@@ -1,29 +1,43 @@
 package maze.player;
 
-import Utils.directionEnum.Enums.*;
+import Utils.directionEnum.Enums.MainDirectionsEnum;
 
-import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerRandom extends Player {
 
+    private MainDirectionsEnum newRandomDirection;
+
+    public PlayerRandom() {
+        this.newRandomDirection = MainDirectionsEnum.randomMainDirection();
+        mainDirection = MainDirectionsEnum.randomMainDirection();
+    }
+
+
     @Override
     public MainDirectionsEnum move() {
-        return getRandomDirection( new Random().nextInt(5));
+        if (isHitWall) {
+            do {
+                newRandomDirection = MainDirectionsEnum.randomMainDirection();
+            } while (newRandomDirection.equals(mainDirection) /*||
+                    newRandomDirection.name() == backStep.get(mainDirection).name()*/);
+            isHitWall=false;
+            return mainDirection = newRandomDirection;
+        }
+        return mainDirection;
     }
+
+    private Map<MainDirectionsEnum, MainDirectionsEnum> backStep = new HashMap<>() {{
+        put(MainDirectionsEnum.UP, MainDirectionsEnum.DOWN);
+        put(MainDirectionsEnum.DOWN, MainDirectionsEnum.UP);
+        put(MainDirectionsEnum.RIGHT, MainDirectionsEnum.LEFT);
+        put(MainDirectionsEnum.LEFT, MainDirectionsEnum.RIGHT);
+    }};
 
     @Override
     public void hitBookmark(int seq) {
 
     }
 
-    private MainDirectionsEnum getRandomDirection(int dirNum){
-        switch (dirNum){
-            case 0: return MainDirectionsEnum.UP;
-            case 1: return MainDirectionsEnum.DOWN;
-            case 2: return MainDirectionsEnum.LEFT;
-            case 3: return MainDirectionsEnum.RIGHT;
-            case 4: return MainDirectionsEnum.BOOKMARK;
-        }
-        throw new NumberFormatException("Wrong number was sent");
-    }
 }

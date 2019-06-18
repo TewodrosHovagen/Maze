@@ -1,6 +1,8 @@
 package maze.player;
 
+import Utils.directionEnum.Enums;
 import Utils.logging.Logger;
+import maze.player.directionEnum.playerEnum;
 
 public abstract class Player implements PlayerInterface {
 
@@ -13,6 +15,8 @@ public abstract class Player implements PlayerInterface {
         isHitWall = true;
     }
 
+    protected playerEnum.WalkingDirectionsEnum lastStep;
+    protected Enums.MainDirectionsEnum mainDirection;
 
     protected void setHitWall(boolean hitWall) {
         isHitWall = hitWall;

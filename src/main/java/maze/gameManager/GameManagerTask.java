@@ -1,10 +1,8 @@
 package maze.gameManager;
 
-import Utils.directionEnum.Enums;
 import Utils.logging.Logger;
 import maze.fileDataParse.FileData;
 import maze.player.Player;
-import java.awt.*;
 
 public class GameManagerTask extends GameManagerImpl implements Runnable {
 

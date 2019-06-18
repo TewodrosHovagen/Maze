@@ -6,7 +6,11 @@ import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.player.PlayerMaze;
 import maze.player.Player;
+import maze.player.PlayerRandom;
+
 import java.awt.*;
+import java.util.Calendar;
+
 import static maze.fileDataParse.FileParse.PLAYER;
 import static maze.fileDataParse.FileParse.SPACE;
 import static maze.fileDataParse.FileParse.WALL;
@@ -27,7 +31,7 @@ public class GameManagerImpl extends GameManager {
     protected int timesToPlay;
 
     public GameManagerImpl(FileData data) {
-        this(data, new PlayerMaze());
+        this(data, new PlayerRandom());
     }
 
     GameManagerImpl(FileData data, Player player) {
@@ -35,7 +39,6 @@ public class GameManagerImpl extends GameManager {
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
         this.data = data;
-        player = new PlayerMaze();
         this.player = player;
     }
 
@@ -75,10 +78,10 @@ public class GameManagerImpl extends GameManager {
                     }
                 }
             }
-            //playerPreviousLocation = playerLocation;
+//            playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
             log.info(direction.toString());
-//            if (direction!=MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
+//            if (direction!= Enums.MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
             log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
         }
         if (timesToPlay == data.getMaxSteps()) {

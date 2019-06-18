@@ -17,8 +17,6 @@ import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.RIGHT;
 public class PlayerMaze extends Player {
 
 
-    private WalkingDirectionsEnum lastStep;
-    private MainDirectionsEnum mainDirection;
     private boolean isBookMark;
     private int bookMarkCounter = -1;
     private boolean setBookmarkNextMove = true;
