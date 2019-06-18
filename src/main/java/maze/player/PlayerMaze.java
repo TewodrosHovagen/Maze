@@ -14,7 +14,7 @@ import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.LEFT;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.RIGHT;
 
 
-public class MazePlayer extends Player {
+public class PlayerMaze extends Player {
 
 
     private WalkingDirectionsEnum lastStep;
@@ -36,7 +36,7 @@ public class MazePlayer extends Player {
     public MainDirectionsEnum move() {
         Map<WalkingDirectionsEnum, MainDirectionsEnum> currentDirectionMap = directionsMap.get(mainDirection);
         MainDirectionsEnum mainDirectionToReturn;
-        if (setBookmarkNextMove&&!isBookMark) {
+        if (setBookmarkNextMove && !isBookMark) {
             bookMarkCounter++;
             mainDirectionToReturn = MainDirectionsEnum.BOOKMARK;
 
@@ -45,20 +45,20 @@ public class MazePlayer extends Player {
             setBookmarkNextMove = false;
         } else if (isHitWall) {
             mainDirectionToReturn = moveByLastStep(currentDirectionMap);
-            if(isBookMark) {
+            if (isBookMark) {
                 if (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
                     bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
                 }
-                setBookmarkNextMove=false;
-                isBookMark=false;
+                setBookmarkNextMove = false;
+                isBookMark = false;
             }
             isHitWall = false;
-        }else if (isBookMark) {
+        } else if (isBookMark) {
             WalkingDirectionsEnum lastStepDirection = lastStep;
             mainDirectionToReturn = currentDirectionMap.get(lastStepDirection);
 
             if (bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
-                if(bookMarkMap.get(bookMarkCounter).size()<3) {
+                if (bookMarkMap.get(bookMarkCounter).size() < 3) {
                     mainDirectionToReturn = moveByLastStep(currentDirectionMap);
                     if (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
                         bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
@@ -80,19 +80,6 @@ public class MazePlayer extends Player {
         return mainDirectionToReturn;
     }
 
-    @Override
-    public void hitWall() {
-        System.out.println("You hit the wall");
-        isHitWall = true;
-        setBookmarkNextMove = true;
-    }
-
-    @Override
-    public void hitBookmark(int seq) {
-        bookmarkSeq = seq;
-        isBookMark = true;
-    }
-
     private MainDirectionsEnum moveByLastStep(Map<WalkingDirectionsEnum, MainDirectionsEnum> currentDirectionMap) {
         MainDirectionsEnum directionToReturn;
         if (lastStep == STRAIGHT) {
@@ -109,11 +96,8 @@ public class MazePlayer extends Player {
         return directionToReturn;
     }
 
-
-
-
     // initialize all player params in c'tor.
-    public MazePlayer() {
+    public PlayerMaze() {
         super();
         bookMarkMap = new HashMap<>();
         isBookMark = false;
@@ -159,23 +143,18 @@ public class MazePlayer extends Player {
         this.mainDirection = mainDirection;
     }
 
-    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getNorthMap() {
-        return northMap;
+    @Override
+    public void hitWall() {
+        System.out.println("You hit the wall");
+        isHitWall = true;
+        setBookmarkNextMove = true;
     }
 
-    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getEastMap() {
-        return eastMap;
+    @Override
+    public void hitBookmark(int seq) {
+        bookmarkSeq = seq;
+        isBookMark = true;
     }
 
-    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getWestMap() {
-        return westMap;
-    }
 
-    protected Map<WalkingDirectionsEnum, MainDirectionsEnum> getSouthMap() {
-        return southMap;
-    }
-
-    protected Map<MainDirectionsEnum, Map<WalkingDirectionsEnum, MainDirectionsEnum>> getDirectionsMap() {
-        return directionsMap;
-    }
 }

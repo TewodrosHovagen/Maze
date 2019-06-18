@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import Utils.Enums;
+import Utils.directionEnum.Enums;
 import maze.fileDataParse.FileData;
 import org.junit.Assert;
 import org.junit.Test;

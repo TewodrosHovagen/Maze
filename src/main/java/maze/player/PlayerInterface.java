@@ -1,6 +1,6 @@
 package maze.player;
 
-import Utils.Enums.MainDirectionsEnum;
+import Utils.directionEnum.Enums.MainDirectionsEnum;
 
 public interface PlayerInterface {
 

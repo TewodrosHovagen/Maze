@@ -1,10 +1,10 @@
 package maze.gameManager;
 
-import Utils.Enums.MainDirectionsEnum;
+import Utils.directionEnum.Enums;
 import Utils.logging.Logger;
 import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
-import maze.player.MazePlayer;
+import maze.player.PlayerMaze;
 
 import java.awt.*;
 
@@ -29,14 +29,14 @@ public class GameManagerImpl extends GameManager {
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
         this.data = data;
-        player = new MazePlayer();
+        player = new PlayerMaze();
     }
 
     protected GameManagerImpl() {   }
 
     @Override
     public void startGame() {
-        MainDirectionsEnum direction;
+        Enums.MainDirectionsEnum direction;
         Point currentLocation = playerLocation;
         int timesToPlay;
         log.info("**************** START THE MAZE ****************");
@@ -48,11 +48,12 @@ public class GameManagerImpl extends GameManager {
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
             log.info("Player position after move "+ currentLocation.getLocation());
-            if (direction == MainDirectionsEnum.BOOKMARK) {
+            if (direction == Enums.MainDirectionsEnum.BOOKMARK) {
                 addBookmark(currentLocation, bookmarkCounter++);
             } else {
                 if (isTreasure(currentLocation)) {
                     log.info(String.format("Succeeded in %s steps", timesToPlay + 1));
+//                    System.out.println(timesToPlay + 1);
                     outputFile.writeToOutput(FOUND);
                     break;
                 } else {
@@ -71,7 +72,7 @@ public class GameManagerImpl extends GameManager {
 //            playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
             log.info(direction.toString());
-//            if (direction!=MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
+            if (direction!= Enums.MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
             log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
         }
         if (timesToPlay == data.getMaxSteps()) {
@@ -81,7 +82,7 @@ public class GameManagerImpl extends GameManager {
     }
 
     @Override
-    protected Point move(MainDirectionsEnum direction) {
+    protected Point move(Enums.MainDirectionsEnum direction) {
         return movePlayerLocation(direction);
     }
 
@@ -95,18 +96,18 @@ public class GameManagerImpl extends GameManager {
         return point.equals(treasureLocation);
     }
 
-    protected Point getBackMove(MainDirectionsEnum direction) {
+    protected Point getBackMove(Enums.MainDirectionsEnum direction) {
         switch (direction) {
             case UP:
-                return move(MainDirectionsEnum.DOWN);
+                return move(Enums.MainDirectionsEnum.DOWN);
             case DOWN:
-                return move(MainDirectionsEnum.UP);
+                return move(Enums.MainDirectionsEnum.UP);
             case RIGHT:
-                return move(MainDirectionsEnum.LEFT);
+                return move(Enums.MainDirectionsEnum.LEFT);
             case LEFT:
-                return move(MainDirectionsEnum.RIGHT);
+                return move(Enums.MainDirectionsEnum.RIGHT);
             default:
-                return move(MainDirectionsEnum.BOOKMARK);
+                return move(Enums.MainDirectionsEnum.BOOKMARK);
         }
     }
 
@@ -119,7 +120,7 @@ public class GameManagerImpl extends GameManager {
     }
 
 
-    protected Point movePlayerLocation(MainDirectionsEnum directionsEnum) {
+    protected Point movePlayerLocation(Enums.MainDirectionsEnum directionsEnum) {
         Point newLocation = null;
         switch (directionsEnum) {
             case DOWN:
