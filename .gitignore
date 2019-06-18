@@ -5,3 +5,4 @@
 output.txt
 log.txt
 .idea/misc.xml
+src/main/java/maze/gameManager/GameManagerImpl.java.orig

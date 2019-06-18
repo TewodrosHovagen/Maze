@@ -3,16 +3,20 @@ package Utils.logging;
 import maze.fileDataParse.FileData;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
+import maze.player.MazePlayer;
+import maze.player.PlayerRandom;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class OutputResult {
 
-    public static void printOutputResult(Map<FileData,List<GameManager>> gameResultMap){
+    public static void printExcelOutputResult(Map<FileData,List<GameManager>> gameResultMap){
 //        byte[] report = new XlsxBuilder().
 //                startSheet("Dream cars").                            // start with sheet
 //                startRow().                                          // then go row by row
@@ -63,12 +67,11 @@ public class OutputResult {
         xlsxBuilderResult.startSheet("******** MAZE RESULT ********").startRow().startRow().startRow();
         xlsxBuilderResult.addBoldTextCenterAlignedColumn("");
 
-        for(Map.Entry<FileData,List<GameManager>> gameItem: gameResultMap.entrySet()){
-            for(GameManager gameManager : gameItem.getValue()){
+        Map.Entry<FileData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
+        for (GameManager gameManager : gameFirstItem.getValue()) {
                 xlsxBuilderResult.addTextLeftAlignedColumn(gameManager.getPlayer().getClass().getSimpleName());
-            }
-            break;
         }
+
 
         xlsxBuilderResult.startRow();
 
@@ -82,11 +85,45 @@ public class OutputResult {
         }
     }
 
+
+    public static void printConsoleOutputResult(Map<FileData,List<GameManager>> gameResultMap) {
+
+        System.out.println("******** MAZE RESULT ********");
+        System.out.print("\t");
+        Map.Entry<FileData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
+        for (GameManager gameManager : gameFirstItem.getValue()) {
+            System.out.print("\t" + gameManager.getPlayer().getClass().getSimpleName());
+        }
+
+        System.out.println();
+
+        for(Map.Entry<FileData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+            System.out.print(gameItem.getKey().getMazeName());
+            for(GameManager gameManager : gameItem.getValue()){
+                System.out.print("\t\t"+((GameManagerTask)gameManager).getMaxStepsResults()+"\t\t");
+            }
+            System.out.println();
+        }
+    }
+
     private static void saveMyFile(byte[] bytes) throws IOException {
         FileUtils.writeByteArrayToFile(new File("C:\\Users\\sm0679\\Desktop\\output\\result.xlsx"), bytes);
     }
 
     public static void main(String[] args) {
-        printOutputResult(null);
+        Map<FileData,List<GameManager>> gameResultMap = new HashMap<>();
+        FileData fileData1 = new FileData();
+        fileData1.setMazeName("Maze 1");
+        FileData fileData2 = new FileData();
+        fileData2.setMazeName("Maze 2");
+        GameManager gameManager1 = new GameManagerTask(fileData1, new PlayerRandom());
+        GameManager gameManager2 = new GameManagerTask(fileData2, new MazePlayer());
+        List<GameManager> gameManagerList = new ArrayList<>();
+        gameManagerList.add(gameManager1);
+        gameManagerList.add(gameManager2);
+        gameResultMap.put(fileData1,gameManagerList);
+        gameResultMap.put(fileData2,gameManagerList);
+
+        printConsoleOutputResult(gameResultMap);
     }
 }

@@ -5,31 +5,38 @@ import Utils.logging.Logger;
 import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.player.PlayerMaze;
-
+import maze.player.Player;
 import java.awt.*;
-
-import static maze.fileDataParse.FileParse.*;
+import static maze.fileDataParse.FileParse.PLAYER;
+import static maze.fileDataParse.FileParse.SPACE;
+import static maze.fileDataParse.FileParse.WALL;
 
 
 public class GameManagerImpl extends GameManager {
     
     private final Logger log = Logger.getInstance();
     private String[][] mazeWorld;
-
     private final String FOUND = "!";
     private final String NOT_FOUND = "X";
     private Point treasureLocation;
     private OutputLog outputFile;
-    protected int bookmarkCounter = 0;
-    protected Point playerLocation;
-    protected Point playerPreviousLocation;
+    private String result;
+    private int bookmarkCounter = 0;
+    private Point playerLocation;
+    private Point playerPreviousLocation;
+    protected int timesToPlay;
 
     public GameManagerImpl(FileData data) {
+        this(data, new MazePlayer());
+    }
+
+    GameManagerImpl(FileData data, Player player) {
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
         this.data = data;
         player = new PlayerMaze();
+        this.player = player;
     }
 
     protected GameManagerImpl() {   }
@@ -38,7 +45,6 @@ public class GameManagerImpl extends GameManager {
     public void startGame() {
         Enums.MainDirectionsEnum direction;
         Point currentLocation = playerLocation;
-        int timesToPlay;
         log.info("**************** START THE MAZE ****************");
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
             log.info("Step No: " + timesToPlay);
@@ -53,8 +59,8 @@ public class GameManagerImpl extends GameManager {
             } else {
                 if (isTreasure(currentLocation)) {
                     log.info(String.format("Succeeded in %s steps", timesToPlay + 1));
-//                    System.out.println(timesToPlay + 1);
-                    outputFile.writeToOutput(FOUND);
+                    result = FOUND;
+                    gameResultHandler();
                     break;
                 } else {
                     if (isWall(currentLocation)) {
@@ -68,16 +74,17 @@ public class GameManagerImpl extends GameManager {
                         player.hitBookmark(getBookmarkSequence(currentLocation));
                     }
                 }
-          }
-//            playerPreviousLocation = playerLocation;
+            }
+            //playerPreviousLocation = playerLocation;
             playerLocation = currentLocation;
             log.info(direction.toString());
-            if (direction!= Enums.MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
+//            if (direction!=MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
             log.info("Current location:" + (int) playerLocation.getX() + "," + (int) playerLocation.getY());
         }
         if (timesToPlay == data.getMaxSteps()) {
             log.info(String.format("Failed to solve maze in %s steps", timesToPlay));
-            outputFile.writeToOutput(NOT_FOUND);
+            result = NOT_FOUND;
+            gameResultHandler();
         }
     }
 
@@ -96,7 +103,12 @@ public class GameManagerImpl extends GameManager {
         return point.equals(treasureLocation);
     }
 
-    protected Point getBackMove(Enums.MainDirectionsEnum direction) {
+    @Override
+    protected void gameResultHandler() {
+        outputFile.writeToOutput(result);
+    }
+
+    protected Point getBackMove(MainDirectionsEnum direction) {
         switch (direction) {
             case UP:
                 return move(Enums.MainDirectionsEnum.DOWN);
@@ -109,14 +121,6 @@ public class GameManagerImpl extends GameManager {
             default:
                 return move(Enums.MainDirectionsEnum.BOOKMARK);
         }
-    }
-
-    public void printMazeWorldAfterChange() {
-        if(mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()].equals(PLAYER+""))
-            mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()] =SPACE+"";
-        mazeWorld[(int)playerLocation.getY()][(int)playerLocation.getX()] =PLAYER+"";
-        data.printMazeWorld();
-        System.out.println("**************************************");
     }
 
 
@@ -168,4 +172,12 @@ public class GameManagerImpl extends GameManager {
     }
 
     public void setOutputFile(OutputLog outputFile) { this.outputFile = outputFile;  }
+
+    public void printMazeWorldAfterChange() {
+        if(mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()].equals(PLAYER+""))
+            mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()] =SPACE+"";
+        mazeWorld[(int)playerLocation.getY()][(int)playerLocation.getX()] =PLAYER+"";
+        data.printMazeWorld();
+        System.out.println("**************************************");
+    }
 }
