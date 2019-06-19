@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import Utils.Enums;
+import Utils.directionEnum.Enums;
 import Utils.logging.OutputLog;
 import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
@@ -14,10 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,7 +81,7 @@ public class GameManagerImplTest {
     public void startGameWinTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        Enums.DirectionsEnum direction = Enums.DirectionsEnum.RIGHT;
+        Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.RIGHT;
         String directionExpectedSTR = "R";
         String gameExpectedStatusSTR = "!";
         try (OutputLog outputFile = new OutputLog(fileOutputDir)) {
@@ -108,7 +105,7 @@ public class GameManagerImplTest {
     public void startGameWallTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        Enums.DirectionsEnum direction = Enums.DirectionsEnum.UP;
+        Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.UP;
         String directionExpectedSTR = "U";
         String gameExpectedStatusSTR = "X";
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
@@ -132,7 +129,7 @@ public class GameManagerImplTest {
     public void startGameNoWinTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        Enums.DirectionsEnum direction = Enums.DirectionsEnum.LEFT;
+        Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.LEFT;
         String directionExpectedSTR = "L";
         String gameExpectedStatusSTR = "X";
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
@@ -156,7 +153,7 @@ public class GameManagerImplTest {
     public void startGameNoWinBookmarkTest() throws Exception {
         //Arrange
         FileData fileData = new FileParse().parseFileData(fileDir);
-        Enums.DirectionsEnum direction = Enums.DirectionsEnum.BOOKMARK;
+        Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.BOOKMARK;
         String directionExpectedSTR = "B";
         String gameExpectedStatusSTR = "X";
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {

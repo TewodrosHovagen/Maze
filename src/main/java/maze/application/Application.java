@@ -6,6 +6,7 @@ import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerImpl;
+import org.apache.velocity.texen.util.FileUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,6 +33,8 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
+//        System.out.println("removing file output ...");
+//        FileUtil.file("./output.txt").delete();
         app.startApplication(args);
         closeLogger();
     }

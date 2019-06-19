@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import Utils.Enums;
+import Utils.directionEnum.Enums;
 import maze.fileDataParse.FileData;
 import maze.player.Player;
 
@@ -48,7 +48,7 @@ public abstract class GameManager implements GameManagerInterface{
      * @param direction - direction got from player
      * @return - point of location after move
      */
-    protected abstract Point move(Enums.DirectionsEnum direction);
+    protected abstract Point move(Enums.MainDirectionsEnum direction);
 
     /**
      * Manager check if location point is marked as wall
@@ -63,6 +63,11 @@ public abstract class GameManager implements GameManagerInterface{
      * @return true of indeed treasure
      */
     protected abstract boolean isTreasure(Point point);
+
+    /**
+     * The game result handler deals with the game output value.
+     */
+    protected abstract void gameResultHandler();
 
     public Player getPlayer() {
         return player;
