@@ -43,13 +43,22 @@ public class Try {
         );
 
         String name;
+        System.out.println("classPathEntries length: "+ classPathEntries.length);
         for (String classpathEntry : classPathEntries) {
                 try {
+                    System.out.println("classpathEntry: "+ classpathEntry);
                     File base = new File(classpathEntry + File.separatorChar + path);
+                    System.out.println("base.listFiles(): "+ base.listFiles());
                     for (File file : base.listFiles()) {
                         name = file.getName();
-                        if (name.endsWith(".class") && name.startsWith("Player") && !name.equals("Player.class")) {
+                        if (name.endsWith(".class")
+                                && name.startsWith("Player")
+                                && !name.equals("Player.class")
+                                && !name.equals("PlayerInterface.class")
+                                && !name.contains("$")) {
+                            System.out.println("class name before substring: "+ name);
                             name = name.substring(0, name.length() - 6);
+                            System.out.println("class name: "+ name);
                             classes.add(Class.forName(packageName + "." + name));
                         }
                     }
