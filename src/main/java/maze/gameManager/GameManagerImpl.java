@@ -52,7 +52,7 @@ public class GameManagerImpl extends GameManager {
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
             log.info("Step No: " + timesToPlay);
             direction = player.move();
-            outputFile.writeToOutput(direction.name().charAt(0)+"");
+//            outputFile.writeToOutput(direction.name().charAt(0)+"");
             log.info("Player position before move"+ currentLocation.getLocation());
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);

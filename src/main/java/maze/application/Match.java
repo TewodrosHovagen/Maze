@@ -1,5 +1,6 @@
 package maze.application;
 
+import Utils.logging.OutputResult;
 import Utils.packageclasscode.Try;
 import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
@@ -30,21 +31,34 @@ public class Match {
         String mazesFolder = args[0];
         String playersPackage = args[1];
         int numThread = args.length > 2 ? Integer.valueOf(args[2]) : 1;
-        FileParse fileParse = new FileParse();
+        System.out.println("mazesFolder: "+ mazesFolder);
+        System.out.println("playersPackage: "+ playersPackage);
+        System.out.println("numThread: "+ numThread);
+
+        FileParse fileParse;
         FileData dataFile;
 
         List<Class<?>> playersClasses = Try.getClassesInPackage(playersPackage);
+        System.out.println("playersClasses: " + playersClasses);
+        System.out.println("playersClassesSize: " + playersClasses.size());
+
         players = getPlayersInstanceFromClasses(playersClasses);
+        System.out.println("players size: " + players.size());
+
         ExecutorService pool = Executors.newFixedThreadPool(numThread);
 
         if(Validation.checkExistenceOfFilePath(mazesFolder)){
 
             Path absPath = Paths.get(mazesFolder).toAbsolutePath();
-
-            File file = new File(mazesFolder);
+            System.out.println("absPath: "+ absPath);
+            File file = new File(absPath.toString());
             String[] listFiles = file.list();
+            System.out.println("listFiles size: "+ listFiles.length);
+
             for(String fileName : listFiles){
-                dataFile = fileParse.parseFileData(absPath + fileName);
+                System.out.println("fileName: "+fileName);
+                fileParse = new FileParse();
+                dataFile = fileParse.parseFileData(absPath+ "/" + fileName);
                 if (dataFile != null){
                     mazeFiles.add(dataFile);
                 }
@@ -64,6 +78,7 @@ public class Match {
         pool.shutdown();
         pool.awaitTermination(10, TimeUnit.SECONDS);
 
+        OutputResult.printConsoleOutputResult(gameResultMap);
 
     }
     private static List<Player> getPlayersInstanceFromClasses(List<Class<?>> classes){
