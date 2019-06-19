@@ -73,7 +73,7 @@ public class Application {
         }
 
         if (isArgMissing == 1 ){
-            if(checkExistenceOfFilePath(outputFilePath) && !checkExistenceOfFile(outputFilePath)){
+            if(Validation.checkExistenceOfFilePath(outputFilePath) && !Validation.checkExistenceOfFile(outputFilePath)){
                 createAnOutputFile = true;
                 this.outputFilePath = outputFilePath;
             }
@@ -84,7 +84,7 @@ public class Application {
         }
 
 
-        if(checkExistenceOfFilePath(mazeFilePath) && checkExistenceOfFile(mazeFilePath)){
+        if(Validation.checkExistenceOfFilePath(mazeFilePath) && Validation.checkExistenceOfFile(mazeFilePath)){
             isInputFileExist = true;
             dataFile = fileParse.parseFileData(mazeFilePath);
         }
@@ -107,17 +107,7 @@ public class Application {
         } return 1;
     }
 
-    private static boolean checkExistenceOfFilePath(String pathWithFileName){
-        Path path = Paths.get(pathWithFileName);
-        Path parentPath = path.getParent().toAbsolutePath();
-        return Files.exists(parentPath);
 
-    }
-    private static boolean checkExistenceOfFile(String pathWithFileName){
-        Path path = Paths.get(pathWithFileName);
-        Path absPath = path.toAbsolutePath();
-        return Files.exists(absPath);
-    }
     private static void closeLogger() {
         try {
             log.close();
