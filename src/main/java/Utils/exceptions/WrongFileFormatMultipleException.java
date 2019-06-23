@@ -7,8 +7,8 @@ public class WrongFileFormatMultipleException extends RuntimeException {
         for(RuntimeException e: exceptionsList){
             System.out.println(e.getMessage());
         }
-        if(!exceptionsList.isEmpty())
-           throw new WrongFileFormatException("Wrong File Format");
+//        if(!exceptionsList.isEmpty())
+//           throw new WrongFileFormatException("Wrong File Format");
     }
 
 }

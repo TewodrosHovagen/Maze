@@ -103,7 +103,9 @@ public class FileParse {
             }
         if(!bodyFileExceptions.isEmpty()) {
             System.out.println("Bad maze in maze file:");
-            throw new WrongFileFormatMultipleException(bodyFileExceptions);
+            Exception e =  new WrongFileFormatMultipleException(bodyFileExceptions);
+            mazeData.setValidFile(false);
+
         }
         return mazeData;
     }
@@ -226,7 +228,8 @@ public class FileParse {
         }
         if (!headerFileExceptions.isEmpty()){
             System.out.println("Bad maze file header:");
-            throw new WrongFileFormatMultipleException(headerFileExceptions);
+            Exception e =  new WrongFileFormatMultipleException(headerFileExceptions);
+            mazeData.setValidFile(false);
         }
         return mazeData;
     }

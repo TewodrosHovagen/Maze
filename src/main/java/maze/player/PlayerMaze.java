@@ -144,7 +144,7 @@ public class PlayerMaze extends Player {
 
     @Override
     public void hitWall() {
-        System.out.println("You hit the wall");
+//        System.out.println("You hit the wall");
         isHitWall = true;
         setBookmarkNextMove = true;
     }
