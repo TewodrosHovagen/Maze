@@ -1,8 +1,7 @@
-package Utils.directionEnum;
+package utils.directionEnum;
 
 import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
 
 public class Enums {
 

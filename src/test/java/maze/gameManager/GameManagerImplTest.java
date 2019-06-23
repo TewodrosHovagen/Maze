@@ -1,7 +1,7 @@
 package maze.gameManager;
 
-import Utils.directionEnum.Enums;
-import Utils.logging.OutputLog;
+import utils.directionEnum.Enums;
+import utils.reports.SingleGameOutputFile;
 import maze.fileDataParse.FileParse;
 import maze.player.Player;
 import org.junit.Assert;
@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -83,7 +84,7 @@ public class GameManagerImplTest {
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.RIGHT;
         String directionExpectedSTR = "R";
         String gameExpectedStatusSTR = "!";
-        try (OutputLog outputFile = new OutputLog(fileOutputDir)) {
+        try (SingleGameOutputFile outputFile = new SingleGameOutputFile(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
@@ -107,7 +108,7 @@ public class GameManagerImplTest {
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.UP;
         String directionExpectedSTR = "U";
         String gameExpectedStatusSTR = "X";
-        try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
+        try(SingleGameOutputFile outputFile = new SingleGameOutputFile(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
@@ -131,7 +132,7 @@ public class GameManagerImplTest {
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.LEFT;
         String directionExpectedSTR = "L";
         String gameExpectedStatusSTR = "X";
-        try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
+        try(SingleGameOutputFile outputFile = new SingleGameOutputFile(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
@@ -155,7 +156,7 @@ public class GameManagerImplTest {
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.BOOKMARK;
         String directionExpectedSTR = "B";
         String gameExpectedStatusSTR = "X";
-        try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
+        try(SingleGameOutputFile outputFile = new SingleGameOutputFile(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);

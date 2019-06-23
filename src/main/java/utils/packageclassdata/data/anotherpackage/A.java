@@ -1,4 +1,4 @@
-package Utils.packageclassdata.data.anotherpackage;
+package utils.packageclassdata.data.anotherpackage;
 
 public class A {
     private String str;

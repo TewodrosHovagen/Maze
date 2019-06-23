@@ -1,13 +1,13 @@
 package maze.player;
 
-import Utils.directionEnum.Enums.MainDirectionsEnum;
+import utils.directionEnum.Enums.MainDirectionsEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static Utils.directionEnum.Enums.MainDirectionsEnum.DOWN;
-import static Utils.directionEnum.Enums.MainDirectionsEnum.UP;
+import static utils.directionEnum.Enums.MainDirectionsEnum.DOWN;
+import static utils.directionEnum.Enums.MainDirectionsEnum.UP;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.BACK;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.LEFT;

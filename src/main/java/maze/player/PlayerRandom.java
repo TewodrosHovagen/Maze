@@ -1,6 +1,6 @@
 package maze.player;
 
-import Utils.directionEnum.Enums.MainDirectionsEnum;
+import utils.directionEnum.Enums.MainDirectionsEnum;
 import java.util.HashMap;
 import java.util.Map;
 

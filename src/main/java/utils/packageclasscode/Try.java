@@ -1,4 +1,4 @@
-package Utils.packageclasscode;
+package utils.packageclasscode;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -11,7 +11,7 @@ public class Try {
 
     public static void main(String[] args) {
 
-        List<Class<?>> classes = getClassesInPackage("Utils.packageclassdata.data.anotherpackage");
+        List<Class<?>> classes = getClassesInPackage("utils.packageclassdata.data.anotherpackage");
         for (Class<?> c: classes){
             Object o = null;
             try {

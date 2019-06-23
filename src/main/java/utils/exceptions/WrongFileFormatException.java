@@ -1,4 +1,4 @@
-package Utils.exceptions;
+package utils.exceptions;
 
 public class WrongFileFormatException extends RuntimeException {
     private String message;

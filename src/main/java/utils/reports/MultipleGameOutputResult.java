@@ -1,4 +1,4 @@
-package Utils.logging;
+package utils.reports;
 
 import maze.gameManager.MazeData;
 import maze.gameManager.GameManager;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OutputResult {
+public class MultipleGameOutputResult {
 
     private static int MAZE_NAME_MAX_LENGTH = 40;
 

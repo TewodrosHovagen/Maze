@@ -1,7 +1,7 @@
 package maze.application;
 
-import Utils.logging.Logger;
-import Utils.logging.OutputResult;
+import utils.logging.Logger;
+import utils.reports.MultipleGameOutputResult;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
@@ -23,7 +23,7 @@ public class Match {
     private static final Logger log = Logger.getInstance();
     private  Map<MazeData,List<GameManager>> gameResultMap = new HashMap<>();
     private  List<MazeData> mazeFiles = new ArrayList<>();
-    private  List<Player> players;
+    private  List<Class<?>> players;
     private boolean runThePlayer = true;
 
     public boolean isRunThePlayer() {
@@ -54,10 +54,10 @@ public class Match {
 
             players = getPlayersInstanceFromClasses(playersClasses);
             log.info("players size: " + players.size());
-
+//TODO: add suppoort in one thread no pool
             sendTasksToPoolExecution();
 
-            OutputResult.printConsoleOutputResult(gameResultMap);
+            MultipleGameOutputResult.printConsoleOutputResult(gameResultMap);
 
         }
     }
@@ -125,20 +125,21 @@ public class Match {
         return classes;
     }
 
-    private List<Player> getPlayersInstanceFromClasses(List<Class<?>> classes){
-        List<Player> playerInstances = new ArrayList<>();
+    private List<Class<?>> getPlayersInstanceFromClasses(List<Class<?>> classes){
+        List<Class<?>> playerClasses = new ArrayList<>();
         for (Class<?> c: classes){
             Object o = null;
             Player p = null;
             try {
                 o = c.getDeclaredConstructor().newInstance();
                 p = (Player)o;
-                playerInstances.add(p);
+                playerClasses.add(c);
             } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                e.printStackTrace();
+                System.out.println(String.format("Class %s does not passed casting to Player properly ", c.getName()));
+//                e.printStackTrace();
             }
         }
-        return playerInstances;
+        return playerClasses;
     }
 
     private void addValidMazeFilesToList(){
@@ -168,7 +169,14 @@ public class Match {
         ExecutorService pool = Executors.newFixedThreadPool(numThread);
         for(MazeData mazeData: mazeFiles){
             List<GameManager> tasks = new ArrayList<>();
-            for(Player player: players){
+            for(Class<?> classPlayer: players){
+                Player player = null;
+                try {
+                    player = (Player)classPlayer.getDeclaredConstructor().newInstance();
+                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                System.out.println("Player instansiation has failed");
+//                e.printStackTrace();
+            }
                 GameManagerTask task = new GameManagerTask(mazeData, player);
                 tasks.add(task);
                 pool.execute(task);

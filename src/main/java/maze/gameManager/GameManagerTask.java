@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import Utils.logging.Logger;
+import utils.logging.Logger;
 import maze.player.Player;
 
 public class GameManagerTask extends GameManagerImpl implements Runnable {

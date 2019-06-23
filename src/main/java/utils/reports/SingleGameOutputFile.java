@@ -1,16 +1,16 @@
-package Utils.logging;
+package utils.reports;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-public class OutputLog implements AutoCloseable{
+public class SingleGameOutputFile implements AutoCloseable{
     private String logPath;
     private FileOutputStream fileOutput;
     private OutputStreamWriter writer;
 
-    public OutputLog(String path) throws FileNotFoundException {
+    public SingleGameOutputFile(String path) throws FileNotFoundException {
         logPath = path;
         fileOutput = new FileOutputStream(logPath);
         writer = new OutputStreamWriter(fileOutput);

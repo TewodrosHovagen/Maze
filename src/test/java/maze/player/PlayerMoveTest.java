@@ -1,6 +1,6 @@
 package maze.player;
 
-import Utils.directionEnum.Enums.MainDirectionsEnum;
+import utils.directionEnum.Enums.MainDirectionsEnum;
 import maze.player.directionEnum.playerEnum;
 import org.junit.Assert;
 import org.junit.Before;

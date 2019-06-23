@@ -1,5 +1,5 @@
 package maze.fileDataParse;
-import Utils.exceptions.WrongFileFormatException;
+import utils.exceptions.WrongFileFormatException;
 import maze.gameManager.MazeData;
 import org.junit.Assert;
 import org.junit.Before;
