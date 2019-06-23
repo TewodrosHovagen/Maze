@@ -5,10 +5,6 @@ import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
 import maze.player.PlayerMaze;
 import maze.player.PlayerRandom;
-//import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

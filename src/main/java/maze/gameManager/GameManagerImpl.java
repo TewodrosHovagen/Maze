@@ -7,9 +7,7 @@ import maze.fileDataParse.FileData;
 import maze.player.Player;
 import maze.player.PlayerMaze;
 import maze.player.PlayerRandom;
-
-import java.awt.*;
-
+import java.awt.Point;
 import static maze.fileDataParse.FileParse.*;
 
 

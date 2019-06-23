@@ -1,13 +1,13 @@
 package maze.fileDataParse;
 
 import Utils.exceptions.WrongFileFormatMultipleException;
-import Utils.exceptions.NumberParseException;
 import Utils.exceptions.WrongFileFormatException;
 import Utils.logging.Logger;
 import maze.gameManager.MazeData;
-
-import java.awt.*;
-import java.io.*;
+import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +29,13 @@ public class FileParse {
     private List<RuntimeException> headerFileExceptions = new ArrayList<>();
     private List<RuntimeException> bodyFileExceptions = new ArrayList<>();
 
+    protected List<RuntimeException> getHeaderFileExceptions() {
+        return headerFileExceptions;
+    }
 
+    protected List<RuntimeException> getBodyFileExceptions() {
+        return bodyFileExceptions;
+    }
 
     /**
      * The method parse the file from a given location and generate a MazeData object.

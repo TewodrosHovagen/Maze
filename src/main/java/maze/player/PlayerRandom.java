@@ -1,7 +1,6 @@
 package maze.player;
 
 import Utils.directionEnum.Enums.MainDirectionsEnum;
-
 public class PlayerRandom extends Player {
 
     private MainDirectionsEnum newRandomDirection;
