@@ -39,8 +39,8 @@ public class FileParse {
 
     /**
      * The method parse the file from a given location and generate a MazeData object.
-     * @param fileLocation - location for the maze data
-     * @return - MazeData object with all the maze data
+     * @param fileLocation - location for the maze mazeData
+     * @return - MazeData object with all the maze mazeData
      */
     public MazeData parseFileData (String fileLocation){
             log.info("Reading the maze.txt file in location "+fileLocation);
@@ -50,7 +50,7 @@ public class FileParse {
                 FileReader fr = new FileReader(fileLocation);
                 BufferedReader br = new BufferedReader(fr)) {
 
-                // create File Data to store the maze data
+                // create File Data to store the maze mazeData
                 mazeData = parseFirstLines(br);
 
                 // read the first line from the text file
@@ -63,12 +63,12 @@ public class FileParse {
                     if (fileReader != null){
                         //If the file length is too long so need to work with the expected size
                         if (fileReader.length() >= mazeData.getColumns()){
-                            //log.writeToOutput("The file length " + fileReader.length() + " is more than declared in file data therefore using only the file data " + mazeData.getColumns() + " as max column");
+                            //log.writeToOutput("The file length " + fileReader.length() + " is more than declared in file mazeData therefore using only the file mazeData " + mazeData.getColumns() + " as max column");
                             for(int column = 0; column < mazeData.getColumns(); column++){
                                 addCharacterToBoard(fileReader.charAt(column),row,column, mazeData,mazeWorld);
                             }
                         }else{
-                            //log.writeToOutput("The file length " + fileReader.length() + " is less than declared in file data therefore need to complete to " + mazeData.getColumns());
+                            //log.writeToOutput("The file length " + fileReader.length() + " is less than declared in file mazeData therefore need to complete to " + mazeData.getColumns());
                             int column=0;
                             while (column < fileReader.length()){
                                 addCharacterToBoard(fileReader.charAt(column),row,column, mazeData,mazeWorld);
@@ -188,7 +188,7 @@ public class FileParse {
     }
 
     /**
-     * The method parse the first lines of the maze data.
+     * The method parse the first lines of the maze mazeData.
      * which includes:
      *  Maze Name , Max Step , Number of rows, Number of columns.
      *  Also validate if the format is as expected, if Throw WrongFileFormatException.

@@ -10,7 +10,7 @@ public abstract class GameManager implements GameManagerInterface{
 
     Map<Point, Integer> bookmarkSequence = new HashMap<>();
     protected Player player;
-    protected MazeData data;
+    protected MazeData mazeData;
 
     /**
      * Add bookmark to bookmark map
@@ -67,6 +67,8 @@ public abstract class GameManager implements GameManagerInterface{
      */
     protected abstract void gameResultHandler();
 
+    protected abstract void gameResultHandler(String out);
+
     public Player getPlayer() {
         return player;
     }
@@ -75,11 +77,11 @@ public abstract class GameManager implements GameManagerInterface{
         this.player = player;
     }
 
-    public MazeData getData() {
-        return data;
+    public MazeData getMazeData() {
+        return mazeData;
     }
 
-    public void setData(MazeData data) {
-        this.data = data;
+    public void setMazeData(MazeData mazeData) {
+        this.mazeData = mazeData;
     }
 }

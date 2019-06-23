@@ -37,12 +37,19 @@ public class HandlePlayerLocationsImpTest {
     }
 
     public HandlePlayerLocationsImpTest(int rowPosition, int colPosition, int rowExpectedPosition, int colExpectedPosition,int rows, int columns, Enums.MainDirectionsEnum direction) {
+        //Player row actual position
         this.rowPosition = rowPosition;
+        //Player column actual position
         this.colPosition = colPosition;
+        //Player row expected position
         this.rowExpectedPosition = rowExpectedPosition;
+        //Player column expected position
         this.colExpectedPosition = colExpectedPosition;
+        //Maze Rows size
         this.rows = rows;
+        //Maze Columns size
         this.columns = columns;
+        //Direction to move
         this.direction = direction;
     }
 
@@ -55,7 +62,7 @@ public class HandlePlayerLocationsImpTest {
         MazeData mazeData = new MazeData();
         mazeData.setRows(rows);
         mazeData.setColumns(columns);
-        gameManager.setData(mazeData);
+        gameManager.setMazeData(mazeData);
         gameManager.setPlayerLocation(playerPoint);
 
         //Act
@@ -74,7 +81,7 @@ public class HandlePlayerLocationsImpTest {
         MazeData mazeData = new MazeData();
         mazeData.setRows(rows);
         mazeData.setColumns(columns);
-        gameManager.setData(mazeData);
+        gameManager.setMazeData(mazeData);
         gameManager.setPlayerLocation(playerPoint);
 
         //Act

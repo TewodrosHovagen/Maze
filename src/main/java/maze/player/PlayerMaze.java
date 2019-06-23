@@ -29,7 +29,12 @@ public class PlayerMaze extends Player {
     final private Map<WalkingDirectionsEnum, MainDirectionsEnum> southMap;
     final private Map<MainDirectionsEnum, Map<WalkingDirectionsEnum, MainDirectionsEnum>> directionsMap;
     private int bookmarkSeq;
+    private boolean fullBookMark;
+    private MainDirectionsEnum lastMainDirectionToReturn;
 
+    public void setLastMainDirectionToReturn(MainDirectionsEnum lastMainDirectionToReturn) {
+        this.lastMainDirectionToReturn = lastMainDirectionToReturn;
+    }
 
     @Override
     public MainDirectionsEnum move() {
@@ -41,6 +46,10 @@ public class PlayerMaze extends Player {
 
             bookMarkMap.computeIfAbsent(bookMarkCounter, k -> new ArrayList<>());
             bookMarkMap.get(bookMarkCounter).add(mainDirection);
+            if(fullBookMark){
+                bookMarkMap.get(bookMarkCounter).add(lastMainDirectionToReturn);
+                fullBookMark=false;
+            }
             setBookmarkNextMove = false;
         } else if (isHitWall) {
             mainDirectionToReturn = moveByLastStep(currentDirectionMap);
@@ -55,23 +64,24 @@ public class PlayerMaze extends Player {
         } else if (isBookMark) {
             WalkingDirectionsEnum lastStepDirection = lastStep;
             mainDirectionToReturn = currentDirectionMap.get(lastStepDirection);
-
+            if (bookMarkMap.get(bookMarkCounter).size() <= 3) {
             if (bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
-                if (bookMarkMap.get(bookMarkCounter).size() < 3) {
-                    mainDirectionToReturn = moveByLastStep(currentDirectionMap);
-                    if (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
+                    do {
+                        mainDirectionToReturn = moveByLastStep(currentDirectionMap);
+                    }while (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn));
                         bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
                     }
-                }
 
             } else {
-                bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
+                mainDirectionToReturn=backStep.get(mainDirectionToReturn);
+                fullBookMark=true;
+                setBookmarkNextMove=true;
             }
-
             isBookMark = false;
         } else {
             WalkingDirectionsEnum lastStepDirection = lastStep;
             mainDirectionToReturn = currentDirectionMap.get(lastStepDirection);
+            setLastMainDirectionToReturn(mainDirection);
             setMainDirection(mainDirectionToReturn);
             setLastStep(STRAIGHT);
 
@@ -94,6 +104,13 @@ public class PlayerMaze extends Player {
         }
         return directionToReturn;
     }
+
+    private Map<MainDirectionsEnum, MainDirectionsEnum> backStep = new HashMap<>() {{
+        put(MainDirectionsEnum.UP, MainDirectionsEnum.DOWN);
+        put(MainDirectionsEnum.DOWN, MainDirectionsEnum.UP);
+        put(MainDirectionsEnum.RIGHT, MainDirectionsEnum.LEFT);
+        put(MainDirectionsEnum.LEFT, MainDirectionsEnum.RIGHT);
+    }};
 
     // initialize all player params in c'tor.
     public PlayerMaze() {
