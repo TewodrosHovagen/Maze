@@ -144,7 +144,7 @@ public class Match {
 
     private void addValidMazeFilesToList(){
         FileParse fileParse;
-        FileData dataFile;
+        MazeData mazeData;
 
         if(Validation.checkExistenceOfFilePath(mazesFolder)){
 
@@ -157,9 +157,9 @@ public class Match {
             for(String fileName : listFiles){
                 log.info("fileName: "+fileName);
                 fileParse = new FileParse();
-                dataFile = fileParse.parseFileData(absPath+ "/" + fileName);
-                if (dataFile.isValidFile()){
-                    mazeFiles.add(dataFile);
+                mazeData = fileParse.parseFileData(absPath+ "/" + fileName);
+                if (mazeData.isValidFile()){
+                    mazeFiles.add(mazeData);
                 }
             }
 
