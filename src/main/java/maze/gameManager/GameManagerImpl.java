@@ -30,7 +30,7 @@ public class GameManagerImpl extends GameManager {
     GameManagerImpl(MazeData data, Player player) {
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
-        playerPreviousLocation=new Point(playerLocation.getLocation());
+        playerPreviousLocation= playerLocation;
         treasureLocation = data.getTreasureLocation();
         this.mazeData = data;
         this.player = player;
