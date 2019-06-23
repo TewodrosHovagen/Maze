@@ -1,6 +1,6 @@
 package Utils.logging;
 
-import maze.fileDataParse.FileData;
+import maze.gameManager.MazeData;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
 import maze.player.PlayerMaze;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class OutputResult {
 
-    public static void printExcelOutputResult(Map<FileData,List<GameManager>> gameResultMap){
+    public static void printExcelOutputResult(Map<MazeData,List<GameManager>> gameResultMap){
 //        byte[] report = new XlsxBuilder().
 //                startSheet("Dream cars").                            // start with sheet
 //                startRow().                                          // then go row by row
@@ -67,7 +67,7 @@ public class OutputResult {
         xlsxBuilderResult.startSheet("******** MAZE RESULT ********").startRow().startRow().startRow();
         xlsxBuilderResult.addBoldTextCenterAlignedColumn("");
 
-        Map.Entry<FileData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
+        Map.Entry<MazeData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
         for (GameManager gameManager : gameFirstItem.getValue()) {
                 xlsxBuilderResult.addTextLeftAlignedColumn(gameManager.getPlayer().getClass().getSimpleName());
         }
@@ -75,7 +75,7 @@ public class OutputResult {
 
         xlsxBuilderResult.startRow();
 
-        for(Map.Entry<FileData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+        for(Map.Entry<MazeData,List<GameManager>> gameItem: gameResultMap.entrySet()){
             xlsxBuilderResult.addTextLeftAlignedColumn(gameItem.getKey().getMazeName());
             for(GameManager gameManager : gameItem.getValue()){
                 GameManagerTask gameManagerTask = (GameManagerTask)gameManager;
@@ -86,18 +86,18 @@ public class OutputResult {
     }
 
 
-    public static void printConsoleOutputResult(Map<FileData,List<GameManager>> gameResultMap) {
+    public static void printConsoleOutputResult(Map<MazeData,List<GameManager>> gameResultMap) {
 
         System.out.println("******** MAZE RESULT ********");
         System.out.print("\t");
-        Map.Entry<FileData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
+        Map.Entry<MazeData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
         for (GameManager gameManager : gameFirstItem.getValue()) {
             System.out.print("\t" + gameManager.getPlayer().getClass().getSimpleName());
         }
 
         System.out.println();
 
-        for(Map.Entry<FileData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+        for(Map.Entry<MazeData,List<GameManager>> gameItem: gameResultMap.entrySet()){
             System.out.print(gameItem.getKey().getMazeName());
             for(GameManager gameManager : gameItem.getValue()){
                 System.out.print("\t\t"+((GameManagerTask)gameManager).getMaxStepsResults()+"\t\t");
@@ -111,18 +111,18 @@ public class OutputResult {
     }
 
     public static void main(String[] args) {
-        Map<FileData,List<GameManager>> gameResultMap = new HashMap<>();
-        FileData fileData1 = new FileData();
-        fileData1.setMazeName("Maze 1");
-        FileData fileData2 = new FileData();
-        fileData2.setMazeName("Maze 2");
-        GameManager gameManager1 = new GameManagerTask(fileData1, new PlayerRandom());
-        GameManager gameManager2 = new GameManagerTask(fileData2, new PlayerMaze());
+        Map<MazeData,List<GameManager>> gameResultMap = new HashMap<>();
+        MazeData mazeData1 = new MazeData();
+        mazeData1.setMazeName("Maze 1");
+        MazeData mazeData2 = new MazeData();
+        mazeData2.setMazeName("Maze 2");
+        GameManager gameManager1 = new GameManagerTask(mazeData1, new PlayerRandom());
+        GameManager gameManager2 = new GameManagerTask(mazeData2, new PlayerMaze());
         List<GameManager> gameManagerList = new ArrayList<>();
         gameManagerList.add(gameManager1);
         gameManagerList.add(gameManager2);
-        gameResultMap.put(fileData1,gameManagerList);
-        gameResultMap.put(fileData2,gameManagerList);
+        gameResultMap.put(mazeData1,gameManagerList);
+        gameResultMap.put(mazeData2,gameManagerList);
 
         printConsoleOutputResult(gameResultMap);
     }

@@ -1,11 +1,11 @@
-package maze.fileDataParse;
+package maze.gameManager;
 import Utils.logging.Logger;
 
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Set;
 
-public class FileData {
+public class MazeData {
 
     private final Logger log = Logger.getInstance();
     private String mazeName;
@@ -71,7 +71,7 @@ public class FileData {
 
     @Override
     public String toString() {
-        return "FileData{" +
+        return "MazeData{" +
                 "mazeName='" + mazeName + '\'' +
                 ", maxSteps=" + maxSteps +
                 ", columns=" + columns +

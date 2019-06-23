@@ -1,7 +1,6 @@
 package maze.gameManager;
 
 import Utils.logging.Logger;
-import maze.fileDataParse.FileData;
 import maze.player.Player;
 
 public class GameManagerTask extends GameManagerImpl implements Runnable {
@@ -10,13 +9,13 @@ public class GameManagerTask extends GameManagerImpl implements Runnable {
     private final int NOT_FOUNT = -1;
     private int maxStepsResults;
 
-    public GameManagerTask(FileData data, Player player) {
+    public GameManagerTask(MazeData data, Player player) {
         super(data, player);
     }
 
     @Override
     public void run() {
-        startGame();
+        runGame();
     }
 
     public int getMaxStepsResults() {

@@ -1,6 +1,5 @@
 package maze.gameManager;
 
-import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import org.junit.Assert;
 import org.junit.Test;
@@ -41,10 +40,10 @@ public class GameManagerNonValidParameterizedImplTest {
     public void isWallNonValid() {
         //Arrange
         Point currentPoint = new Point(rowPosition, colPosition);
-        FileData fileData = new FileParse().parseFileData(fileDir);
+        MazeData mazeData = new FileParse().parseFileData(fileDir);
 
         //Act
-        GameManager gameManagerInterface = new GameManagerImpl(fileData);
+        GameManager gameManagerInterface = new GameManagerImpl(mazeData);
 
         //Assert
         Assert.assertEquals("The current point a wall when should not be", expectedResultIsWall, gameManagerInterface.isWall(currentPoint));
@@ -54,10 +53,10 @@ public class GameManagerNonValidParameterizedImplTest {
     public void isTreasureNonValid() {
         //Arrange
         Point currentPoint = new Point(rowPosition, colPosition);
-        FileData fileData = new FileParse().parseFileData(fileDir);
+        MazeData mazeData = new FileParse().parseFileData(fileDir);
 
         //Act
-        GameManager gameManagerInterface = new GameManagerImpl(fileData);
+        GameManager gameManagerInterface = new GameManagerImpl(mazeData);
 
         //Assert
         Assert.assertEquals("The current point a wall when should not be", expectedResultIsTreasure, gameManagerInterface.isTreasure(currentPoint));
