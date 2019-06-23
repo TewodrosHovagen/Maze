@@ -16,80 +16,16 @@ import java.util.Map;
 
 public class OutputResult {
 
-    public static void printExcelOutputResult(Map<MazeData,List<GameManager>> gameResultMap){
-//        byte[] report = new XlsxBuilder().
-//                startSheet("Dream cars").                            // start with sheet
-//                startRow().                                          // then go row by row
-//                setRowTitleHeight().                                 // set row style, add borders and so on
-//                addTitleTextColumn("Dream cars").                    // add columns
-//                startRow().                                          // another row
-//                setRowTitleHeight().                                 // row styling
-//                setRowThinBottomBorder().
-//                addBoldTextLeftAlignedColumn("Dreamed By:").
-//                addTextLeftAlignedColumn("John Seaman").
-//                startRow().                                          // empty row
-//                startRow().                                          // header row
-//                setRowTitleHeight().
-//                setRowThickTopBorder().
-//                setRowThickBottomBorder().
-//                addBoldTextCenterAlignedColumn("Type").
-//                addBoldTextCenterAlignedColumn("Color").
-//                addBoldTextCenterAlignedColumn("Reason").
-//                startRow().                                          // rows with records (usually within a loop)
-//                addTextLeftAlignedColumn("Ferrari").
-//                addTextLeftAlignedColumn("Green").
-//                addTextLeftAlignedColumn("It looks nice").
-//                startRow().
-//                addTextLeftAlignedColumn("Lamborgini").
-//                addTextLeftAlignedColumn("Yellow").
-//                addTextLeftAlignedColumn("It's fast enough").
-//                startRow().
-//                addTextLeftAlignedColumn("Bugatti").
-//                addTextLeftAlignedColumn("Blue").
-//                addTextLeftAlignedColumn("Price is awesome").
-//                startRow().
-//                setRowThinTopBorder().
-//                startRow().
-//                startRow().                                          // footer row
-//                addTextLeftAlignedColumn("This is just a footer and I use it instead of 'Lorem ipsum dolor...'").
-//                setColumnSize(0, "XXXXXXXXXXXXX".length()).          // setting up column sizes at the end of the sheet
-//                setAutoSizeColumn(1).
-//                setAutoSizeColumn(2).
-//                build();
-//                // now deal with byte array (e.g. write to the file or database)
-//        try {
-//            saveMyFile(report);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        XlsxBuilder xlsxBuilderResult = new XlsxBuilder();
-        xlsxBuilderResult.startSheet("******** MAZE RESULT ********").startRow().startRow().startRow();
-        xlsxBuilderResult.addBoldTextCenterAlignedColumn("");
-
-        Map.Entry<MazeData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
-        for (GameManager gameManager : gameFirstItem.getValue()) {
-                xlsxBuilderResult.addTextLeftAlignedColumn(gameManager.getPlayer().getClass().getSimpleName());
-        }
-
-
-        xlsxBuilderResult.startRow();
-
-        for(Map.Entry<MazeData,List<GameManager>> gameItem: gameResultMap.entrySet()){
-            xlsxBuilderResult.addTextLeftAlignedColumn(gameItem.getKey().getMazeName());
-            for(GameManager gameManager : gameItem.getValue()){
-                GameManagerTask gameManagerTask = (GameManagerTask)gameManager;
-                xlsxBuilderResult.addTextLeftAlignedColumn(gameManagerTask.getMaxStepsResults()+"");
-            }
-            xlsxBuilderResult.startRow();
-        }
-    }
-
+    private static int MAZE_NAME_MAX_LENGTH = 40;
 
     public static void printConsoleOutputResult(Map<MazeData,List<GameManager>> gameResultMap) {
 
+        int maxMazesNameLength = getMazeNameMaxLength(gameResultMap);
+
+
         System.out.println("******** MAZE RESULT ********");
-        System.out.print("\t");
+        String padded = String.format("%-"+maxMazesNameLength+"s", " ");
+        System.out.print(padded+ "\t");
         Map.Entry<MazeData, List<GameManager>> gameFirstItem = gameResultMap.entrySet().iterator().next();
         for (GameManager gameManager : gameFirstItem.getValue()) {
             System.out.print("\t" + gameManager.getPlayer().getClass().getSimpleName());
@@ -98,7 +34,8 @@ public class OutputResult {
         System.out.println();
 
         for(Map.Entry<MazeData,List<GameManager>> gameItem: gameResultMap.entrySet()){
-            System.out.print(gameItem.getKey().getMazeName());
+            String mazeName = getMazeNameAccordingToLength(gameItem.getKey().getMazeName(),maxMazesNameLength);
+            System.out.print(mazeName+"\t");
             for(GameManager gameManager : gameItem.getValue()){
                 System.out.print("\t\t"+((GameManagerTask)gameManager).getMaxStepsResults()+"\t\t");
             }
@@ -106,16 +43,46 @@ public class OutputResult {
         }
     }
 
-    private static void saveMyFile(byte[] bytes) throws IOException {
-        FileUtils.writeByteArrayToFile(new File("C:\\Users\\sm0679\\Desktop\\output\\result.xlsx"), bytes);
+    private static String getMazeNameAccordingToLength(String mazeName,int maxMazesNameLength){
+        String returnMazeName = mazeName;
+        if(mazeName.length()<maxMazesNameLength){
+            int mazeReturnLength = maxMazesNameLength - mazeName.length();
+            String padded = String.format("%-"+mazeReturnLength+"s", " ");
+            returnMazeName+=padded;
+        }
+        return returnMazeName;
     }
+
+
+
+    private static int getMazeNameMaxLength(Map<MazeData,List<GameManager>> gameResultMap){
+        int maxLength =0;
+        for(Map.Entry<MazeData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+            maxLength = Math.max(gameItem.getKey().getMazeName().length(),maxLength);
+        }
+        return maxLength;
+    }
+
+//    private static String getMazeNameAccordingToLength(String mazeName){
+//        if (mazeName.length()>MAZE_NAME_MAX_LENGTH-1) {
+//            mazeName= mazeName.substring(0,MAZE_NAME_MAX_LENGTH-1)+"...";
+//        }
+//        if (mazeName.length()>MAZE_NAME_MAX_LENGTH-2) {
+//            mazeName= mazeName.substring(0,MAZE_NAME_MAX_LENGTH-2)+"...";
+//        }
+//        if (mazeName.length()>MAZE_NAME_MAX_LENGTH) {
+//            mazeName= mazeName.substring(0,MAZE_NAME_MAX_LENGTH-3)+"...";
+//        }
+//
+//        return mazeName;
+//    }
 
     public static void main(String[] args) {
         Map<MazeData,List<GameManager>> gameResultMap = new HashMap<>();
         MazeData mazeData1 = new MazeData();
-        mazeData1.setMazeName("Maze 1");
+        mazeData1.setMazeName("Maze 1 with the longest name you could ever think of");
         MazeData mazeData2 = new MazeData();
-        mazeData2.setMazeName("Maze 2");
+        mazeData2.setMazeName("Maze 1 with the longest name you could ever think of very very long name");
         GameManager gameManager1 = new GameManagerTask(mazeData1, new PlayerRandom());
         GameManager gameManager2 = new GameManagerTask(mazeData2, new PlayerMaze());
         List<GameManager> gameManagerList = new ArrayList<>();
