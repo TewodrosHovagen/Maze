@@ -31,8 +31,8 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
-//        System.out.println("removing file output ...");
-//        FileUtil.file("./output.txt").delete();
+        System.out.println("removing file output ...");
+        FileUtil.file("./output.txt").delete();
         app.startApplication(args);
         closeLogger();
     }

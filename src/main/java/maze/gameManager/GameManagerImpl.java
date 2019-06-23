@@ -3,14 +3,14 @@ package maze.gameManager;
 import Utils.directionEnum.Enums;
 import Utils.logging.Logger;
 import Utils.logging.OutputLog;
+import maze.fileDataParse.FileData;
 import maze.player.Player;
+import maze.player.PlayerMaze;
 import maze.player.PlayerRandom;
 
 import java.awt.*;
 
-import static maze.fileDataParse.FileParse.PLAYER;
-import static maze.fileDataParse.FileParse.SPACE;
-import static maze.fileDataParse.FileParse.WALL;
+import static maze.fileDataParse.FileParse.*;
 
 
 public class GameManagerImpl extends GameManager {
@@ -34,6 +34,7 @@ public class GameManagerImpl extends GameManager {
     GameManagerImpl(MazeData data, Player player) {
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
+        playerPreviousLocation=new Point(playerLocation.getLocation());
         treasureLocation = data.getTreasureLocation();
         this.data = data;
         this.player = player;
@@ -65,9 +66,8 @@ public class GameManagerImpl extends GameManager {
                 } else {
                     if (isWall(currentLocation)) {
                         player.hitWall();
-                        playerLocation = currentLocation;
                         log.info("hit : "+currentLocation);
-                        currentLocation = getBackMove(direction);
+                        currentLocation = playerLocation;
                         log.info("current : "+currentLocation);
                     }
                     if (isBookmarkLocation(currentLocation)) {
@@ -75,7 +75,9 @@ public class GameManagerImpl extends GameManager {
                     }
                 }
             }
-//            playerPreviousLocation = playerLocation;
+            if(!(currentLocation==playerPreviousLocation)) {
+                playerPreviousLocation.setLocation(playerLocation);
+            }
             playerLocation = currentLocation;
             log.info(direction.toString());
 //            if (direction!= Enums.MainDirectionsEnum.BOOKMARK) printMazeWorldAfterChange();
@@ -108,63 +110,24 @@ public class GameManagerImpl extends GameManager {
         outputFile.writeToOutput(result);
     }
 
-    protected Point getBackMove(Enums.MainDirectionsEnum direction) {
-        switch (direction) {
-            case UP:
-                return move(Enums.MainDirectionsEnum.DOWN);
-            case DOWN:
-                return move(Enums.MainDirectionsEnum.UP);
-            case RIGHT:
-                return move(Enums.MainDirectionsEnum.LEFT);
-            case LEFT:
-                return move(Enums.MainDirectionsEnum.RIGHT);
-            default:
-                return move(Enums.MainDirectionsEnum.BOOKMARK);
-        }
-    }
+//    protected Point getBackMove(Enums.MainDirectionsEnum direction) {
+//        switch (direction) {
+//            case UP:
+//                return move(Enums.MainDirectionsEnum.DOWN);
+//            case DOWN:
+//                return move(Enums.MainDirectionsEnum.UP);
+//            case RIGHT:
+//                return move(Enums.MainDirectionsEnum.LEFT);
+//            case LEFT:
+//                return move(Enums.MainDirectionsEnum.RIGHT);
+//            default:
+//                return move(Enums.MainDirectionsEnum.BOOKMARK);
+//        }
+//    }
 
 
     protected Point movePlayerLocation(Enums.MainDirectionsEnum directionsEnum) {
-        Point newLocation = null;
-        switch (directionsEnum) {
-            case DOWN:
-                int newPosition = playerLocation.y + 1;
-                if (newPosition >= data.getRows()) {
-                    newLocation = new Point(playerLocation.x, 0);
-                }else {
-                    newLocation = new Point(playerLocation.x, newPosition);
-                }
-                break;
-            case UP:
-                newPosition = playerLocation.y - 1;
-                if (newPosition < 0) {
-                    newLocation = new Point(playerLocation.x, data.getRows() - 1);
-                }else {
-                    newLocation = new Point(playerLocation.x, newPosition);
-                }
-                break;
-            case LEFT:
-                newPosition = playerLocation.x - 1;
-                if (newPosition < 0) {
-                    newLocation = new Point(data.getColumns() - 1, playerLocation.y);
-                }
-                else {
-                    newLocation = new Point(newPosition, playerLocation.y);
-                }
-                break;
-            case RIGHT:
-                newPosition = playerLocation.x + 1;
-                if (newPosition >= data.getColumns()) {
-                    newLocation = new Point(0, playerLocation.y);
-                }else {
-                    newLocation = new Point(newPosition, playerLocation.y);
-                }
-                break;
-            case BOOKMARK:
-                newLocation = new Point(playerLocation.x, playerLocation.y);
-                break;
-        }
-        return newLocation;
+        return Enums.MainDirectionsEnum.move(directionsEnum,new Point(playerLocation.getLocation()),data);
     }
 
     protected void setPlayerLocation(Point playerLocation) {
