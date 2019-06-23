@@ -1,7 +1,7 @@
 package maze.player;
 
-import Utils.directionEnum.Enums;
-import Utils.logging.Logger;
+import utils.directionEnum.Enums;
+import utils.logging.Logger;
 import maze.player.directionEnum.playerEnum;
 
 public abstract class Player implements PlayerInterface {

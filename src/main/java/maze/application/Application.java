@@ -1,7 +1,7 @@
 package maze.application;
 
-import Utils.logging.Logger;
-import Utils.logging.OutputLog;
+import utils.logging.Logger;
+import utils.reports.SingleGameOutputFile;
 import maze.gameManager.MazeData;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManagerImpl;
@@ -40,7 +40,7 @@ public class Application {
 
         if (runThePlayer && createAnOutputFile) {
             log.info("START THE GAME!!!");
-            try (OutputLog outputFile = new OutputLog(outputFilePath)) {
+            try (SingleGameOutputFile outputFile = new SingleGameOutputFile(outputFilePath)) {
                 GameManagerImpl game = new GameManagerImpl(mazeData);
                 game.setOutputFile(outputFile);
                 game.runGame();

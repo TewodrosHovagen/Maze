@@ -1,10 +1,11 @@
 package maze.gameManager;
 
-import Utils.directionEnum.Enums;
-import Utils.logging.Logger;
-import Utils.logging.OutputLog;
+import utils.directionEnum.Enums;
+import utils.logging.Logger;
+import utils.reports.SingleGameOutputFile;
 import maze.player.Player;
 import maze.player.PlayerRandom;
+
 import java.awt.Point;
 import static maze.fileDataParse.FileParse.*;
 
@@ -16,7 +17,7 @@ public class GameManagerImpl extends GameManager {
     private final String FOUND = "!";
     private final String NOT_FOUND = "X";
     private Point treasureLocation;
-    private OutputLog outputFile;
+    private SingleGameOutputFile outputFile;
     private String result;
     private int bookmarkCounter = 0;
     private Point playerLocation;
@@ -151,7 +152,7 @@ public class GameManagerImpl extends GameManager {
         this.playerLocation = playerLocation;
     }
 
-    public void setOutputFile(OutputLog outputFile) { this.outputFile = outputFile;  }
+    public void setOutputFile(SingleGameOutputFile outputFile) { this.outputFile = outputFile;  }
 
     public void printMazeWorldAfterChange() {
         if(mazeWorld[(int)playerPreviousLocation.getY()][(int)playerPreviousLocation.getX()].equals(PLAYER+""))

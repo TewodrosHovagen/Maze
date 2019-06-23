@@ -1,4 +1,4 @@
-package Utils.exceptions;
+package utils.exceptions;
 
 import java.util.List;
 

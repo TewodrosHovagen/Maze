@@ -1,5 +1,5 @@
 package maze.gameManager;
-import Utils.logging.Logger;
+import utils.logging.Logger;
 
 import java.awt.Point;
 import java.util.Arrays;
@@ -101,7 +101,7 @@ public class MazeData {
     public void printMazeWorld(){
         for (String[] row : mazeWorld) {
             System.out.println(Arrays.toString(row));
-//            OutputLog.writeToOutput(Arrays.toString(row));
+//            SingleGameOutputFile.writeToOutput(Arrays.toString(row));
         }
     }
 }

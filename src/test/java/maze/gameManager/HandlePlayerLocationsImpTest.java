@@ -1,6 +1,6 @@
 package maze.gameManager;
 
-import Utils.directionEnum.Enums;
+import utils.directionEnum.Enums;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

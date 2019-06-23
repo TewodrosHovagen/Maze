@@ -1,8 +1,8 @@
 package maze.fileDataParse;
 
-import Utils.exceptions.WrongFileFormatMultipleException;
-import Utils.exceptions.WrongFileFormatException;
-import Utils.logging.Logger;
+import utils.exceptions.WrongFileFormatMultipleException;
+import utils.exceptions.WrongFileFormatException;
+import utils.logging.Logger;
 import maze.gameManager.MazeData;
 import java.awt.Point;
 import java.io.BufferedReader;

@@ -1,4 +1,4 @@
-package Utils.directionEnum;
+package utils.directionEnum;
 
 import maze.gameManager.MazeData;
 
