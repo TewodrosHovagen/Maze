@@ -5,6 +5,7 @@ import Utils.logging.OutputLog;
 import maze.gameManager.MazeData;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManagerImpl;
+import org.apache.velocity.texen.util.FileUtil;
 
 public class Application {
 
@@ -27,8 +28,8 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
-//        System.out.println("removing file output ...");
-//        FileUtil.file("./output.txt").delete();
+        System.out.println("removing file output ...");
+        FileUtil.file("./output.txt").delete();
         app.startApplication(args);
         closeLogger();
     }

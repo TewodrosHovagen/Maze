@@ -24,7 +24,7 @@ public class GameManagerTask extends GameManagerImpl implements Runnable {
 
     @Override
     protected void gameResultHandler() {
-        if(timesToPlay == data.getMaxSteps()) {
+        if(timesToPlay == mazeData.getMaxSteps()) {
             maxStepsResults = NOT_FOUNT;
         }else{
             maxStepsResults = timesToPlay;

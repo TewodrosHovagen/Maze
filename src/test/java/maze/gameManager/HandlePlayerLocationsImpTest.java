@@ -62,7 +62,7 @@ public class HandlePlayerLocationsImpTest {
         MazeData mazeData = new MazeData();
         mazeData.setRows(rows);
         mazeData.setColumns(columns);
-        gameManager.setData(mazeData);
+        gameManager.setMazeData(mazeData);
         gameManager.setPlayerLocation(playerPoint);
 
         //Act
@@ -81,7 +81,7 @@ public class HandlePlayerLocationsImpTest {
         MazeData mazeData = new MazeData();
         mazeData.setRows(rows);
         mazeData.setColumns(columns);
-        gameManager.setData(mazeData);
+        gameManager.setMazeData(mazeData);
         gameManager.setPlayerLocation(playerPoint);
 
         //Act
