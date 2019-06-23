@@ -6,10 +6,6 @@ import maze.gameManager.MazeData;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManagerImpl;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public class Application {
 
     private static final Logger log = Logger.getInstance();

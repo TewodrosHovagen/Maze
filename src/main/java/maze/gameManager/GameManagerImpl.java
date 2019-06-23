@@ -5,9 +5,7 @@ import Utils.logging.Logger;
 import Utils.logging.OutputLog;
 import maze.player.Player;
 import maze.player.PlayerRandom;
-
-import java.awt.*;
-
+import java.awt.Point;
 import static maze.fileDataParse.FileParse.PLAYER;
 import static maze.fileDataParse.FileParse.SPACE;
 import static maze.fileDataParse.FileParse.WALL;

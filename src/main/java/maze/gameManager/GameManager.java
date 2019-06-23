@@ -2,8 +2,7 @@ package maze.gameManager;
 
 import Utils.directionEnum.Enums;
 import maze.player.Player;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
 
