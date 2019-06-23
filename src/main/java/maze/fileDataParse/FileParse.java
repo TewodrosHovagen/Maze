@@ -41,7 +41,8 @@ public class FileParse {
             MazeData mazeData;
 
             try(// create a Buffered Reader object instance with a FileReader
-                BufferedReader br = new BufferedReader(new FileReader(fileLocation))) {
+                FileReader fr = new FileReader(fileLocation);
+                BufferedReader br = new BufferedReader(fr)) {
 
                 // create File Data to store the maze data
                 mazeData = parseFirstLines(br);
@@ -190,7 +191,6 @@ public class FileParse {
      * @throws WrongFileFormatException
      * @throws IOException
      */
-
     private MazeData parseFirstLines (BufferedReader br) throws IOException {
         MazeData mazeData = new MazeData();
         try {
@@ -203,49 +203,28 @@ public class FileParse {
 
             //Get the Max steps
             fileReader = br.readLine();
-            pairValues = getStringValue(fileReader);
-            if (!pairValues[ITEM_NAME_LOCATION].equals(MAX_STEPS_FORMAT))
-                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
+            pairValues = getTextValuesOnFormat(fileReader,MAX_STEPS_FORMAT,String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader));
+            int rowValue = getTextIntValue(pairValues[VALUE_LOCATION],String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader));
+            mazeData.setMaxSteps(rowValue);
+            log.info("Maze Max Step for user in the game is is " + rowValue);
 
-            try {
-                int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
-                mazeData.setMaxSteps(rowValue);
-                log.info("Maze Max Step for user in the game is is " + rowValue);
-            } catch (NumberFormatException e) {
-                headerFileExceptions.add(new NumberParseException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
-            }
 
             //Get the Totals Rows
             fileReader = br.readLine();
-            pairValues = getStringValue(fileReader);
-            if (!pairValues[ITEM_NAME_LOCATION].equals(ROWS_FORMAT))
-                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
-
-            try {
-                int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
-                mazeData.setRows(totalRows);
-                log.info("The total number of rows is " + totalRows);
-            } catch (NumberFormatException e) {
-                headerFileExceptions.add(new NumberParseException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
-            }
+            pairValues = getTextValuesOnFormat(fileReader, ROWS_FORMAT, String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader));
+            int totalRows = getTextIntValue(pairValues[VALUE_LOCATION],String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader));
+            mazeData.setRows(totalRows);
+            log.info("The total number of rows is " + totalRows);
 
             //Get the Totals Columns
             fileReader = br.readLine();
-            pairValues = getStringValue(fileReader);
-            if (!pairValues[ITEM_NAME_LOCATION].equals(COLUMNS_FORMAT))
-                headerFileExceptions.add(new WrongFileFormatException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
+            pairValues = getTextValuesOnFormat(fileReader,COLUMNS_FORMAT,String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader));
+            int totalColumns = getTextIntValue(pairValues[VALUE_LOCATION],String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader));
+            mazeData.setColumns(totalColumns);
+            log.info("The total number of columns is " + totalColumns);
 
-            try {
-                int totalColumns = Integer.parseInt(pairValues[VALUE_LOCATION]);
-                mazeData.setColumns(totalColumns);
-                log.info("The total number of columns is " + totalColumns);
-
-            } catch (NumberFormatException e) {
-                headerFileExceptions.add(new NumberParseException(String.format("expected in line 4 - %s = <num> \ngot: %s", COLUMNS_FORMAT, fileReader)));
-            }
         } catch(ArrayIndexOutOfBoundsException e)   {
             headerFileExceptions.add(new ArrayIndexOutOfBoundsException("Missing one of the parameters"));
-
         }
         if (!headerFileExceptions.isEmpty()){
             System.out.println("Bad maze file header:");
@@ -263,19 +242,27 @@ public class FileParse {
             if(strValues.length == 2) {
                 strValues[0] = strValues[0].trim();
                 strValues[1] = strValues[1].trim();
-
             }
             return strValues;
         }catch(Exception e){
             throw new IOException();
         }
-
-
-
-
     }
 
+    private String[] getTextValuesOnFormat(String text,String format, String errorMessage) throws IOException {
+        String[] pairValues = getStringValue(text);
+        if (!pairValues[ITEM_NAME_LOCATION].equals(format))
+            headerFileExceptions.add(new WrongFileFormatException(errorMessage));
+        return pairValues;
+    }
 
-
+    private int getTextIntValue(String textValue, String errorMessage){
+        try{
+            return Integer.parseInt(textValue);
+        }catch (NumberFormatException e){
+            headerFileExceptions.add(new WrongFileFormatException(errorMessage));
+        }
+        return 0;
+    }
 }
 
