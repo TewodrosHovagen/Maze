@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static Utils.directionEnum.Enums.MainDirectionsEnum.*;
+import static Utils.directionEnum.Enums.MainDirectionsEnum.DOWN;
+import static Utils.directionEnum.Enums.MainDirectionsEnum.UP;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum;
-import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.*;
+import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.BACK;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.LEFT;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.RIGHT;
+import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.STRAIGHT;
 
 
 public class PlayerMaze extends Player {

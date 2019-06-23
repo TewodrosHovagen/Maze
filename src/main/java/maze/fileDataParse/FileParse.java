@@ -1,13 +1,13 @@
 package maze.fileDataParse;
 
 import Utils.exceptions.WrongFileFormatMultipleException;
-import Utils.exceptions.NumberParseException;
 import Utils.exceptions.WrongFileFormatException;
 import Utils.logging.Logger;
 import maze.gameManager.MazeData;
-
-import java.awt.*;
-import java.io.*;
+import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

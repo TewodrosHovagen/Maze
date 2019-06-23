@@ -2,7 +2,6 @@ package maze.application;
 
 import Utils.logging.Logger;
 import Utils.logging.OutputResult;
-
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;

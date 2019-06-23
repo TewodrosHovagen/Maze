@@ -1,7 +1,7 @@
 package maze.gameManager;
 import Utils.logging.Logger;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.Set;
 
