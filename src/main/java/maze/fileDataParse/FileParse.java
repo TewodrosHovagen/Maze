@@ -41,7 +41,8 @@ public class FileParse {
             MazeData mazeData;
 
             try(// create a Buffered Reader object instance with a FileReader
-                BufferedReader br = new BufferedReader(new FileReader(fileLocation))) {
+                FileReader fr = new FileReader(fileLocation);
+                BufferedReader br = new BufferedReader(fr)) {
 
                 // create File Data to store the maze data
                 mazeData = parseFirstLines(br);
