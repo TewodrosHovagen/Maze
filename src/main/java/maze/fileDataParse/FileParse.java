@@ -29,7 +29,13 @@ public class FileParse {
     private List<RuntimeException> headerFileExceptions = new ArrayList<>();
     private List<RuntimeException> bodyFileExceptions = new ArrayList<>();
 
+    protected List<RuntimeException> getHeaderFileExceptions() {
+        return headerFileExceptions;
+    }
 
+    protected List<RuntimeException> getBodyFileExceptions() {
+        return bodyFileExceptions;
+    }
 
     /**
      * The method parse the file from a given location and generate a MazeData object.
