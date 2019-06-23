@@ -6,7 +6,6 @@ import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerImpl;
-import org.apache.velocity.texen.util.FileUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -63,11 +62,16 @@ public class Application {
         String outputFilePath ;
         FileParse fileParse = new FileParse();
 
-        isArgMissing = checkIfMissingArgs(args);
+        isArgMissing = Validation.checkIfMissingArgs(args);
         if (isArgMissing == -1) {
+            System.out.println(String.format("Missing maze file argument in command line" ));
+            System.out.println(String.format("Missing output file argument in command line" ));
+            runThePlayer = false;
             return;
         }
         else if(isArgMissing == 0){
+            System.out.println(String.format("Missing output file argument in command line" ));
+            runThePlayer = false;
             mazeFilePath = args[0];
             outputFilePath = "";
         }else{
@@ -97,18 +101,6 @@ public class Application {
         }
     }
 
-    private int checkIfMissingArgs(String[] args) {
-        if (args.length == 0){
-            System.out.println(String.format("Missing maze file argument in command line" ));
-            System.out.println(String.format("Missing output file argument in command line" ));
-            runThePlayer = false;
-            return -1;
-        } else if (args.length == 1){
-            System.out.println(String.format("Missing output file argument in command line" ));
-            runThePlayer = false;
-            return 0;
-        } return 1;
-    }
 
 
     private static void closeLogger() {

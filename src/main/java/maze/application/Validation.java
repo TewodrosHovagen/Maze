@@ -16,4 +16,12 @@ public class Validation {
         Path absPath = path.toAbsolutePath();
         return Files.exists(absPath);
     }
+    public static int checkIfMissingArgs(String[] args) {
+        if (args.length == 0){
+            return -1;
+        } else if (args.length == 1){
+            return 0;
+        } return 1;
+    }
+
 }

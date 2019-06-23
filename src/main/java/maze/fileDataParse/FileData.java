@@ -16,6 +16,7 @@ public class FileData {
     private String[][] mazeWorld;
     private Point playerLocation;
     private Point treasureLocation;
+    private boolean validFile = true;
 
     public String getMazeName() { return mazeName;   }
 
@@ -69,6 +70,14 @@ public class FileData {
         this.treasureLocation = treasureLocation;
     }
 
+    public boolean isValidFile() {
+        return validFile;
+    }
+
+    public void setValidFile(boolean validFile) {
+        this.validFile = validFile;
+    }
+
     @Override
     public String toString() {
         return "FileData{" +
@@ -79,6 +88,7 @@ public class FileData {
                 ", wallsSet=" + wallsSet +
                 ", playerLocation=" + playerLocation +
                 ", treasureLocation=" + treasureLocation +
+                ", validFile=" + validFile +
                 '}';
     }
 
