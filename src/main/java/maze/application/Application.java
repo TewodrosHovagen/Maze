@@ -2,9 +2,8 @@ package maze.application;
 
 import Utils.logging.Logger;
 import Utils.logging.OutputLog;
-import maze.fileDataParse.FileData;
+import maze.gameManager.MazeData;
 import maze.fileDataParse.FileParse;
-import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerImpl;
 
 import java.nio.file.Files;
@@ -18,7 +17,7 @@ public class Application {
     private boolean isInputFileExist = false;
     private boolean runThePlayer = true;
     private String outputFilePath;
-    private FileData dataFile;
+    private MazeData mazeData;
 
     public boolean isCreateAnOutputFile() {
         return createAnOutputFile;
@@ -45,9 +44,9 @@ public class Application {
         if (runThePlayer && createAnOutputFile) {
             log.info("START THE GAME!!!");
             try (OutputLog outputFile = new OutputLog(outputFilePath)) {
-                GameManagerImpl game = new GameManagerImpl(dataFile);
+                GameManagerImpl game = new GameManagerImpl(mazeData);
                 game.setOutputFile(outputFile);
-                game.startGame();
+                game.runGame();
             } catch (Exception e) {
                 System.out.println("Problem while writing to output file: " + e);
             }
@@ -93,7 +92,7 @@ public class Application {
 
         if(Validation.checkExistenceOfFilePath(mazeFilePath) && Validation.checkExistenceOfFile(mazeFilePath)){
             isInputFileExist = true;
-            dataFile = fileParse.parseFileData(mazeFilePath);
+            mazeData = fileParse.parseFileData(mazeFilePath);
         }
         else{
             System.out.println(String.format("Command line argument for maze: %s doesn't lead to a maze file", mazeFilePath ));

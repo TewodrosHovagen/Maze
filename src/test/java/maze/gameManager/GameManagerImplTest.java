@@ -2,7 +2,6 @@ package maze.gameManager;
 
 import Utils.directionEnum.Enums;
 import Utils.logging.OutputLog;
-import maze.fileDataParse.FileData;
 import maze.fileDataParse.FileParse;
 import maze.player.Player;
 import org.junit.Assert;
@@ -30,7 +29,7 @@ public class GameManagerImplTest {
     @Test
     public void addBookmarkNonValidPointTest() {
         //Arrange
-        GameManagerImpl gameManager = new GameManagerImpl(new FileData());
+        GameManagerImpl gameManager = new GameManagerImpl(new MazeData());
         Point currentPoint = new Point(2,3);
         Point expectedPoint = new Point(5,3);
         int sequenceValue= 1;
@@ -55,7 +54,7 @@ public class GameManagerImplTest {
     @Test
     public void addBookmarkNonValidSequenceTest() {
         //Arrange
-        GameManagerImpl gameManager = new GameManagerImpl(new FileData());
+        GameManagerImpl gameManager = new GameManagerImpl(new MazeData());
         Point currentPoint = new Point(2,3);
         Point expectedPoint = new Point(2,3);
         int sequenceValue= 1;
@@ -80,18 +79,18 @@ public class GameManagerImplTest {
     @Test
     public void startGameWinTest() throws Exception {
         //Arrange
-        FileData fileData = new FileParse().parseFileData(fileDir);
+        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.RIGHT;
         String directionExpectedSTR = "R";
         String gameExpectedStatusSTR = "!";
         try (OutputLog outputFile = new OutputLog(fileOutputDir)) {
-            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame();
+            gameManager.runGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -104,18 +103,18 @@ public class GameManagerImplTest {
     @Test
     public void startGameWallTest() throws Exception {
         //Arrange
-        FileData fileData = new FileParse().parseFileData(fileDir);
+        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.UP;
         String directionExpectedSTR = "U";
         String gameExpectedStatusSTR = "X";
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
-            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame();
+            gameManager.runGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -128,18 +127,18 @@ public class GameManagerImplTest {
     @Test
     public void startGameNoWinTest() throws Exception {
         //Arrange
-        FileData fileData = new FileParse().parseFileData(fileDir);
+        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.LEFT;
         String directionExpectedSTR = "L";
         String gameExpectedStatusSTR = "X";
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
-            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame();
+            gameManager.runGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
@@ -152,18 +151,18 @@ public class GameManagerImplTest {
     @Test
     public void startGameNoWinBookmarkTest() throws Exception {
         //Arrange
-        FileData fileData = new FileParse().parseFileData(fileDir);
+        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.BOOKMARK;
         String directionExpectedSTR = "B";
         String gameExpectedStatusSTR = "X";
         try(OutputLog outputFile = new OutputLog(fileOutputDir)) {
-            GameManagerImpl gameManager = new GameManagerImpl(fileData);
+            GameManagerImpl gameManager = new GameManagerImpl(mazeData);
             gameManager.setPlayer(player);
             gameManager.setOutputFile(outputFile);
             Mockito.when(player.move()).thenReturn(direction);
 
             //Act
-            gameManager.startGame();
+            gameManager.runGame();
         }
         //Assert
         try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));

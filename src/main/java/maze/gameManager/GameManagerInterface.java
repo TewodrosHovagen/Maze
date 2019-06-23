@@ -4,6 +4,6 @@ public interface GameManagerInterface {
     /**
      * Start the game
      */
-    void startGame();
+    void runGame();
 
 }

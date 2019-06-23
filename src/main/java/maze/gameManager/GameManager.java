@@ -1,7 +1,6 @@
 package maze.gameManager;
 
 import Utils.directionEnum.Enums;
-import maze.fileDataParse.FileData;
 import maze.player.Player;
 
 import java.awt.*;
@@ -12,7 +11,7 @@ public abstract class GameManager implements GameManagerInterface{
 
     Map<Point, Integer> bookmarkSequence = new HashMap<>();
     protected Player player;
-    protected FileData data;
+    protected MazeData data;
 
     /**
      * Add bookmark to bookmark map
@@ -77,11 +76,11 @@ public abstract class GameManager implements GameManagerInterface{
         this.player = player;
     }
 
-    public FileData getData() {
+    public MazeData getData() {
         return data;
     }
 
-    public void setData(FileData data) {
+    public void setData(MazeData data) {
         this.data = data;
     }
 }

@@ -3,13 +3,10 @@ package maze.gameManager;
 import Utils.directionEnum.Enums;
 import Utils.logging.Logger;
 import Utils.logging.OutputLog;
-import maze.fileDataParse.FileData;
-import maze.player.PlayerMaze;
 import maze.player.Player;
 import maze.player.PlayerRandom;
 
 import java.awt.*;
-import java.util.Calendar;
 
 import static maze.fileDataParse.FileParse.PLAYER;
 import static maze.fileDataParse.FileParse.SPACE;
@@ -30,11 +27,11 @@ public class GameManagerImpl extends GameManager {
     private Point playerPreviousLocation;
     protected int timesToPlay;
 
-    public GameManagerImpl(FileData data) {
+    public GameManagerImpl(MazeData data) {
         this(data, new PlayerRandom());
     }
 
-    GameManagerImpl(FileData data, Player player) {
+    GameManagerImpl(MazeData data, Player player) {
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
         treasureLocation = data.getTreasureLocation();
@@ -45,7 +42,7 @@ public class GameManagerImpl extends GameManager {
     protected GameManagerImpl() {   }
 
     @Override
-    public void startGame() {
+    public void runGame() {
         Enums.MainDirectionsEnum direction;
         Point currentLocation = playerLocation;
         log.info("**************** START THE MAZE ****************");

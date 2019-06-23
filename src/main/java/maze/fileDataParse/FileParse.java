@@ -4,6 +4,7 @@ import Utils.exceptions.WrongFileFormatMultipleException;
 import Utils.exceptions.NumberParseException;
 import Utils.exceptions.WrongFileFormatException;
 import Utils.logging.Logger;
+import maze.gameManager.MazeData;
 
 import java.awt.*;
 import java.io.*;
@@ -31,49 +32,49 @@ public class FileParse {
 
 
     /**
-     * The method parse the file from a given location and generate a FileData object.
+     * The method parse the file from a given location and generate a MazeData object.
      * @param fileLocation - location for the maze data
-     * @return - FileData object with all the maze data
+     * @return - MazeData object with all the maze data
      */
-    public FileData parseFileData (String fileLocation){
+    public MazeData parseFileData (String fileLocation){
             log.info("Reading the maze.txt file in location "+fileLocation);
-            FileData fileData;
+            MazeData mazeData;
 
             try(// create a Buffered Reader object instance with a FileReader
                 BufferedReader br = new BufferedReader(new FileReader(fileLocation))) {
 
                 // create File Data to store the maze data
-                fileData = parseFirstLines(br);
+                mazeData = parseFirstLines(br);
 
                 // read the first line from the text file
                 String fileReader;
-                String[][] mazeWorld = new String[fileData.getRows()][fileData.getColumns()];
+                String[][] mazeWorld = new String[mazeData.getRows()][mazeData.getColumns()];
 
                 // loop until all lines are read
-                for (int row =0; row < fileData.getRows(); row++){
+                for (int row = 0; row < mazeData.getRows(); row++){
                     fileReader = br.readLine();
                     if (fileReader != null){
                         //If the file length is too long so need to work with the expected size
-                        if (fileReader.length() >= fileData.getColumns()){
-                            //log.writeToOutput("The file length " + fileReader.length() + " is more than declared in file data therefore using only the file data " + fileData.getColumns() + " as max column");
-                            for(int column=0; column < fileData.getColumns(); column++){
-                                addCharacterToBoard(fileReader.charAt(column),row,column,fileData,mazeWorld);
+                        if (fileReader.length() >= mazeData.getColumns()){
+                            //log.writeToOutput("The file length " + fileReader.length() + " is more than declared in file data therefore using only the file data " + mazeData.getColumns() + " as max column");
+                            for(int column = 0; column < mazeData.getColumns(); column++){
+                                addCharacterToBoard(fileReader.charAt(column),row,column, mazeData,mazeWorld);
                             }
                         }else{
-                            //log.writeToOutput("The file length " + fileReader.length() + " is less than declared in file data therefore need to complete to " + fileData.getColumns());
+                            //log.writeToOutput("The file length " + fileReader.length() + " is less than declared in file data therefore need to complete to " + mazeData.getColumns());
                             int column=0;
                             while (column < fileReader.length()){
-                                addCharacterToBoard(fileReader.charAt(column),row,column,fileData,mazeWorld);
+                                addCharacterToBoard(fileReader.charAt(column),row,column, mazeData,mazeWorld);
                                 column++;
                             }
-                            while (column < fileData.getColumns()){
+                            while (column < mazeData.getColumns()){
                                 mazeWorld[row][column] = " ";
                                 column++;
                             }
                         }
                     }else{
                         //There are no more rows to read from the file
-                        for(int column=0; column < fileData.getColumns(); column++){
+                        for(int column = 0; column < mazeData.getColumns(); column++){
                             mazeWorld[row][column] = " ";
                         }
                     }
@@ -92,7 +93,7 @@ public class FileParse {
                         }
                     }
                 }else{
-                    fileData.setMazeWorld(mazeWorld);
+                    mazeData.setMazeWorld(mazeWorld);
                 }
             } catch (IOException e) {
                 log.info("There was a problem with the file " + e);
@@ -103,7 +104,7 @@ public class FileParse {
             System.out.println("Bad maze in maze file:");
             throw new WrongFileFormatMultipleException(bodyFileExceptions);
         }
-        return fileData;
+        return mazeData;
     }
 
     /**
@@ -111,14 +112,14 @@ public class FileParse {
      * @param charItem
      * @param row
      * @param column
-     * @param fileData
+     * @param mazeData
      * @param mazeWorld
      */
-    private void addCharacterToBoard (char charItem, int row, int column, FileData fileData,String [][] mazeWorld ) {
+    private void addCharacterToBoard (char charItem, int row, int column, MazeData mazeData, String [][] mazeWorld ) {
         if(isValidChar(charItem)) {
             if(isPlayer(charItem)){
                 if (!foundPlayer) {
-                    fileData.setPlayerLocation(new Point(column,row));
+                    mazeData.setPlayerLocation(new Point(column,row));
                     foundPlayer = true;
                     log.info(String.format("Found a player in position: (%s,%s)",column,row));
                 }else {
@@ -127,7 +128,7 @@ public class FileParse {
             }
             if(isTreasure(charItem)){
                 if (!foundTreasure) {
-                    fileData.setTreasureLocation(new Point(column,row));
+                    mazeData.setTreasureLocation(new Point(column,row));
                     foundTreasure = true;
                     log.info(String.format("Found a treasure in position: (%s,%s)",column,row));
                 }else {
@@ -188,14 +189,14 @@ public class FileParse {
      * @throws IOException
      */
 
-    private FileData parseFirstLines (BufferedReader br) throws IOException {
-        FileData fileData = new FileData();
+    private MazeData parseFirstLines (BufferedReader br) throws IOException {
+        MazeData mazeData = new MazeData();
         try {
             log.info("Paring the first 4 lines");
             String[] pairValues;
             //Get the maze Name
             String fileReader = br.readLine();
-            fileData.setMazeName(fileReader);
+            mazeData.setMazeName(fileReader);
             log.info("Maze name is " + fileReader);
 
             //Get the Max steps
@@ -206,7 +207,7 @@ public class FileParse {
 
             try {
                 int rowValue = Integer.parseInt(pairValues[VALUE_LOCATION]);
-                fileData.setMaxSteps(rowValue);
+                mazeData.setMaxSteps(rowValue);
                 log.info("Maze Max Step for user in the game is is " + rowValue);
             } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 2 - %s = <num> \ngot: %s", MAX_STEPS_FORMAT, fileReader)));
@@ -220,7 +221,7 @@ public class FileParse {
 
             try {
                 int totalRows = Integer.parseInt(pairValues[VALUE_LOCATION]);
-                fileData.setRows(totalRows);
+                mazeData.setRows(totalRows);
                 log.info("The total number of rows is " + totalRows);
             } catch (NumberFormatException e) {
                 headerFileExceptions.add(new NumberParseException(String.format("expected in line 3 - %s = <num> \ngot: %s", ROWS_FORMAT, fileReader)));
@@ -234,7 +235,7 @@ public class FileParse {
 
             try {
                 int totalColumns = Integer.parseInt(pairValues[VALUE_LOCATION]);
-                fileData.setColumns(totalColumns);
+                mazeData.setColumns(totalColumns);
                 log.info("The total number of columns is " + totalColumns);
 
             } catch (NumberFormatException e) {
@@ -248,7 +249,7 @@ public class FileParse {
             System.out.println("Bad maze file header:");
             throw new WrongFileFormatMultipleException(headerFileExceptions);
         }
-        return fileData;
+        return mazeData;
     }
 
     private String[] getStringValue(String strToParse) throws IOException{

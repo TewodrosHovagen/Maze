@@ -2,12 +2,12 @@ package maze.application;
 
 import Utils.logging.Logger;
 import Utils.logging.OutputResult;
-import maze.fileDataParse.FileData;
+
 import maze.fileDataParse.FileParse;
 import maze.gameManager.GameManager;
 import maze.gameManager.GameManagerTask;
+import maze.gameManager.MazeData;
 import maze.player.Player;
-
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Match {
     private static final Logger log = Logger.getInstance();
-    private  Map<FileData,List<GameManager>> gameResultMap = new HashMap<>();
-    private  List<FileData> mazeFiles = new ArrayList<>();
+    private  Map<MazeData,List<GameManager>> gameResultMap = new HashMap<>();
+    private  List<MazeData> mazeFiles = new ArrayList<>();
     private  List<Player> players;
     private boolean runThePlayer = true;
 
@@ -167,14 +167,14 @@ public class Match {
     }
     private void sendTasksToPoolExecution() throws InterruptedException {
         ExecutorService pool = Executors.newFixedThreadPool(numThread);
-        for(FileData mazeFile: mazeFiles){
+        for(MazeData mazeData: mazeFiles){
             List<GameManager> tasks = new ArrayList<>();
             for(Player player: players){
-                GameManagerTask task = new GameManagerTask(mazeFile, player);
+                GameManagerTask task = new GameManagerTask(mazeData, player);
                 tasks.add(task);
                 pool.execute(task);
             }
-            gameResultMap.put(mazeFile, tasks);
+            gameResultMap.put(mazeData, tasks);
         }
 
         pool.shutdown();

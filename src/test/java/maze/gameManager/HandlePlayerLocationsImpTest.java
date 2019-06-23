@@ -1,7 +1,6 @@
 package maze.gameManager;
 
 import Utils.directionEnum.Enums;
-import maze.fileDataParse.FileData;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,10 +52,10 @@ public class HandlePlayerLocationsImpTest {
         GameManagerImpl gameManager = new GameManagerImpl();
         Point playerPoint = new Point(colPosition, rowPosition);
         Point playerExpectedPoint = new Point(colExpectedPosition, rowExpectedPosition);
-        FileData fileData = new FileData();
-        fileData.setRows(rows);
-        fileData.setColumns(columns);
-        gameManager.setData(fileData);
+        MazeData mazeData = new MazeData();
+        mazeData.setRows(rows);
+        mazeData.setColumns(columns);
+        gameManager.setData(mazeData);
         gameManager.setPlayerLocation(playerPoint);
 
         //Act
@@ -72,10 +71,10 @@ public class HandlePlayerLocationsImpTest {
         GameManagerImpl gameManager = new GameManagerImpl();
         Point playerPoint = new Point(colExpectedPosition, rowExpectedPosition);
         Point playerExpectedPoint = new Point(colPosition, rowPosition);
-        FileData fileData = new FileData();
-        fileData.setRows(rows);
-        fileData.setColumns(columns);
-        gameManager.setData(fileData);
+        MazeData mazeData = new MazeData();
+        mazeData.setRows(rows);
+        mazeData.setColumns(columns);
+        gameManager.setData(mazeData);
         gameManager.setPlayerLocation(playerPoint);
 
         //Act
