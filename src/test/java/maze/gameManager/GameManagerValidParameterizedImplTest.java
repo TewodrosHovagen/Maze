@@ -79,15 +79,11 @@ public class GameManagerValidParameterizedImplTest {
 
         //Act
         gameManager.addBookmark(currentPoint,sequenceValue);
+        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
 
         //Assert
-        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
         Assert.assertEquals("The adding bookmark action did not work",bookmarkManagerExpectedMap.size(),bookmarkManagerMap.size());
-        for(Map.Entry<Point,Integer> itemExpected : bookmarkManagerExpectedMap.entrySet()){
-            for(Map.Entry<Point,Integer> itemActual : bookmarkManagerMap.entrySet()){
-                Assert.assertEquals("The keys does not match", itemActual.getKey(), itemExpected.getKey());
-                Assert.assertEquals("The values does not match", itemActual.getValue(), itemExpected.getValue());
-            }
-        }
+        Assert.assertEquals("The keys does not match", bookmarkManagerMap.entrySet().iterator().next().getKey(), bookmarkManagerExpectedMap.entrySet().iterator().next().getKey());
+        Assert.assertEquals("The values does not match", bookmarkManagerMap.entrySet().iterator().next().getValue(), bookmarkManagerExpectedMap.entrySet().iterator().next().getValue());
     }
 }

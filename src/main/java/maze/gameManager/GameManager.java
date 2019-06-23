@@ -67,6 +67,8 @@ public abstract class GameManager implements GameManagerInterface{
      */
     protected abstract void gameResultHandler();
 
+    protected abstract void gameResultHandler(String out);
+
     public Player getPlayer() {
         return player;
     }

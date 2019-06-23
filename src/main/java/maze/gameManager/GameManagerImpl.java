@@ -47,7 +47,7 @@ public class GameManagerImpl extends GameManager {
         for (timesToPlay = 0; timesToPlay < data.getMaxSteps(); timesToPlay++) {
             log.info("Step No: " + timesToPlay);
             direction = player.move();
-//            outputFile.writeToOutput(direction.name().charAt(0)+"");
+            gameResultHandler(direction.name().charAt(0)+"");
             log.info("Player position before move"+ currentLocation.getLocation());
             log.info("Go Direction: " + direction);
             currentLocation = move(direction);
@@ -105,6 +105,12 @@ public class GameManagerImpl extends GameManager {
     protected void gameResultHandler() {
         outputFile.writeToOutput(result);
     }
+
+    @Override
+    protected void gameResultHandler(String out) {
+        outputFile.writeToOutput(out);
+    }
+
 
     protected Point getBackMove(Enums.MainDirectionsEnum direction) {
         switch (direction) {

@@ -39,16 +39,12 @@ public class GameManagerImplTest {
 
         //Act
         gameManager.addBookmark(currentPoint,sequenceValue);
+        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
 
         //Assert
-        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
         Assert.assertEquals("The adding bookmark action did not work",bookmarkManagerExpectedMap.size(),bookmarkManagerMap.size());
-        for(Map.Entry<Point,Integer> itemExpected : bookmarkManagerExpectedMap.entrySet()){
-            for(Map.Entry<Point,Integer> itemActual : bookmarkManagerMap.entrySet()){
-                Assert.assertNotEquals("The keys does not match", itemActual.getKey(), itemExpected.getKey());
-                Assert.assertEquals("The values does not match", itemActual.getValue(), itemExpected.getValue());
-            }
-        }
+        Assert.assertNotEquals("The keys does not match", bookmarkManagerMap.entrySet().iterator().next().getKey(), bookmarkManagerExpectedMap.entrySet().iterator().next().getKey());
+        Assert.assertEquals("The values does not match", bookmarkManagerMap.entrySet().iterator().next().getValue(), bookmarkManagerExpectedMap.entrySet().iterator().next().getValue());
     }
 
     @Test
@@ -64,16 +60,12 @@ public class GameManagerImplTest {
 
         //Act
         gameManager.addBookmark(currentPoint,sequenceValue);
+        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
 
         //Assert
-        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
         Assert.assertEquals("The adding bookmark action did not work",bookmarkManagerExpectedMap.size(),bookmarkManagerMap.size());
-        for(Map.Entry<Point,Integer> itemExpected : bookmarkManagerExpectedMap.entrySet()){
-            for(Map.Entry<Point,Integer> itemActual : bookmarkManagerMap.entrySet()){
-                Assert.assertEquals("The keys does not match", itemActual.getKey(), itemExpected.getKey());
-                Assert.assertNotEquals("The values does not match", itemActual.getValue(), itemExpected.getValue());
-            }
-        }
+        Assert.assertEquals("The keys does not match", bookmarkManagerMap.entrySet().iterator().next().getKey(), bookmarkManagerExpectedMap.entrySet().iterator().next().getKey());
+        Assert.assertNotEquals("The values does not match", bookmarkManagerMap.entrySet().iterator().next().getValue(), bookmarkManagerExpectedMap.entrySet().iterator().next().getValue());
     }
 
     @Test
@@ -93,10 +85,11 @@ public class GameManagerImplTest {
             gameManager.runGame();
         }
         //Assert
-        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(fileOutputDir));
-            BufferedReader bufferedReader = new BufferedReader(reader)) {
-            Assert.assertEquals("The test did not move to " + direction,directionExpectedSTR,bufferedReader.readLine());
-            Assert.assertEquals("Game state is not correct",gameExpectedStatusSTR,bufferedReader.readLine());
+        try (FileInputStream fileInputStream = new FileInputStream(fileOutputDir);
+             InputStreamReader reader = new InputStreamReader(fileInputStream);
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            Assert.assertEquals("The test did not move to " + direction, directionExpectedSTR, bufferedReader.readLine());
+            Assert.assertEquals("Game state is not correct", gameExpectedStatusSTR, bufferedReader.readLine());
         }
     }
 

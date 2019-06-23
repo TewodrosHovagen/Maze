@@ -31,4 +31,7 @@ public class GameManagerTask extends GameManagerImpl implements Runnable {
         }
         log.info("Game result is :" + maxStepsResults);
     }
+
+    @Override
+    protected void gameResultHandler(String out) {    }
 }
