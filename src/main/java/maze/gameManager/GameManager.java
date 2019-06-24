@@ -69,6 +69,10 @@ public abstract class GameManager implements GameManagerInterface{
 
     protected abstract void gameResultHandler(String out);
 
+    protected Map<Point, Integer> getBookmarkSequence() {
+        return bookmarkSequence;
+    }
+
     public Player getPlayer() {
         return player;
     }

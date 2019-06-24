@@ -40,7 +40,7 @@ public class GameManagerImplTest {
 
         //Act
         gameManager.addBookmark(currentPoint,sequenceValue);
-        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
+        Map<Point,Integer> bookmarkManagerMap = gameManager.getBookmarkSequence();
 
         //Assert
         Assert.assertEquals("The adding bookmark action did not work",bookmarkManagerExpectedMap.size(),bookmarkManagerMap.size());
@@ -61,7 +61,7 @@ public class GameManagerImplTest {
 
         //Act
         gameManager.addBookmark(currentPoint,sequenceValue);
-        Map<Point,Integer> bookmarkManagerMap = gameManager.bookmarkSequence;
+        Map<Point,Integer> bookmarkManagerMap = gameManager.getBookmarkSequence();
 
         //Assert
         Assert.assertEquals("The adding bookmark action did not work",bookmarkManagerExpectedMap.size(),bookmarkManagerMap.size());
