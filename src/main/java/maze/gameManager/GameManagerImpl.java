@@ -65,7 +65,7 @@ public class GameManagerImpl extends GameManager {
                     if (isWall(currentLocation)) {
                         player.hitWall();
                         log.info("hit : "+currentLocation);
-                        currentLocation = playerPreviousLocation;
+                        currentLocation = playerLocation;
                         log.info("current : "+currentLocation);
                     }
                     if (isBookmarkLocation(currentLocation)) {
@@ -73,7 +73,7 @@ public class GameManagerImpl extends GameManager {
                     }
                 }
             }
-            if(!(currentLocation==playerPreviousLocation)) {
+            if(!(currentLocation.equals(playerLocation))) {
                 playerPreviousLocation.setLocation(playerLocation);
             }
             playerLocation = currentLocation;
