@@ -108,6 +108,9 @@ public class FileParse {
                 throw new WrongFileFormatException(e.getMessage());
             }
         if(!bodyFileExceptions.isEmpty()) {
+            if (headerFileExceptions.isEmpty()) {
+                System.out.println("*** Maze file: '" + mazeData.getMazeName()+"' ***");
+            }
             System.out.println("Bad maze in maze file:");
             Exception e =  new WrongFileFormatMultipleException(bodyFileExceptions);
             mazeData.setValidFile(false);
@@ -233,6 +236,7 @@ public class FileParse {
             headerFileExceptions.add(new ArrayIndexOutOfBoundsException("Missing one of the parameters"));
         }
         if (!headerFileExceptions.isEmpty()){
+            System.out.println("*** Maze file: '" + mazeData.getMazeName()+"' ***");
             System.out.println("Bad maze file header:");
             Exception e =  new WrongFileFormatMultipleException(headerFileExceptions);
             mazeData.setValidFile(false);

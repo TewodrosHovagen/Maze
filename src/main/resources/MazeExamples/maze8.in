@@ -1,0 +1,10 @@
+wrong format maze - missing dollar sign
+MaxSteps = 70
+Rows = 6
+Cols = 6
+######
+# @  #
+# ## #
+#    #
+### ##
+#    #
