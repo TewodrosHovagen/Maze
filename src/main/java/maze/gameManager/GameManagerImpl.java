@@ -1,5 +1,6 @@
 package maze.gameManager;
 
+import maze.player.PlayerMaze;
 import utils.directionEnum.Enums;
 import utils.logging.Logger;
 import utils.reports.SingleGameOutputFile;
@@ -25,13 +26,13 @@ public class GameManagerImpl extends GameManager {
     protected int timesToPlay;
 
     public GameManagerImpl(MazeData data) {
-        this(data, new PlayerRandom());
+        this(data, new PlayerMaze());
     }
 
     GameManagerImpl(MazeData data, Player player) {
         this.mazeWorld = data.getMazeWorld();
         playerLocation = data.getPlayerLocation();
-        playerPreviousLocation= playerLocation;
+        playerPreviousLocation=new Point(playerLocation.getLocation());
         treasureLocation = data.getTreasureLocation();
         this.mazeData = data;
         this.player = player;
@@ -64,7 +65,7 @@ public class GameManagerImpl extends GameManager {
                     if (isWall(currentLocation)) {
                         player.hitWall();
                         log.info("hit : "+currentLocation);
-                        currentLocation = playerLocation;
+                        currentLocation = playerPreviousLocation;
                         log.info("current : "+currentLocation);
                     }
                     if (isBookmarkLocation(currentLocation)) {
@@ -112,7 +113,6 @@ public class GameManagerImpl extends GameManager {
         outputFile.writeToOutput(out);
     }
 
-
     protected Point getBackMove(Enums.MainDirectionsEnum direction) {
         switch (direction) {
             case UP:
@@ -127,21 +127,6 @@ public class GameManagerImpl extends GameManager {
                 return move(Enums.MainDirectionsEnum.BOOKMARK);
         }
     }
-
-//    protected Point getBackMove(Enums.MainDirectionsEnum direction) {
-//        switch (direction) {
-//            case UP:
-//                return move(Enums.MainDirectionsEnum.DOWN);
-//            case DOWN:
-//                return move(Enums.MainDirectionsEnum.UP);
-//            case RIGHT:
-//                return move(Enums.MainDirectionsEnum.LEFT);
-//            case LEFT:
-//                return move(Enums.MainDirectionsEnum.RIGHT);
-//            default:
-//                return move(Enums.MainDirectionsEnum.BOOKMARK);
-//        }
-//    }
 
 
     protected Point movePlayerLocation(Enums.MainDirectionsEnum directionsEnum) {

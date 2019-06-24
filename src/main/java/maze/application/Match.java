@@ -24,10 +24,12 @@ public class Match {
     private  Map<MazeData,List<GameManager>> gameResultMap = new HashMap<>();
     private  List<MazeData> mazeFiles = new ArrayList<>();
     private  List<Class<?>> players;
-    private boolean runThePlayer = true;
+    private ExecutorService pool;
+    private Thread thread ;
+    private boolean loadPlayers = true;
 
-    public boolean isRunThePlayer() {
-        return runThePlayer;
+    public boolean isLoadPlayers() {
+        return loadPlayers;
     }
 
     private String mazesFolder = "";
@@ -45,20 +47,15 @@ public class Match {
     public void startApplication(String[] args) throws InterruptedException {
         boolean res = argumentsValidationBeforeStartApplication(args);
         if (res) {
-            addValidMazeFilesToList();
+            loadValidMazeFiles();
         }
-        if(runThePlayer){
-            List<Class<?>> playersClasses = getClassesInPackage(playersPackage);
-            log.info("playersClasses: " + playersClasses);
-            log.info("playersClassesSize: " + playersClasses.size());
-
-            players = getPlayersInstanceFromClasses(playersClasses);
+        if(loadPlayers){
+            players = getPlayersClassesInPackage(playersPackage);
+            log.info("playersClasses: " + players);
             log.info("players size: " + players.size());
-//TODO: add suppoort in one thread no pool
-            sendTasksToPoolExecution();
 
+            sendTasksToExecution();
             MultipleGameOutputResult.printConsoleOutputResult(gameResultMap);
-
         }
     }
 
@@ -69,12 +66,12 @@ public class Match {
         if (isArgMissing == -1) {
             System.out.println(String.format("Missing mazes_folder argument in command line" ));
             System.out.println(String.format("Missing players_package argument in command line" ));
-            runThePlayer = false;
+            loadPlayers = false;
             return false;
         }
         else if(isArgMissing == 0){
             System.out.println(String.format("Missing players_package argument in command line" ));
-            runThePlayer = false;
+            loadPlayers = false;
             this.mazesFolder = args[0];
             log.info("mazesFolder: "+ mazesFolder);
             return true;
@@ -90,8 +87,11 @@ public class Match {
 
     }
 
-    private final List<Class<?>> getClassesInPackage(String packageName) {
+    private final List<Class<?>> getPlayersClassesInPackage(String packageName) {
+        log.info("packageName: "+packageName);
         String path = packageName.replace(".", File.separator);
+        log.info("path: "+path);
+
         List<Class<?>> classes = new ArrayList<>();
         String[] classPathEntries = System.getProperty("java.class.path").split(
                 System.getProperty("path.separator")
@@ -99,50 +99,43 @@ public class Match {
 
         String name;
         log.info("classPathEntries length: "+ classPathEntries.length);
-        for (String classpathEntry : classPathEntries) {
-            try {
-                log.info("classpathEntry: "+ classpathEntry);
-                File base = new File(classpathEntry + File.separatorChar + path);
-                log.info("base.listFiles(): "+ base.listFiles());
-                for (File file : base.listFiles()) {
-                    name = file.getName();
-                    if (name.endsWith(".class")
-                            && name.startsWith("Player")
-                            && !name.equals("Player.class")
-                            && !name.equals("PlayerInterface.class")
-                            && !name.contains("$")) {
-                        log.info("class name before substring: "+ name);
-                        name = name.substring(0, name.length() - 6);
-                        log.info("class name: "+ name);
-                        classes.add(Class.forName(packageName + "." + name));
-                    }
-                }
-            } catch (Exception ex) {
-                // Silence is gold
-            }
+        log.info("classPathEntries: "+ classPathEntries.toString());
 
+        for (String classpathEntry : classPathEntries) {
+            if (!classpathEntry.endsWith(".jar")){
+                try {
+                    log.info("classpathEntry: " + classpathEntry);
+                    File base = new File(classpathEntry + File.separatorChar + path);
+                    log.info("base.listFiles(): " + base.listFiles());
+                    for (File file : base.listFiles()) {
+                        name = file.getName();
+                        if (name.endsWith(".class")
+                                && name.startsWith("Player")
+                                && !name.equals("Player.class")
+                                && !name.equals("PlayerInterface.class")
+                                && !name.contains("$")) {
+                            log.info("class name before substring: " + name);
+                            name = name.substring(0, name.length() - 6);
+                            log.info("class name: " + name);
+                            Class<?> c = Class.forName(packageName + "." + name);
+                            try {
+                                Object o = c.getDeclaredConstructor().newInstance();
+                                Player p = (Player) o;
+                                classes.add(c);
+                            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                                System.out.println(String.format("Class %s does not passed casting to Player properly ", c.getName()));
+                            }
+                        }
+                    }
+                } catch (ClassNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         return classes;
     }
 
-    private List<Class<?>> getPlayersInstanceFromClasses(List<Class<?>> classes){
-        List<Class<?>> playerClasses = new ArrayList<>();
-        for (Class<?> c: classes){
-            Object o = null;
-            Player p = null;
-            try {
-                o = c.getDeclaredConstructor().newInstance();
-                p = (Player)o;
-                playerClasses.add(c);
-            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                System.out.println(String.format("Class %s does not passed casting to Player properly ", c.getName()));
-//                e.printStackTrace();
-            }
-        }
-        return playerClasses;
-    }
-
-    private void addValidMazeFilesToList(){
+    private void loadValidMazeFiles(){
         FileParse fileParse;
         MazeData mazeData;
 
@@ -165,27 +158,54 @@ public class Match {
 
         }
     }
-    private void sendTasksToPoolExecution() throws InterruptedException {
-        ExecutorService pool = Executors.newFixedThreadPool(numThread);
+    private void sendTasksToExecution() throws InterruptedException {
+        threadsStrategy();
+    }
+    private void threadsStrategy() throws InterruptedException {
+        if(numThread > 1)
+            executeByPool();
+        else
+            executeBySingleThread();
+
+    }
+    private void executeByPool() throws InterruptedException {
+        this.pool = Executors.newFixedThreadPool(numThread);
         for(MazeData mazeData: mazeFiles){
             List<GameManager> tasks = new ArrayList<>();
             for(Class<?> classPlayer: players){
-                Player player = null;
-                try {
-                    player = (Player)classPlayer.getDeclaredConstructor().newInstance();
-                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                System.out.println("Player instansiation has failed");
-//                e.printStackTrace();
-            }
-                GameManagerTask task = new GameManagerTask(mazeData, player);
-                tasks.add(task);
-                pool.execute(task);
+                GameManagerTask task = taskCreation(tasks, classPlayer, mazeData);
+                this.pool.execute(task);
             }
             gameResultMap.put(mazeData, tasks);
         }
-
         pool.shutdown();
         pool.awaitTermination(10, TimeUnit.SECONDS);
+
+    }
+    private void executeBySingleThread(){
+        this.thread = new Thread();
+        for(MazeData mazeData: mazeFiles){
+            List<GameManager> tasks = new ArrayList<>();
+            for(Class<?> classPlayer: players){
+                GameManagerTask task = taskCreation(tasks, classPlayer, mazeData);
+                while(this.thread.isAlive()) {//wait for thread will not be alive}
+                }
+                this.thread = new Thread(task);
+                this.thread.start();
+            }
+            gameResultMap.put(mazeData, tasks);
+        }
+    }
+    private GameManagerTask taskCreation(List<GameManager> tasks, Class<?> classPlayer, MazeData mazeData){
+        Player player = null;
+        try {
+            player = (Player)classPlayer.getDeclaredConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            System.out.println("Player instantiation has failed");
+        }
+        GameManagerTask task = new GameManagerTask(mazeData, player);
+        tasks.add(task);
+        return task;
     }
 
     private static void closeLogger() {
