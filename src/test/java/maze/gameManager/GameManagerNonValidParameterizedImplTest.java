@@ -46,7 +46,7 @@ public class GameManagerNonValidParameterizedImplTest {
         GameManager gameManagerInterface = new GameManagerImpl(mazeData);
 
         //Assert
-        Assert.assertEquals("The current point a wall when should not be", expectedResultIsWall, gameManagerInterface.isWall(currentPoint));
+        Assert.assertEquals("The current point should not be a wall", expectedResultIsWall, gameManagerInterface.isWall(currentPoint));
     }
 
     @Test
@@ -59,6 +59,6 @@ public class GameManagerNonValidParameterizedImplTest {
         GameManager gameManagerInterface = new GameManagerImpl(mazeData);
 
         //Assert
-        Assert.assertEquals("The current point a wall when should not be", expectedResultIsTreasure, gameManagerInterface.isTreasure(currentPoint));
+        Assert.assertEquals("The current point should not be a treasure", expectedResultIsTreasure, gameManagerInterface.isTreasure(currentPoint));
     }
 }
