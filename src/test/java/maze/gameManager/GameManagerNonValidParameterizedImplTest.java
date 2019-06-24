@@ -22,18 +22,18 @@ public class GameManagerNonValidParameterizedImplTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{
-                        {Integer.MAX_VALUE, Integer.MAX_VALUE, false, false},
-                        {Integer.MIN_VALUE, Integer.MIN_VALUE, false, false},
-                        {-1, -1, false, false}
+                        {Integer.MAX_VALUE, Integer.MAX_VALUE},
+                        {Integer.MIN_VALUE, Integer.MIN_VALUE},
+                        {-1, -1}
                 }
         );
     }
 
-    public GameManagerNonValidParameterizedImplTest(int rowPosition, int colPosition, boolean expectedResultIsWall, boolean expectedResultIsTreasure) {
+    public GameManagerNonValidParameterizedImplTest(int rowPosition, int colPosition) {
         this.rowPosition = rowPosition;
         this.colPosition = colPosition;
-        this.expectedResultIsTreasure = expectedResultIsTreasure;
-        this.expectedResultIsWall = expectedResultIsWall;
+        this.expectedResultIsTreasure = false;
+        this.expectedResultIsWall = false;
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
