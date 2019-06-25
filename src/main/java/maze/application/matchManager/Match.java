@@ -59,6 +59,10 @@ public class Match {
         return isThreadsStrategySingleThread;
     }
 
+    public Map<MazeData, List<GameManager>> getGameResultMap() {
+        return gameResultMap;
+    }
+
     public static void main(String[] args) throws InterruptedException {
         Match match = new Match();
         match.startApplication(args);

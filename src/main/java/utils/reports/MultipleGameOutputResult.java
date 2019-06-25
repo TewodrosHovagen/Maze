@@ -39,6 +39,23 @@ public class MultipleGameOutputResult {
         }
     }
 
+    public static Map<String,Map<String,Integer>> saveOutputResultToMap(Map<MazeData,List<GameManager>> gameResultMap) {
+        Map<String,Map<String,Integer>> mapMazesWithPlayersRes = new HashMap<>();
+        for(Map.Entry<MazeData,List<GameManager>> gameItem: gameResultMap.entrySet()){
+            String mazeName = gameItem.getKey().getMazeName();
+            Map<String,Integer> mapPlayersRes = new HashMap<>();
+            for(GameManager gameManager : gameItem.getValue()){
+                mapPlayersRes.put(
+                        ((GameManagerTask)gameManager).getPlayer().getClass().getSimpleName(),
+                        ((GameManagerTask)gameManager).getMaxStepsResults()
+                                );
+
+            }
+            mapMazesWithPlayersRes.put(mazeName, mapPlayersRes);
+        }
+        return mapMazesWithPlayersRes;
+    }
+
     private static String getMazeNameAccordingToLength(String mazeName,int maxMazesNameLength){
         String returnMazeName = mazeName;
         if(mazeName.length()<maxMazesNameLength){
