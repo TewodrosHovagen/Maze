@@ -21,7 +21,7 @@ public class PlayerMaze extends Player {
 
     private boolean isBookMark;
     private int bookMarkCounter = -1;
-    private boolean setBookmarkNextMove = true;
+    protected boolean setBookmarkNextMove = true;
 
     private Map<Integer, List<MainDirectionsEnum>> bookMarkMap;
     final private Map<WalkingDirectionsEnum, MainDirectionsEnum> northMap;

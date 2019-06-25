@@ -11,7 +11,8 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class PlayerMoveTest {
 
-
+/**
+ * @param - laststep , mainDirection , isHitWall , expected **/
     @Parameterized.Parameters
     public static Object[][] data() {
         return new Object[][]{
@@ -33,11 +34,12 @@ public class PlayerMoveTest {
         this.mainDirection = mainDirection;
         this.expected = expected;
         this.hitWall = isHitWall;
+
     }
 
     @Before
     public void initializeMazeAndPlayer() {
-        player = new PlayerMaze();
+        player = new PlayerMaze();player.setBookmarkNextMove=false;
     }
 
 
