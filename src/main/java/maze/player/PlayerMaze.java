@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import static utils.directionEnum.Enums.MainDirectionsEnum.DOWN;
 import static utils.directionEnum.Enums.MainDirectionsEnum.UP;
 import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum;
@@ -20,7 +21,7 @@ public class PlayerMaze extends Player {
 
     private boolean isBookMark;
     private int bookMarkCounter = -1;
-    private boolean setBookmarkNextMove = true;
+    protected boolean setBookmarkNextMove = true;
 
     private Map<Integer, List<MainDirectionsEnum>> bookMarkMap;
     final private Map<WalkingDirectionsEnum, MainDirectionsEnum> northMap;
@@ -43,19 +44,31 @@ public class PlayerMaze extends Player {
         if (setBookmarkNextMove && !isBookMark) {
             bookMarkCounter++;
             mainDirectionToReturn = MainDirectionsEnum.BOOKMARK;
-
             bookMarkMap.computeIfAbsent(bookMarkCounter, k -> new ArrayList<>());
+//            bookMarkMap.get(bookMarkCounter).add(mainDirection);
             bookMarkMap.get(bookMarkCounter).add(mainDirection);
-            if(fullBookMark){
-                bookMarkMap.get(bookMarkCounter).add(lastMainDirectionToReturn);
-                fullBookMark=false;
-            }
             setBookmarkNextMove = false;
+            fullBookMark=false;
         } else if (isHitWall) {
             mainDirectionToReturn = moveByLastStep(currentDirectionMap);
+//            int bookMarkSize=bookMarkMap.get()
             if (isBookMark) {
-                if (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
-                    bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
+                if(!fullBookMark) {
+                    if (bookMarkMap.get(bookmarkSeq).size() <= 3) {
+                        if (bookMarkMap.get(bookmarkSeq).contains(mainDirectionToReturn)) {
+                            do {
+                                mainDirectionToReturn = moveByLastStep(currentDirectionMap);
+                            } while (bookMarkMap.get(bookmarkSeq).contains(mainDirectionToReturn));
+                        }
+                        bookMarkMap.get(bookmarkSeq).add(mainDirectionToReturn);
+                    }else {
+                        MainDirectionsEnum test = mainDirectionToReturn = backStep.get(lastMainDirectionToReturn);
+                        System.out.println(test);
+                    }
+                }else {
+                    mainDirectionToReturn = backStep.get(mainDirectionToReturn);
+                    fullBookMark = true;
+                    setBookmarkNextMove = true;
                 }
                 setBookmarkNextMove = false;
                 isBookMark = false;
@@ -64,18 +77,17 @@ public class PlayerMaze extends Player {
         } else if (isBookMark) {
             WalkingDirectionsEnum lastStepDirection = lastStep;
             mainDirectionToReturn = currentDirectionMap.get(lastStepDirection);
-            if (bookMarkMap.get(bookMarkCounter).size() <= 3) {
-            if (bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn)) {
+            if (bookMarkMap.get(bookmarkSeq).size() < 3) {
+                if (bookMarkMap.get(bookmarkSeq).contains(mainDirectionToReturn)) {
                     do {
                         mainDirectionToReturn = moveByLastStep(currentDirectionMap);
-                    }while (!bookMarkMap.get(bookMarkCounter).contains(mainDirectionToReturn));
-                        bookMarkMap.get(bookMarkCounter).add(mainDirectionToReturn);
-                    }
-
+                    } while (bookMarkMap.get(bookmarkSeq).contains(mainDirectionToReturn));
+                }
+                bookMarkMap.get(bookmarkSeq).add(mainDirectionToReturn);
             } else {
-                mainDirectionToReturn=backStep.get(mainDirectionToReturn);
-                fullBookMark=true;
-                setBookmarkNextMove=true;
+                mainDirectionToReturn = backStep.get(mainDirectionToReturn);
+                fullBookMark = true;
+                setBookmarkNextMove = true;
             }
             isBookMark = false;
         } else {
