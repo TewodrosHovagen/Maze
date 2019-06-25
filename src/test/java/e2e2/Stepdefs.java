@@ -31,8 +31,10 @@ public class Stepdefs {
     public void checkResultAfterExecution(){
         Map<String, Map<String,Integer>> mapMazesWithPlayersResActual = MultipleGameOutputResult.saveOutputResultToMap(match.getGameResultMap());
 
+        Assert.assertTrue(mapMazesWithPlayersResActual.get("Nice simple maze").get("PlayerRandom") != null);
         Assert.assertEquals(mapMazesWithPlayersResActual.get("Nice simple maze").get("PlayerMaze").intValue(),
                 9);
+        Assert.assertTrue(mapMazesWithPlayersResActual.get("A maze ing !!").get("PlayerRandom") != null);
         Assert.assertEquals(mapMazesWithPlayersResActual.get("A maze ing !!").get("PlayerMaze").intValue(),
                 32);
     }
