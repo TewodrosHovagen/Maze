@@ -1,4 +1,4 @@
-package maze.application;
+package maze.application.matchManager;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -49,7 +49,7 @@ public class MatchNotValidParameterizedTest {
         //when
         Match match = new Match();
         match.startApplication(args);
-        
+
         //then
         Assert.assertEquals(match.isLoadPlayers(),loadPlayers);
         Assert.assertEquals(match.isValidationArgsResult(),validationArgsResult);

@@ -1,4 +1,4 @@
-package maze.application;
+package maze.application.matchManager;
 
 import org.junit.Assert;
 import org.junit.Test;

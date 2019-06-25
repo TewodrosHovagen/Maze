@@ -1,5 +1,6 @@
-package maze.application;
+package maze.application.matchManager;
 
+import maze.application.Validation;
 import utils.logging.Logger;
 import utils.reports.MultipleGameOutputResult;
 import maze.fileDataParse.FileParse;
