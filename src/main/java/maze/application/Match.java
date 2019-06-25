@@ -24,18 +24,39 @@ public class Match {
     private  Map<MazeData,List<GameManager>> gameResultMap = new HashMap<>();
     private  List<MazeData> mazeFiles = new ArrayList<>();
     private  List<Class<?>> players;
-    private ExecutorService pool;
-    private Thread thread ;
-    private boolean loadPlayers = true;
-
-    public boolean isLoadPlayers() {
-        return loadPlayers;
-    }
-
     private String mazesFolder = "";
     private String playersPackage;
     private int numThread;
+    private ExecutorService pool;
+    private Thread thread ;
+    private boolean loadPlayers = true;
+    private boolean validationArgsResult;
+    private boolean isThreadsStrategyPool = false;
+    private boolean isThreadsStrategySingleThread = false;
 
+    protected boolean isLoadPlayers() {
+        return loadPlayers;
+    }
+
+    protected boolean isValidationArgsResult() {
+        return validationArgsResult;
+    }
+
+    protected List<MazeData> getMazeFiles() {
+        return mazeFiles;
+    }
+
+    protected List<Class<?>> getPlayers() {
+        return players;
+    }
+
+    protected boolean isThreadsStrategyPool() {
+        return isThreadsStrategyPool;
+    }
+
+    protected boolean isThreadsStrategySingleThread() {
+        return isThreadsStrategySingleThread;
+    }
 
     public static void main(String[] args) throws InterruptedException {
         Match match = new Match();
@@ -44,9 +65,9 @@ public class Match {
     }
 
 
-    public void startApplication(String[] args) throws InterruptedException {
-        boolean res = argumentsValidationBeforeStartApplication(args);
-        if (res) {
+    public void startApplication(String[] args)  {
+        this.validationArgsResult = argumentsValidationBeforeStartApplication(args);
+        if (validationArgsResult) {
             loadValidMazeFiles();
         }
         if(loadPlayers){
@@ -158,17 +179,20 @@ public class Match {
 
         }
     }
-    private void sendTasksToExecution() throws InterruptedException {
+    private void sendTasksToExecution() {
         threadsStrategy();
     }
-    private void threadsStrategy() throws InterruptedException {
-        if(numThread > 1)
+    private void threadsStrategy() {
+        if(numThread > 1){
+            isThreadsStrategyPool = true;
             executeByPool();
-        else
+        }
+        else{
+            isThreadsStrategySingleThread = true;
             executeBySingleThread();
-
+        }
     }
-    private void executeByPool() throws InterruptedException {
+    private void executeByPool()  {
         this.pool = Executors.newFixedThreadPool(numThread);
         for(MazeData mazeData: mazeFiles){
             List<GameManager> tasks = new ArrayList<>();
@@ -179,7 +203,11 @@ public class Match {
             gameResultMap.put(mazeData, tasks);
         }
         pool.shutdown();
-        pool.awaitTermination(10, TimeUnit.SECONDS);
+        try {
+            pool.awaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
     private void executeBySingleThread(){
