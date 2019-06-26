@@ -33,7 +33,7 @@ public class MultipleGameOutputResult {
             String mazeName = getMazeNameAccordingToLength(gameItem.getKey().getMazeName(),maxMazesNameLength);
             System.out.print(mazeName+"\t");
             for(GameManager gameManager : gameItem.getValue()){
-                System.out.print("\t\t"+((GameManagerTask)gameManager).getMaxStepsResults()+"\t\t");
+                System.out.print("\t\t"+((GameManagerTask)gameManager).getPlayerStepsResults()+"\t\t");
             }
             System.out.println();
         }
@@ -47,7 +47,7 @@ public class MultipleGameOutputResult {
             for(GameManager gameManager : gameItem.getValue()){
                 mapPlayersRes.put(
                         ((GameManagerTask)gameManager).getPlayer().getClass().getSimpleName(),
-                        ((GameManagerTask)gameManager).getMaxStepsResults()
+                        ((GameManagerTask)gameManager).getPlayerStepsResults()
                                 );
 
             }

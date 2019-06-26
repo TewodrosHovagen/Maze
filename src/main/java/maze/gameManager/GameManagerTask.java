@@ -6,8 +6,8 @@ import maze.player.Player;
 public class GameManagerTask extends GameManagerImpl implements Runnable {
 
     private final Logger log = Logger.getInstance();
-    private final int NOT_FOUNT = -1;
-    private int maxStepsResults;
+    private final int TREASURE_NOT_FOUNT = -1;
+    private int playerStepsResults;
 
     public GameManagerTask(MazeData data, Player player) {
         super(data, player);
@@ -18,18 +18,18 @@ public class GameManagerTask extends GameManagerImpl implements Runnable {
         runGame();
     }
 
-    public int getMaxStepsResults() {
-        return maxStepsResults;
+    public int getPlayerStepsResults() {
+        return playerStepsResults;
     }
 
     @Override
     protected void gameResultHandler() {
         if(timesToPlay == mazeData.getMaxSteps()) {
-            maxStepsResults = NOT_FOUNT;
+            playerStepsResults = TREASURE_NOT_FOUNT;
         }else{
-            maxStepsResults = timesToPlay;
+            playerStepsResults = timesToPlay;
         }
-        log.info("Game result is :" + maxStepsResults);
+        log.info("Game result is :" + playerStepsResults);
     }
 
     @Override
