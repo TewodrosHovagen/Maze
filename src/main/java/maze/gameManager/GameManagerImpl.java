@@ -1,13 +1,13 @@
 package maze.gameManager;
 
+import maze.player.Player;
 import maze.player.PlayerMaze;
 import utils.directionEnum.Enums;
 import utils.logging.Logger;
 import utils.reports.SingleGameOutputFile;
-import maze.player.Player;
-import maze.player.PlayerRandom;
 
-import java.awt.Point;
+import java.awt.*;
+
 import static maze.fileDataParse.FileParse.*;
 
 
@@ -68,10 +68,10 @@ public class GameManagerImpl extends GameManager {
                         currentLocation = playerLocation;
                         log.info("current : "+currentLocation);
                     }
-                    if (isBookmarkLocation(currentLocation)) {
-                        player.hitBookmark(getBookmarkSequence(currentLocation));
-                    }
                 }
+            }
+            if (isBookmarkLocation(currentLocation)) {
+                player.hitBookmark(getBookmarkSequence(currentLocation));
             }
             if(!(currentLocation.equals(playerLocation))) {
                 playerPreviousLocation.setLocation(playerLocation);

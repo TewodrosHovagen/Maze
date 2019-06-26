@@ -15,9 +15,9 @@ public class PlayerRandom extends Player {
 
     @Override
     public MainDirectionsEnum move() {
-        if (isHitWall) {
+        if (isLastMoveHitWall()) {
             setNewRandomDirection();
-            isHitWall = false;
+            clearHitWall();
             counter=0;
             return mainDirection;
         }

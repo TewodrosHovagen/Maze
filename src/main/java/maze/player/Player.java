@@ -7,18 +7,29 @@ import maze.player.directionEnum.playerEnum;
 public abstract class Player implements PlayerInterface {
 
     private final Logger log = Logger.getInstance();
-    protected boolean isHitWall;
-
-    @Override
-    public void hitWall() {
-        log.info("You hit the wall");
-        isHitWall = true;
-    }
-
+    private boolean isHitWall;
     protected playerEnum.WalkingDirectionsEnum lastStep;
     protected Enums.MainDirectionsEnum mainDirection;
 
-    protected void setHitWall(boolean hitWall) {
+    @Override
+    public final void hitWall() {
+        log.info("You hit the wall");
+        isHitWall = true;
+        hitWallHandler();
+    }
+
+    protected void hitWallHandler() {}
+
+    protected boolean isLastMoveHitWall() {
+        return isHitWall;
+    }
+
+    protected void clearHitWall() {
+        isHitWall = false;
+    }
+
+    // for unit tests
+    void setHitWall(boolean hitWall) {
         isHitWall = hitWall;
     }
 

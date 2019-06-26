@@ -33,10 +33,10 @@ public class Stepdefs {
 
         Assert.assertTrue(mapMazesWithPlayersResActual.get("Nice simple maze").get("PlayerRandom") >= -1);
         Assert.assertEquals(mapMazesWithPlayersResActual.get("Nice simple maze").get("PlayerMaze").intValue(),
-                9);
+                8);
         Assert.assertTrue(mapMazesWithPlayersResActual.get("A maze ing !!").get("PlayerRandom") >= -1);
         Assert.assertEquals(mapMazesWithPlayersResActual.get("A maze ing !!").get("PlayerMaze").intValue(),
-                32);
+                27);
     }
 
 }
