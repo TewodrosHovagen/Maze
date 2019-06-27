@@ -1,4 +1,4 @@
-package e2e2;
+package e2e;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
