@@ -1,7 +1,5 @@
 package maze.player;
 
-import maze.player.directionEnum.playerEnum;
-import utils.directionEnum.Enums;
 import utils.directionEnum.Enums.MainDirectionsEnum;
 
 import java.util.ArrayList;
@@ -9,13 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum;
+import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.*;
 import static utils.directionEnum.Enums.MainDirectionsEnum.DOWN;
 import static utils.directionEnum.Enums.MainDirectionsEnum.UP;
-import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum;
-import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.BACK;
-import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.LEFT;
-import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.RIGHT;
-import static maze.player.directionEnum.playerEnum.WalkingDirectionsEnum.STRAIGHT;
 
 
 public class PlayerMaze extends Player {
@@ -23,6 +18,9 @@ public class PlayerMaze extends Player {
 
     private boolean isBookMark;
     private int bookMarkCounter = -1;
+
+
+
     protected boolean setBookmarkNextMove = true;
 
     private Map<Integer, List<MainDirectionsEnum>> bookMarkMap;
@@ -32,12 +30,7 @@ public class PlayerMaze extends Player {
     final private Map<WalkingDirectionsEnum, MainDirectionsEnum> southMap;
     final private Map<MainDirectionsEnum, Map<WalkingDirectionsEnum, MainDirectionsEnum>> directionsMap;
     private int bookmarkSeq;
-    private boolean fullBookMark;
-    private MainDirectionsEnum lastMainDirectionToReturn;
-
-    public void setLastMainDirectionToReturn(MainDirectionsEnum lastMainDirectionToReturn) {
-        this.lastMainDirectionToReturn = lastMainDirectionToReturn;
-    }
+    MainDirectionsEnum lastMainDirectionToReturn;
 
     @Override
     public MainDirectionsEnum move() {
@@ -174,6 +167,10 @@ public class PlayerMaze extends Player {
 
     public void setMainDirection(MainDirectionsEnum mainDirection) {
         this.mainDirection = mainDirection;
+    }
+
+    public void setSetBookmarkNextMove(boolean setBookmarkNextMove) {
+        this.setBookmarkNextMove = setBookmarkNextMove;
     }
 
     @Override

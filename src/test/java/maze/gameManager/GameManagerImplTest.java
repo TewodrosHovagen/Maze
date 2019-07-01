@@ -1,5 +1,10 @@
 package maze.gameManager;
 
+import cucumber.api.java.BeforeStep;
+import maze.player.PlayerMaze;
+import maze.player.PlayerRandom;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import utils.directionEnum.Enums;
 import utils.reports.SingleGameOutputFile;
 import maze.fileDataParse.FileParse;
@@ -25,12 +30,19 @@ public class GameManagerImplTest {
     Player player;
     private String fileDir ="./src/test/resources/simpleMazeFileTest.txt";
     private String fileOutputDir ="./output.txt";
+    MazeData mazeData;
+    FileParse fileParse;
 
+    @Before
+    public void loadMazeFile(){
+        fileParse = new FileParse();
+        mazeData = fileParse.parseFileData(fileDir);
+    }
 
     @Test
     public void addBookmarkNonValidPointTest() {
         //Arrange
-        GameManagerImpl gameManager = new GameManagerImpl(new MazeData());
+        GameManagerImpl gameManager = new GameManagerImpl(mazeData);
         Point currentPoint = new Point(2,3);
         Point expectedPoint = new Point(5,3);
         int sequenceValue= 1;
@@ -51,7 +63,7 @@ public class GameManagerImplTest {
     @Test
     public void addBookmarkNonValidSequenceTest() {
         //Arrange
-        GameManagerImpl gameManager = new GameManagerImpl(new MazeData());
+        GameManagerImpl gameManager = new GameManagerImpl(mazeData);
         Point currentPoint = new Point(2,3);
         Point expectedPoint = new Point(2,3);
         int sequenceValue= 1;
@@ -72,7 +84,7 @@ public class GameManagerImplTest {
     @Test
     public void startGameWinTest() throws Exception {
         //Arrange
-        MazeData mazeData = new FileParse().parseFileData(fileDir);
+//        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.RIGHT;
         String directionExpectedSTR = "R";
         String gameExpectedStatusSTR = "!";
@@ -97,15 +109,14 @@ public class GameManagerImplTest {
     @Test
     public void startGameWallTest() throws Exception {
         //Arrange
-        MazeData mazeData = new FileParse().parseFileData(fileDir);
-        Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.UP;
+        Enums.MainDirectionsEnum direction ;
         String directionExpectedSTR = "U";
         String gameExpectedStatusSTR = "X";
         try(SingleGameOutputFile outputFile = new SingleGameOutputFile(fileOutputDir)) {
             GameManagerImpl gameManager = new GameManagerImpl(mazeData);
-            gameManager.setPlayer(player);
+            gameManager.setPlayer(new PlayerMaze());
             gameManager.setOutputFile(outputFile);
-            Mockito.when(player.move()).thenReturn(direction);
+            direction=gameManager.player.move();
 
             //Act
             gameManager.runGame();
@@ -121,7 +132,7 @@ public class GameManagerImplTest {
     @Test
     public void startGameNoWinTest() throws Exception {
         //Arrange
-        MazeData mazeData = new FileParse().parseFileData(fileDir);
+//        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.LEFT;
         String directionExpectedSTR = "L";
         String gameExpectedStatusSTR = "X";
@@ -145,7 +156,7 @@ public class GameManagerImplTest {
     @Test
     public void startGameNoWinBookmarkTest() throws Exception {
         //Arrange
-        MazeData mazeData = new FileParse().parseFileData(fileDir);
+//        MazeData mazeData = new FileParse().parseFileData(fileDir);
         Enums.MainDirectionsEnum direction = Enums.MainDirectionsEnum.BOOKMARK;
         String directionExpectedSTR = "B";
         String gameExpectedStatusSTR = "X";
